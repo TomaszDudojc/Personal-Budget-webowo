@@ -1,0 +1,98 @@
+body
+{
+	background-color: #F1F4F9;
+	font-size: 20px;
+	width: 100%;
+}
+
+.topbar
+{	
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+	background-color: #9DC7F7;
+	text-align:center;	
+	position: fixed;
+	top: 0;
+	left: 0;
+	color: white;
+	padding: 20px;
+}
+
+h1.logo
+{	
+	font-size: 60px;	
+	letter-spacing: 3px;	
+}
+
+.autor
+{
+	color: black;
+}
+
+.container
+{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 250px;	
+}
+
+h2.register
+{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+	text-align:center;
+	padding: 10px;
+	font-size: 40px;
+	letter-spacing: 2px;
+	color: #36b03c;	
+}
+
+input[type=text],
+input[type=email],
+input[type=password]
+{
+	width: 400px;
+	background-color: #efefef;
+	color: #666;
+	border: 2px solid #9DC7F7;
+	border-radius: 5px;
+	font-size: 20px;
+	padding: 5px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+
+input[type=submit]
+{
+	width: 400px;
+	background-color: #36b03c;
+	font-size: 20px;
+	color: white;
+	padding: 15px 10px;
+	margin-top: 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+.info
+{
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 18px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: #9DC7F7;
+}
+

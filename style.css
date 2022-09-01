@@ -1,8 +1,9 @@
 body
 {
 	background-color: #F1F4F9;
-	font-size: 20px;
-	width: 100%;
+	font-size: 16px;
+	width: 100%;	
+	font-family: 'Lato', sans-serif;
 }
 
 .topbar
@@ -16,13 +17,22 @@ body
 	top: 0;
 	left: 0;
 	color: white;
-	padding: 20px;
+	padding: 10px;	
 }
+
+.topbar > p
+{
+	padding: 5px;
+	margin: 5px;
+}
+
 
 h1.logo
 {	
 	font-size: 60px;	
 	letter-spacing: 3px;	
+	margin: 10px;
+	padding: 5px;
 }
 
 .autor
@@ -32,10 +42,10 @@ h1.logo
 
 .container
 {
-	width: 400px;
+	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 250px;	
+	margin-top: 180px;	
 }
 
 h2.register
@@ -43,10 +53,10 @@ h2.register
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	text-align: center;
 	padding: 10px;
-	font-size: 40px;
+	font-size: 30px;
 	letter-spacing: 2px;
 	color: #36b03c;	
 }
@@ -55,13 +65,14 @@ input[type=text],
 input[type=email],
 input[type=password]
 {
-	width: 400px;
+	font-family: 'Lato', sans-serif;
+	width: 270px;
 	background-color: #efefef;
 	color: #777;
-	border: 2px solid #9DC7F7;
-	border-radius: 5px;
-	font-size: 20px;
-	padding: 5px;
+	border: 1px  solid #9DC7F7;
+	border-radius: 0px 5px 5px 0px;
+	font-size: 16px;	
+	padding: 3px;
 	box-sizing: border-box;
 	outline: none;
 	margin-top: 10px;
@@ -71,22 +82,23 @@ input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus
 {
-	-webkit-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	-moz-box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	box-shadow: 0px 0px 10px 2px rgba(204,204,204,0.9);
-	border: 2px solid #a5cda5;
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
+	box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
+	border: 1px solid #a5cda5;
 	background-color: #e9f3e9;
 	color: #428c42;
 }
 
 input[type=submit]
 {
-	width: 400px;
+	font-family: 'Lato', sans-serif;
+	width: 300px;
 	background-color: #36b03c;
 	font-size: 20px;
 	color: white;
-	padding: 15px;
-	margin-top: 20px;
+	padding: 10px;
+	margin-top: 10px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
@@ -96,9 +108,9 @@ input[type=submit]
 
 input[type=submit]:focus
 {
-	-webkit-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-	-moz-box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
-	box-shadow: 0px 0px 15px 5px rgba(204,204,204,0.9);
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(165,205,165,0.9);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(165,205,165,0.9);
+	box-shadow: 0px 0px 15px 5px rgba(165,205,165,0.9);
 }
 
 input[type=submit]:hover
@@ -109,18 +121,16 @@ input[type=submit]:hover
 /* Zmiana koloru i rozmiaru czcionki placeholdera */
 input::-webkit-input-placeholder
 {
-    color: #999;
-	font-size: 16px;
+    color: #999;		
 }
 input:focus::-webkit-input-placeholder
 {
-    color: #428C42;
+    color: #428C42;	
 }
 /* Firefox < 19 */
 input:-moz-placeholder
 {
-    color: #999;
-	font-size: 16px;
+    color: #999;	
 }
 input:focus:-moz-placeholder
 {
@@ -129,8 +139,7 @@ input:focus:-moz-placeholder
 /* Firefox > 19 */
 input::-moz-placeholder
 {
-    color: #999;
-	font-size: 16px;
+    color: #999;	
 }
 input:focus::-moz-placeholder
 {
@@ -139,8 +148,7 @@ input:focus::-moz-placeholder
 /* Internet Explorer 10 */
 input:-ms-input-placeholder
 {
-    color: #999;
-	font-size: 16px;
+    color: #999;	
 }
 input:focus:-ms-input-placeholder
 {
@@ -154,9 +162,21 @@ input:focus:-ms-input-placeholder
 	margin-right: 0px;
 	margin-top: 20px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 14px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	background-color: #9DC7F7;
+}
+.icon
+{
+	float: left;
+	margin-top: 10px;	
+	font-size: 16px;	
+	padding: 3px;	
+	border-top: 1px solid #9DC7F7;
+	border-bottom: 1px solid #9DC7F7;
+	border-left: 1px solid #9DC7F7;
+	border-radius: 5px 0px 0px 5px; 
+	background-color: white;
 }

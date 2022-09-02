@@ -48,6 +48,8 @@ h1.logo
 	margin-top: 180px;	
 }
 
+/* //////////////////  REJESTRACJA  /////////////////////// */
+
 h2.register
 {
 	width: 100%;
@@ -155,6 +157,21 @@ input:focus:-ms-input-placeholder
     color: #428C42;
 }
 
+.icon
+{
+	float: left;
+	margin-top: 10px;	
+	font-size: 16px;	
+	padding: 3px;	
+	border-top: 1px solid #9DC7F7;
+	border-bottom: 1px solid #9DC7F7;
+	border-left: 1px solid #9DC7F7;
+	border-radius: 5px 0px 0px 5px; 
+	background-color: white;
+}
+
+/* //////////////////  FOOTER  /////////////////////// */
+
 .info
 {
 	width: 100%;
@@ -168,15 +185,70 @@ input:focus:-ms-input-placeholder
 	left: 0;
 	background-color: #9DC7F7;
 }
-.icon
+
+/* //////////////////  LOGOWANIE  /////////////////////// */
+
+h2.login
 {
-	float: left;
-	margin-top: 10px;	
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0px;
+	text-align: center;
+	padding: 10px;
+	font-size: 30px;
+	letter-spacing: 2px;
+	color: #9DC7F7;
+}
+
+input[type=text].login,
+input[type=email].login,
+input[type=password].login
+{
+	font-family: 'Lato', sans-serif;
+	width: 270px;
+	background-color: #efefef;
+	color: #777;
+	border: 1px  solid #9DC7F7;
+	border-radius: 0px 5px 5px 0px;
 	font-size: 16px;	
-	padding: 3px;	
-	border-top: 1px solid #9DC7F7;
-	border-bottom: 1px solid #9DC7F7;
-	border-left: 1px solid #9DC7F7;
-	border-radius: 5px 0px 0px 5px; 
-	background-color: white;
+	padding: 3px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+
+input[type=text].login:focus,
+input[type=email].login:focus,
+input[type=password].login:focus
+{
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
+	box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
+	border: 1px solid #a5cda5;
+	background-color: #e9f3e9;
+	color: #428c42;
+}
+
+input[type=submit].login
+{
+	font-family: 'Lato', sans-serif;
+	width: 300px;
+	background-color: #9DC7F7;
+	font-size: 20px;
+	color: white;
+	padding: 10px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+input[type=submit].login:focus
+{
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(165,205,165,0.9);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(165,205,165,0.9);
+	box-shadow: 0px 0px 15px 5px rgba(165,205,165,0.9);
 }

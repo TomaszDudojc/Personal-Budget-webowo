@@ -4,6 +4,7 @@ body
 	font-size: 16px;
 	width: 100%;	
 	font-family: 'Lato', sans-serif;
+	margin: 0px;
 }
 
 .topbar
@@ -11,11 +12,9 @@ body
 	width: 100%;
 	margin-left: 0px;
 	margin-right: 0px;
+	margin-bottom: 10px;
 	background-color: #9DC7F7;
-	text-align: center;	
-	position: fixed;
-	top: 0;
-	left: 0;
+	text-align: center;		
 	color: white;
 	padding: 10px;	
 }
@@ -45,17 +44,19 @@ h1.logo
 	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 180px;	
+	margin-top: 10px;	
+	
 }
 
 /* //////////////////  REJESTRACJA  /////////////////////// */
 
 h2.register
 {
-	width: 100%;
+	width: 280px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 0px;
+	margin-top: 0px;
 	text-align: center;
 	padding: 10px;
 	font-size: 30px;
@@ -178,7 +179,7 @@ input:focus:-ms-input-placeholder
 	width: 100%;
 	margin-left: 0px;
 	margin-right: 0px;
-	margin-top: 20px;
+	
 	text-align: center;
 	font-size: 14px;
 	position: fixed;
@@ -192,10 +193,11 @@ input:focus:-ms-input-placeholder
 
 h2.login
 {
-	width: 100%;
+	width: 280px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 0px;
+	margin-top: 0px;
 	text-align: center;
 	padding: 10px;
 	font-size: 30px;

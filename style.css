@@ -4,6 +4,7 @@ body
 	font-size: 16px;
 	width: 100%;	
 	font-family: 'Lato', sans-serif;
+	margin: 0px;
 }
 
 .topbar
@@ -11,11 +12,9 @@ body
 	width: 100%;
 	margin-left: 0px;
 	margin-right: 0px;
+	margin-bottom: 10px;
 	background-color: #9DC7F7;
-	text-align: center;	
-	position: fixed;
-	top: 0;
-	left: 0;
+	text-align: center;		
 	color: white;
 	padding: 10px;	
 }
@@ -45,15 +44,19 @@ h1.logo
 	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 180px;	
+	margin-top: 10px;	
+	
 }
+
+/* //////////////////  REJESTRACJA  /////////////////////// */
 
 h2.register
 {
-	width: 100%;
+	width: 280px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 0px;
+	margin-top: 0px;
 	text-align: center;
 	padding: 10px;
 	font-size: 30px;
@@ -67,7 +70,7 @@ input[type=password]
 {
 	font-family: 'Lato', sans-serif;
 	width: 270px;
-	background-color: #efefef;
+	background-color: white;
 	color: #777;
 	border: 1px  solid #9DC7F7;
 	border-radius: 0px 5px 5px 0px;
@@ -118,7 +121,7 @@ input[type=submit]:hover
 	background-color: #37b93d;
 }
 
-/* Zmiana koloru i rozmiaru czcionki placeholdera */
+/* Zmiana koloru czcionki placeholdera */
 input::-webkit-input-placeholder
 {
     color: #999;		
@@ -155,19 +158,6 @@ input:focus:-ms-input-placeholder
     color: #428C42;
 }
 
-.info
-{
-	width: 100%;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-top: 20px;
-	text-align: center;
-	font-size: 14px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	background-color: #9DC7F7;
-}
 .icon
 {
 	float: left;
@@ -178,5 +168,147 @@ input:focus:-ms-input-placeholder
 	border-bottom: 1px solid #9DC7F7;
 	border-left: 1px solid #9DC7F7;
 	border-radius: 5px 0px 0px 5px; 
+	background-color: #e9f3e9;
+	color: #428c42;
+}
+
+/* //////////////////  FOOTER  /////////////////////// */
+
+.info
+{
+	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	
+	text-align: center;
+	font-size: 14px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: #9DC7F7;
+	padding: 3px;
+}
+
+/* //////////////////  LOGOWANIE  /////////////////////// */
+
+h2.login
+{
+	width: 280px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	text-align: center;
+	padding: 10px;
+	font-size: 30px;
+	letter-spacing: 2px;
+	color: #8cb6e6;
+}
+
+input[type=text].login,
+input[type=email].login,
+input[type=password].login
+{
+	font-family: 'Lato', sans-serif;
+	width: 270px;
 	background-color: white;
+	color: #777;
+	border: 1px  solid #9DC7F7;
+	border-radius: 0px 5px 5px 0px;
+	font-size: 16px;	
+	padding: 3px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;
+}
+
+input[type=text].login:focus,
+input[type=email].login:focus,
+input[type=password].login:focus
+{
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
+	box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
+	
+	background-color: #F1F4F9;
+	color: #8cb6e6;
+}
+
+input[type=submit].login
+{
+	font-family: 'Lato', sans-serif;
+	width: 300px;
+	background-color: #8cb6e6;
+	font-size: 20px;
+	color: white;
+	padding: 10px;
+	margin-top: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	outline: none;
+}
+
+input[type=submit].login:focus
+{
+	-webkit-box-shadow: 0px 0px 15px 5px rgba(157,199,247,0.9);
+	-moz-box-shadow: 0px 0px 15px 5px rgba(157,199,247,0.9);
+	box-shadow: 0px 0px 15px 5px rgba(157,199,247,0.9);
+}
+
+input[type=submit].login:hover
+{
+	background-color: #9DC7F7;
+}
+
+/* Zmiana koloru czcionki placeholdera */
+input.login::-webkit-input-placeholder
+{
+    color: #999;		
+}
+input.login:focus::-webkit-input-placeholder
+{
+    color: #8cb6e6;
+}
+/* Firefox < 19 */
+input.login:-moz-placeholder
+{
+    color: #999;	
+}
+input.login:focus:-moz-placeholder
+{
+    color: #8cb6e6;
+}
+/* Firefox > 19 */
+input.login::-moz-placeholder
+{
+    color: #999;	
+}
+input.login:focus::-moz-placeholder
+{
+    color: #8cb6e6;
+}
+/* Internet Explorer 10 */
+input.login:-ms-input-placeholder
+{
+    color: #999;	
+}
+input.login:focus:-ms-input-placeholder
+{
+    color: #8cb6e6;
+}
+
+.iconlogin
+{
+	float: left;
+	margin-top: 10px;	
+	font-size: 16px;	
+	padding: 3px;	
+	border-top: 1px solid #9DC7F7;
+	border-bottom: 1px solid #9DC7F7;
+	border-left: 1px solid #9DC7F7;
+	border-radius: 5px 0px 0px 5px; 
+	background-color: #F1F4F9;
+	color: #8cb6e6;
 }

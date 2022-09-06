@@ -12,7 +12,7 @@ body
 	width: 100%;
 	margin-left: 0px;
 	margin-right: 0px;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	background-color: #9DC7F7;
 	text-align: center;		
 	color: white;
@@ -24,7 +24,6 @@ body
 	padding: 5px;
 	margin: 5px;
 }
-
 
 h1.logo
 {	
@@ -312,3 +311,46 @@ input.login:focus:-ms-input-placeholder
 	background-color: #F1F4F9;
 	color: #8cb6e6;
 }
+
+/* //////////////////  MENU  /////////////////////// */
+
+.menu
+{	
+	list-style-type: none;
+	margin: 0px;	
+	text-align: center;
+	background-color: #e0e3e8;
+	
+	padding: 0;	
+}
+
+.menu > li
+{
+	display: inline-block;
+	width: 150px;		
+	
+	color: white;
+}
+
+.menu a
+{
+	display: block;
+	width: 150px;
+	height: 36px;
+	text-decoration: none;	
+	color: black;	
+	margin: 0;
+	
+}
+
+.menu a:hover
+{	
+	color: #8cb6e6;
+	background-color: #F1F4F9;	
+}
+
+.napis
+{
+	padding: 9px;
+}
+

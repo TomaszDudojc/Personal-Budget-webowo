@@ -13,22 +13,22 @@ body
 	margin-left: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
-	background-color: #9DC7F7;
+	background-color: #D3DDE9;
 	text-align: center;		
-	color: white;
+	color: #060B95;
 	padding: 10px;	
-	text-shadow:
-	1px 1px 0 #8cb6e6, 
-	-1px 1px 0 #8cb6e6, 
-	-1px -1px 0 #8cb6e6, 
-	1px -1px 0 #8cb6e6; 
-	border: 1px solid  #8cb6e6;
+	
+	border: 1px solid  #c2cce8;
 }
 
 .topbar > p
 {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
 	padding: 5px;
-	margin: 5px;
+	
+	text-align: justify;
 }
 
 h1.logo
@@ -43,6 +43,7 @@ h1.logo
 {
 	color: black;
 	text-shadow: none;
+	
 }
 
 .container
@@ -190,9 +191,10 @@ input:focus:-ms-input-placeholder
 	position: fixed;
 	bottom: 0;
 	left: 0;
-	background-color: #9DC7F7;
+	background-color: #D3DDE9;
 	padding: 3px;
-	border: 1px solid  #8cb6e6;
+	border: 1px solid  #c2cce8;
+	color: #060B95;
 }
 
 /* //////////////////  LOGOWANIE  /////////////////////// */
@@ -325,8 +327,9 @@ input.login:focus:-ms-input-placeholder
 	list-style-type: none;
 	margin: 0px;	
 	text-align: center;
-	background-color: #e0e3e8;	
-	padding: 0;	
+	background-color: #d8e2d8;	
+	padding: 0;
+	border-bottom: 1px solid #a5cda5;
 }
 
 .menu > li
@@ -340,29 +343,24 @@ input.login:focus:-ms-input-placeholder
 	width:150px;	
 	height: 36px;
 	text-decoration: none;	
-	color: black;
+	color: #0C4905;
 	margin: 2px 0px;	
 }
 
 .menu a:hover
 {	
-	color: #8cb6e6;	
+	color: #060B95;	
 	background-color: #F1F4F9;	
-	border: 1px solid  #8cb6e6;
+	border: 1px solid  #060B95;
     width: 148px;	
 	height: 34px;
 }
 
 .menu a:focus
 {	
-	color: white;
-	text-shadow:
-	1px 1px 0 #8cb6e6, 
-	-1px 1px 0 #8cb6e6, 
-	-1px -1px 0 #8cb6e6, 
-	1px -1px 0 #8cb6e6; 
-	background-color:#9DC7F7;
-	border: 1px solid  #8cb6e6;
+	color: white;	
+	background-color: #060B95;
+	border: 1px solid  #050a84;
 	width: 148px;	
 	height: 34px;
 	
@@ -392,7 +390,7 @@ input.login:focus:-ms-input-placeholder
 	line-height: 200%;
 	text-align: justify;
 	font-size: 20px;
-	color: red;
+	color: #060B95
 }
 
 #powitanieobraz
@@ -400,10 +398,5 @@ input.login:focus:-ms-input-placeholder
 	width: 250px;
 	height: 250px;
 	float: left;
-	margin: 25px;
-	
-	
-	
-	
-	
+	margin: 25px;	
 }

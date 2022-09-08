@@ -16,8 +16,7 @@ body
 	background-color: #D3DDE9;
 	text-align: center;		
 	color: #060B95;
-	padding: 10px;	
-	
+	padding: 10px;		
 	border: 1px solid  #c2cce8;
 }
 
@@ -26,8 +25,7 @@ body
 	width: 800px;
 	margin-right: auto;
 	margin-left: auto;
-	padding: 5px;
-	
+	padding: 5px;	
 	text-align: justify;
 }
 
@@ -210,7 +208,7 @@ h2.login
 	padding: 10px;
 	font-size: 30px;
 	letter-spacing: 2px;
-	color: #8cb6e6;
+	color: #060B95;
 }
 
 input[type=text].login,
@@ -220,7 +218,7 @@ input[type=password].login
 	font-family: 'Lato', sans-serif;
 	width: 270px;
 	background-color: white;
-	color: #8cb6e6;
+	color: #060B95;
 	border: 1px  solid #9DC7F7;
 	border-radius: 0px 5px 5px 0px;
 	font-size: 16px;	
@@ -238,14 +236,14 @@ input[type=password].login:focus
 	-moz-box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
 	box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);	
 	background-color: #F1F4F9;
-	color: #8cb6e6;
+	color: #060B95;
 }
 
 input[type=submit].login
 {
 	font-family: 'Lato', sans-serif;
 	width: 300px;
-	background-color: #8cb6e6;
+	background-color: #060B95;
 	font-size: 20px;
 	color: white;
 	padding: 10px;
@@ -259,14 +257,14 @@ input[type=submit].login
 
 input[type=submit].login:focus
 {
-	-webkit-box-shadow: 0px 0px 15px 5px rgba(157,199,247,0.9);
-	-moz-box-shadow: 0px 0px 15px 5px rgba(157,199,247,0.9);
-	box-shadow: 0px 0px 15px 5px rgba(157,199,247,0.9);
+	-webkit-box-shadow: 0px 0px 5px 5px rgba(157,199,247,0.9);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(157,199,247,0.9);
+	box-shadow: 0px 0px 5px 5px rgba(157,199,247,0.9);
 }
 
 input[type=submit].login:hover
 {
-	background-color: #9DC7F7;
+	background-color: #050a84;
 }
 
 /* Zmiana koloru czcionki placeholdera */
@@ -276,7 +274,7 @@ input.login::-webkit-input-placeholder
 }
 input.login:focus::-webkit-input-placeholder
 {
-    color: #8cb6e6;
+    color: #060B95;
 }
 /* Firefox < 19 */
 input.login:-moz-placeholder
@@ -285,7 +283,7 @@ input.login:-moz-placeholder
 }
 input.login:focus:-moz-placeholder
 {
-    color: #8cb6e6;
+    color: #060B95;
 }
 /* Firefox > 19 */
 input.login::-moz-placeholder
@@ -294,7 +292,7 @@ input.login::-moz-placeholder
 }
 input.login:focus::-moz-placeholder
 {
-    color: #8cb6e6;
+    color: #060B95;
 }
 /* Internet Explorer 10 */
 input.login:-ms-input-placeholder
@@ -303,7 +301,7 @@ input.login:-ms-input-placeholder
 }
 input.login:focus:-ms-input-placeholder
 {
-    color: #8cb6e6;
+    color: #060B95;
 }
 
 .iconlogin
@@ -317,7 +315,7 @@ input.login:focus:-ms-input-placeholder
 	border-left: 1px solid #9DC7F7;
 	border-radius: 5px 0px 0px 5px; 
 	background-color: #F1F4F9;
-	color: #8cb6e6;
+	color: #060B95;
 }
 
 /* //////////////////  MENU  /////////////////////// */

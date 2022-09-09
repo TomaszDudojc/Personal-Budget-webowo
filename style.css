@@ -4,20 +4,18 @@ body
 	font-size: 16px;
 	width: 100%;	
 	font-family: 'Lato', sans-serif;
-	margin: 0px;
+	margin: 0px;	
 }
 
 .topbar
 {	
 	width: 100%;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
+	margin: 0px;	
 	background-color: #D3DDE9;
 	text-align: center;		
-	color: #060B95;
-	padding: 10px;		
-	border: 1px solid  #c2cce8;
+	color: #060B95;		
+	border-bottom: 1px solid  #c2cce8;
+	padding: 10px 0px;	
 }
 
 .topbar > p
@@ -25,8 +23,8 @@ body
 	width: 800px;
 	margin-right: auto;
 	margin-left: auto;
-	padding: 5px;	
-	text-align: justify;
+	padding: 5px 0px;	
+	text-align: justify;	
 }
 
 h1.logo
@@ -39,18 +37,13 @@ h1.logo
 
 .autor
 {
-	color: black;
-	text-shadow: none;
-	
+	color: black;	
 }
 
 .container
 {
 	width: 300px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 10px;	
-	
+	margin: 10px  auto;	
 }
 
 /* //////////////////  REJESTRACJA  /////////////////////// */
@@ -321,65 +314,71 @@ input.login:focus:-ms-input-placeholder
 /* //////////////////  MENU  /////////////////////// */
 
 .menu
-{	
+{		
 	list-style-type: none;
-	margin: 0px;	
+	margin: 1px 0px;	
 	text-align: center;
 	background-color: #d8e2d8;	
 	padding: 0;
-	border-bottom: 1px solid #a5cda5;
+	border-bottom: 1px solid #a5cda5;	
 }
 
 .menu > li
 {
-	display: inline-block;		
-}
-
+	display: inline-block;	
+	
+	}
+	
 .menu a
+/*.menu > li > a*/
 {
 	display: block;
 	width:150px;	
 	height: 36px;
 	text-decoration: none;	
 	color: #0C4905;
-	margin: 2px 0px;	
+	margin: 2px 0px;
 }
 
 .menu a:hover
+/*.menu > li:hover*/
 {	
-	color: #060B95;	
+	color: #060B95;
 	background-color: #F1F4F9;	
 	border: 1px solid  #060B95;
     width: 148px;	
-	height: 34px;
+	height: 36px;
+	margin: 1px 0px;		
 }
+/*.menu > li:hover > a
+{
+	color: #060B95;	
+}*/
 
 .menu a:focus
-{	
-	color: white;	
+{		
+	color: white;
 	background-color: #060B95;
 	border: 1px solid  #050a84;
 	width: 148px;	
-	height: 34px;
-	
-	
+	height: 36px;
+	margin: 1px 0px;	
 }
 
-.napis
+.inscription
 {
 	padding-top: 6px;
 }
 
-#powitanie
+#welcome
 {
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 50px;
-	
+	margin-top: 50px;	
 }
 
-#powitaniesentecja
+#welcomesentence
 {
 	width: 480px;
 	height: 280px;
@@ -388,13 +387,14 @@ input.login:focus:-ms-input-placeholder
 	line-height: 200%;
 	text-align: justify;
 	font-size: 20px;
-	color: #060B95
+	color: #060B95;	
 }
 
-#powitanieobraz
+#welcomepicture
 {
 	width: 250px;
 	height: 250px;
 	float: left;
 	margin: 25px;	
+	box-shadow: 0px 0px 55px 1px rgba(157,199,247,0.9);	
 }

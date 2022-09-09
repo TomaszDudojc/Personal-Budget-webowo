@@ -16,7 +16,7 @@
 </head>
 
 <body>
-
+<div id="wrapper">
 	<header>
 	
 		<div class="topbar">
@@ -58,7 +58,7 @@
 		</div>
 		
 	</footer>
-	
+</div>	
 </body>
 
 </html>

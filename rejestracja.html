@@ -19,10 +19,14 @@
 	
 	<header>
 	
-		<div class="topbar">
-		
-			<h1 class="logo"><span ><i class="icon-calc"></i></span>Personal Budget</h1>
-			<p> <i>"Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</i><span class="autor"><br/> - Warren Buffett</span></p>
+		<div class="topcontainer">
+	
+			<div class="topbar">
+			
+				<h1 class="logo"><span ><i class="icon-calc"></i></span>Personal Budget</h1>
+				<p> <i>"Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</i><br/><span class="autor"> - Warren Buffett</span></p>
+				
+			</div>
 			
 		</div>
 		
@@ -35,20 +39,31 @@
 		</header>
 	
 		<form>
-				
-				<div class="icon"><i class="icon-user-3"></i></div><input type="text" placeholder="Imię">
+			
+			<div class="input">			
+				<span class="icon"><i class="icon-user-3"></i></span>
+				<input type="text" placeholder="Imię">
+				<div style="clear: both"></div>
+			</div>
+			
+			<div class="input">				
+				<span class="icon"><i class="icon-mail-3"></i></span>
+				<input type="email" placeholder="Email">
 				<div style="clear: both"></div>
 				
-				<div class="icon"><i class="icon-mail-3"></i></div><input type="email" placeholder="Email">
+			<div class="input">				
+				<span class="icon"><i class="icon-lock"></i></span>
+				<input type="password" placeholder="Hasło">
 				<div style="clear: both"></div>
-				
-				<div class="icon"><i class="icon-lock"></i></div><input type="password" placeholder="Hasło">
+			</div>
+			
+			<div class="input">				
+				<span class="icon"><i class="icon-lock"></i></span>
+				<input type="password" placeholder="Powtórz hasło">
 				<div style="clear: both"></div>
+			</div>
 				
-				<div class="icon"><i class="icon-lock"></i></div><input type="password" placeholder="Powtórz hasło">
-				<div style="clear: both"></div>
-				
-				<input type="submit" value="Zarejestruj się">
+			<input type="submit" value="Zarejestruj się">
 				
 		</form>		
 		

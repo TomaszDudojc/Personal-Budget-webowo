@@ -48,38 +48,62 @@
 	<div class="container">
 
 		<header>
-			<h2 class="register">Dopisz wydatek</h2>
+			<h2>Dopisz wydatek</h2>
 		</header>
 	
-		<form>
+		<form action="index.php" method="post">
 				
 			<div class="input">
-				<span class="icon"><i class="icon-user-3"></i></span>
+				<span class="icon"><i class="icon-gauge"></i></span>
 				<input type="text" placeholder="Kwota">
 				<div style="clear: both"></div>
 			</div>
 				
 			<div class="input">
-				<span class="icon"><i class="icon-mail-3"></i></span>
-				<input type="date" placeholder="Data" value="2022-09-15">
+				<span class="icon"><i class="icon-calendar"></i></span>
+				<input  type="text" placeholder="rrrr-mm-dd">
 				<div style="clear: both"></div>
 			</div>
 				
 			<div class="input">
-				<span class="icon"><i class="icon-lock"></i></span>
-				<input type="password" placeholder="Wybierz sposób płatności">
+				<span class="icon"><i class="icon-cc-visa"></i></span>
+				<select class="choice" name="payment">
+					<option value selected disabled hidden>Wybierz sposób płatności</option>
+					<option value="g">Gotówka</option>
+					<option value="d">Karta debetowa</option>
+					<option value="k">Karta kredytowa</option>		
+				</select>
 				<div style="clear: both"></div>
 			</div>
 				
 			<div class="input">
-				<span class="icon"><i class="icon-lock"></i></span>
-				<input type="password" placeholder="Wybierz kategorię">
+				<span class="icon"><i class="icon-ok"></i></span>
+				<select class="choice" name="payment">
+					<option value selected disabled hidden>Wybierz kategorię</option>
+					<option value="1">Jedzenie</option>
+					<option value="2">Mieszkanie</option>
+					<option value="3">Transport</option>		
+					<option value="4">Telekomunikacja</option>		
+					<option value="5">Opieka zdrowotna</option>		
+					<option value="6">Ubranie</option>		
+					<option value="7">Higiena</option>		
+					<option value="8">Dzieci</option>		
+					<option value="9"> Rozrywka</option>		
+					<option value="10">Wycieczka</option>		
+					<option value="11">Szkolenia</option>		
+					<option value="12">Książki</option>		
+					<option value="13">Oszczędności</option>		
+					<option value="14">Na złotą jesień, czyli emeryturę</option>		
+					<option value="15">Spłata długów</option>		
+					<option value="16">Darowizna</option>		
+					<option value="17">Inne wydatki</option>					
+				</select>
 				<div style="clear: both"></div>
 			</div>
 				
 			<div class="input">
-				<span class="icon"><i class="icon-lock"></i></span>
-				<input type="password" placeholder="Komentarz">
+				<span class="icon"><i class="icon-pencil"></i></span>
+				<input type="text" placeholder="Komentarz">
 				<div style="clear: both"></div>
 			</div>
 				

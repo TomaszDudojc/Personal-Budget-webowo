@@ -65,6 +65,36 @@
       "css": "lock",
       "code": 59398,
       "src": "fontawesome"
+    },
+    {
+      "uid": "in76hg99crrkpcbz2rjnmgbiw74s72y0",
+      "css": "ok",
+      "code": 59399,
+      "src": "modernpics"
+    },
+    {
+      "uid": "587bjlxppui6u4japooa2foe58rsvicp",
+      "css": "pencil",
+      "code": 59400,
+      "src": "modernpics"
+    },
+    {
+      "uid": "531bc468eecbb8867d822f1c11f1e039",
+      "css": "calendar",
+      "code": 59403,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e3ed188ab8569b45cf41e74ce81aa86e",
+      "css": "cc-visa",
+      "code": 61936,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "3a6f0140c3a390bdb203f56d1bfdefcb",
+      "css": "gauge",
+      "code": 59404,
+      "src": "entypo"
     }
   ]
 }

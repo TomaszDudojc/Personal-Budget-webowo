@@ -46,13 +46,13 @@ h1.logo
 
 .container
 {
-	width: 300px;
+	width: 330px;
 	margin: 10px  auto;	
 }
 
 .input
 {
-	width: 300px;
+	width: 330px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -73,26 +73,27 @@ h2.register
 	color: #25a02b;	
 }
 
-input[type=text],
-input[type=email],
-input[type=password]
+input.register[type=text],
+input.register[type=email],
+input.register[type=password]
 {
 	font-family: 'Lato', sans-serif;
-	width: 270px;
+	width: 300px;
+	height: 32px;
 	background-color: white;
 	color: #25a02b;	
 	border: 1px  solid #9DC7F7;
 	border-radius: 0px 5px 5px 0px;
-	font-size: 16px;	
+	font-size: 17px;	
 	padding: 3px;
 	box-sizing: border-box;
 	outline: none;
 	margin-top: 10px;
 }
 
-input[type=text]:focus,
-input[type=email]:focus,
-input[type=password]:focus
+input.register[type=text]:focus,
+input.register[type=email]:focus,
+input.register[type=password]:focus
 {
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
 	-moz-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
@@ -102,10 +103,10 @@ input[type=password]:focus
 	color: #317b31;
 }
 
-input[type=submit]
+input.register[type=submit]
 {
 	font-family: 'Lato', sans-serif;
-	width: 300px;
+	width: 330px;
 	background-color: #25a02b;
 	font-size: 20px;
 	color: white;
@@ -118,61 +119,61 @@ input[type=submit]
 	outline: none;
 }
 
-input[type=submit]:focus
+input.register[type=submit]:focus
 {
 	-webkit-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
 	-moz-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
 	box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
 }
 
-input[type=submit]:hover
+input.register[type=submit]:hover
 {
 	background-color: #36b13c;
 }
 
 /* Zmiana koloru czcionki placeholdera */
-input::-webkit-input-placeholder
+input.register::-webkit-input-placeholder
 {
     color: #999;		
 }
-input:focus::-webkit-input-placeholder
+input.register:focus::-webkit-input-placeholder
 {
     color: #25a02b;	
 }
 /* Firefox < 19 */
-input:-moz-placeholder
+input.register:-moz-placeholder
 {
     color: #999;	
 }
-input:focus:-moz-placeholder
+input.register:focus:-moz-placeholder
 {
     color: #25a02b;
 }
 /* Firefox > 19 */
-input::-moz-placeholder
+input.register::-moz-placeholder
 {
     color: #999;	
 }
-input:focus::-moz-placeholder
+input.register:focus::-moz-placeholder
 {
     color: #25a02b;
 }
 /* Internet Explorer 10 */
-input:-ms-input-placeholder
+input.register:-ms-input-placeholder
 {
     color: #999;	
 }
-input:focus:-ms-input-placeholder
+input.register:focus:-ms-input-placeholder
 {
     color: #25a02b;
 }
 
-.icon
+.iconregister
 {
 	float: left;
 	margin-top: 10px;	
-	font-size: 16px;	
-	padding: 3px;	
+	font-size: 17px;	
+	padding: 5px 3px;	
 	border-top: 1px solid #9DC7F7;
 	border-bottom: 1px solid #9DC7F7;
 	border-left: 1px solid #9DC7F7;
@@ -181,6 +182,7 @@ input:focus:-ms-input-placeholder
 	color: #25a02b;
 	width: 30px;
 	box-sizing: border-box;
+	height: 32px;	
 }
 
 /* //////////////////  FOOTER  /////////////////////// */
@@ -203,7 +205,7 @@ input:focus:-ms-input-placeholder
 
 /* //////////////////  LOGOWANIE  /////////////////////// */
 
-h2.login
+h2
 {
 	width: 280px;
 	margin-left: auto;
@@ -217,26 +219,29 @@ h2.login
 	color: #060B95;
 }
 
-input[type=text].login,
-input[type=email].login,
-input[type=password].login
+input[type=text],
+input[type=email],
+input[type=password],
+.choice
 {
 	font-family: 'Lato', sans-serif;
-	width: 270px;
+	width: 300px;	
+	height: 32px;
 	background-color: white;
 	color: #060B95;
 	border: 1px  solid #9DC7F7;
 	border-radius: 0px 5px 5px 0px;
-	font-size: 16px;	
+	font-size: 17px;	
 	padding: 3px;
 	box-sizing: border-box;
 	outline: none;
 	margin-top: 10px;
 }
 
-input[type=text].login:focus,
-input[type=email].login:focus,
-input[type=password].login:focus
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+.choice:focus
 {
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
 	-moz-box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
@@ -245,10 +250,10 @@ input[type=password].login:focus
 	color: #060B95;
 }
 
-input[type=submit].login
+input[type=submit]
 {
 	font-family: 'Lato', sans-serif;
-	width: 300px;
+	width: 330px;
 	background-color: #060B95;
 	font-size: 20px;
 	color: white;
@@ -261,69 +266,70 @@ input[type=submit].login
 	outline: none;
 }
 
-input[type=submit].login:focus
+input[type=submit]:focus
 {
 	-webkit-box-shadow: 0px 0px 5px 5px rgba(157,199,247,0.9);
 	-moz-box-shadow: 0px 0px 5px 5px rgba(157,199,247,0.9);
 	box-shadow: 0px 0px 5px 5px rgba(157,199,247,0.9);
 }
 
-input[type=submit].login:hover
+input[type=submit]:hover
 {
 	background-color: #050a84;
 }
 
 /* Zmiana koloru czcionki placeholdera */
-input.login::-webkit-input-placeholder
+input::-webkit-input-placeholder
 {
     color: #999;		
 }
-input.login:focus::-webkit-input-placeholder
+input:focus::-webkit-input-placeholder
 {
     color: #060B95;
 }
 /* Firefox < 19 */
-input.login:-moz-placeholder
+input:-moz-placeholder
 {
     color: #999;	
 }
-input.login:focus:-moz-placeholder
+input:focus:-moz-placeholder
 {
     color: #060B95;
 }
 /* Firefox > 19 */
-input.login::-moz-placeholder
+input::-moz-placeholder
 {
     color: #999;	
 }
-input.login:focus::-moz-placeholder
+input:focus::-moz-placeholder
 {
     color: #060B95;
 }
 /* Internet Explorer 10 */
-input.login:-ms-input-placeholder
+input:-ms-input-placeholder
 {
     color: #999;	
 }
-input.login:focus:-ms-input-placeholder
+input:focus:-ms-input-placeholder
 {
     color: #060B95;
 }
 
-.iconlogin
+.icon
 {
 	float: left;
 	margin-top: 10px;	
-	font-size: 16px;	
-	padding: 3px;	
+	font-size: 17px;	
+	padding: 5px 3px;	
 	border-top: 1px solid #9DC7F7;
 	border-bottom: 1px solid #9DC7F7;
 	border-left: 1px solid #9DC7F7;
 	border-radius: 5px 0px 0px 5px; 
 	background-color: #F1F4F9;
 	color: #060B95;
-	width: 30px;
+	width: 30px;	
 	box-sizing: border-box;
+	height: 32px;	
 }
 
 /* //////////////////  MENU  /////////////////////// */
@@ -382,7 +388,7 @@ input.login:focus:-ms-input-placeholder
 
 .inscription
 {
-	padding-top: 6px;
+	padding-top: 6px
 }
 
 #welcome
@@ -418,15 +424,14 @@ input.login:focus:-ms-input-placeholder
 
 .buttons
 {
-	width: 300px;
-	;
+	width: 330px;	
 }
 
 input[type=submit].cancel
 {
 	font-family: 'Lato', sans-serif;
-	width: 100px;
-	background-color: red;
+	width: 80px;
+	background-color: #b30000;
 	font-size: 18px;
 	color: white;
 	padding: 10px;
@@ -441,8 +446,8 @@ input[type=submit].cancel
 input[type=submit].add
 {
 	font-family: 'Lato', sans-serif;
-	width: 100px;
-	background-color: green;
+	width: 80px;
+	background-color:#336600;
 	font-size: 18px;
 	color: white;
 	padding: 10px;
@@ -453,3 +458,46 @@ input[type=submit].add
 	outline: none;
 	float: right;
 }
+
+input.add[type=submit]:focus
+{
+	-webkit-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
+	box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);	
+}
+
+input.cancel[type=submit]:focus
+{
+	-webkit-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0,0.9);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0,0.9);
+	box-shadow: 0px 0px 5px 5px rgba(179, 0, 0,0.9);	
+}
+
+input.add[type=submit]:hover
+{
+	background-color: #59b300;	
+	
+}
+
+input.cancel[type=submit]:hover
+{
+	background-color: #ff1a1a;
+}
+
+/*option
+{
+	display: block;
+	font-family: 'Lato', sans-serif;
+	width: 270px;	
+	height: 32px;
+	background-color: white;
+	color: #060B95;
+	border: 1px  solid #9DC7F7;
+	border-radius: 0px 5px 5px 0px;
+	font-size: 17px;	
+	padding: 3px;
+	box-sizing: border-box;
+	outline: none;
+	margin-top: 10px;	
+}*/
+

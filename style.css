@@ -70,7 +70,7 @@ h2.register
 	padding: 10px;
 	font-size: 30px;
 	letter-spacing: 2px;
-	color: #25a02b;	
+	color: #008000;	
 }
 
 input.register[type=text],
@@ -81,7 +81,7 @@ input.register[type=password]
 	width: 300px;
 	height: 32px;
 	background-color: white;
-	color: #25a02b;	
+	color: #008000;	
 	border: 1px  solid #9DC7F7;
 	border-radius: 0px 5px 5px 0px;
 	font-size: 17px;	
@@ -98,16 +98,16 @@ input.register[type=password]:focus
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
 	-moz-box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
 	box-shadow: 0px 0px 5px 1px rgba(165,205,165,0.9);
-	border: 1px solid #a5cda5;
+	border: 1px solid #a5cda5;	
 	background-color: #e9f3e9;
-	color: #317b31;
+	color: #008000;
 }
 
 input.register[type=submit]
 {
 	font-family: 'Lato', sans-serif;
 	width: 330px;
-	background-color: #25a02b;
+	background-color: #008000;
 	font-size: 20px;
 	color: white;
 	padding: 10px;
@@ -128,7 +128,7 @@ input.register[type=submit]:focus
 
 input.register[type=submit]:hover
 {
-	background-color: #36b13c;
+	background-color: #229222;
 }
 
 /* Zmiana koloru czcionki placeholdera */
@@ -138,7 +138,7 @@ input.register::-webkit-input-placeholder
 }
 input.register:focus::-webkit-input-placeholder
 {
-    color: #25a02b;	
+    color: #008000;	
 }
 /* Firefox < 19 */
 input.register:-moz-placeholder
@@ -147,7 +147,7 @@ input.register:-moz-placeholder
 }
 input.register:focus:-moz-placeholder
 {
-    color: #25a02b;
+    color: #008000;
 }
 /* Firefox > 19 */
 input.register::-moz-placeholder
@@ -156,7 +156,7 @@ input.register::-moz-placeholder
 }
 input.register:focus::-moz-placeholder
 {
-    color: #25a02b;
+    color: #008000;
 }
 /* Internet Explorer 10 */
 input.register:-ms-input-placeholder
@@ -165,7 +165,7 @@ input.register:-ms-input-placeholder
 }
 input.register:focus:-ms-input-placeholder
 {
-    color: #25a02b;
+    color: #008000;
 }
 
 .iconregister
@@ -179,7 +179,7 @@ input.register:focus:-ms-input-placeholder
 	border-left: 1px solid #9DC7F7;
 	border-radius: 5px 0px 0px 5px; 
 	background-color: #e9f3e9;
-	color: #25a02b;
+	color: #008000;
 	width: 30px;
 	box-sizing: border-box;
 	height: 32px;	
@@ -447,7 +447,7 @@ input[type=submit].add
 {
 	font-family: 'Lato', sans-serif;
 	width: 80px;
-	background-color:#336600;
+	background-color: #008000;
 	font-size: 18px;
 	color: white;
 	padding: 10px;
@@ -461,21 +461,21 @@ input[type=submit].add
 
 input.add[type=submit]:focus
 {
-	-webkit-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
-	-moz-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
-	box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);	
+	-webkit-box-shadow: 0px 0px 5px 5px rgba(0, 128, 0, 0.9);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(0, 128, 0, 0.9);
+	box-shadow: 0px 0px 5px 5px rgba(10, 128, 0, 0.9);	
 }
 
 input.cancel[type=submit]:focus
 {
-	-webkit-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0,0.9);
-	-moz-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0,0.9);
-	box-shadow: 0px 0px 5px 5px rgba(179, 0, 0,0.9);	
+	-webkit-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0, 0.9);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0, 0.9);
+	box-shadow: 0px 0px 5px 5px rgba(179, 0, 0, 0.9);	
 }
 
 input.add[type=submit]:hover
 {
-	background-color: #59b300;	
+	background-color: #00cc00;	
 	
 }
 

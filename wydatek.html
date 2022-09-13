@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	
+	<title>Personal Budget</title>
+	
+	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami" />
+	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie" />
+	
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
+	
+</head>
+
+<body>
+
+	<header>
+	
+		<div class="topcontainer">
+	
+			<div class="topbar">
+			
+				<h1 class="logo"><span ><i class="icon-calc"></i></span>Personal Budget</h1>
+				<p> <i>"Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</i><br/><span class="autor"> - Warren Buffett</span></p>
+				
+			</div>
+			
+		</div>
+		
+	</header>
+	
+	<nav>		
+		
+		<ul class="menu">
+			<li><a href="#"><div class="inscription"><i class="icon-home-1"></i>Strona główna</div></a></li>
+			<li><a href="#"><div class="inscription"><i class="icon-money"></i>Dodaj przychód</div></a></li>
+			<li><a href="#"><div class="inscription"><i class="icon-basket"></i>Dodaj wydatek</div></a></li>
+			<li><a href="#"><div class="inscription"><i class="icon-chart-bar"></i>Przeglądaj bilans</div></a></li>
+			<li><a href="#"><div class="inscription"><i class="icon-wrench"></i>Ustawienia</div></a></li>
+			<li><a href="#"><div class="inscription"><i class="icon-off"></i>Wyloguj</div></a></li>
+		</ul>			
+				
+	</nav>
+	
+	<div class="container">
+
+		<header>
+			<h2>Dopisz wydatek</h2>
+		</header>
+	
+		<form action="index.php" method="post">
+				
+			<div class="input">
+				<span class="icon"><i class="icon-gauge"></i></span>
+				<input type="text" placeholder="Kwota">
+				<div style="clear: both"></div>
+			</div>
+				
+			<div class="input">
+				<span class="icon"><i class="icon-calendar"></i></span>
+				<input  type="text" placeholder="rrrr-mm-dd">
+				<div style="clear: both"></div>
+			</div>
+				
+			<div class="input">
+				<span class="icon"><i class="icon-cc-visa"></i></span>
+				<select class="choice" name="payment">
+					<option value selected disabled hidden>Wybierz sposób płatności</option>
+					<option value="g">Gotówka</option>
+					<option value="d">Karta debetowa</option>
+					<option value="k">Karta kredytowa</option>		
+				</select>
+				<div style="clear: both"></div>
+			</div>
+				
+			<div class="input">
+				<span class="icon"><i class="icon-ok"></i></span>
+				<select class="choice" name="payment">
+					<option value selected disabled hidden>Wybierz kategorię</option>
+					<option value="1">Jedzenie</option>
+					<option value="2">Mieszkanie</option>
+					<option value="3">Transport</option>		
+					<option value="4">Telekomunikacja</option>		
+					<option value="5">Opieka zdrowotna</option>		
+					<option value="6">Ubranie</option>		
+					<option value="7">Higiena</option>		
+					<option value="8">Dzieci</option>		
+					<option value="9"> Rozrywka</option>		
+					<option value="10">Wycieczka</option>		
+					<option value="11">Szkolenia</option>		
+					<option value="12">Książki</option>		
+					<option value="13">Oszczędności</option>		
+					<option value="14">Na złotą jesień, czyli emeryturę</option>		
+					<option value="15">Spłata długów</option>		
+					<option value="16">Darowizna</option>		
+					<option value="17">Inne wydatki</option>					
+				</select>
+				<div style="clear: both"></div>
+			</div>
+				
+			<div class="input">
+				<span class="icon"><i class="icon-pencil"></i></span>
+				<input type="text" placeholder="Komentarz">
+				<div style="clear: both"></div>
+			</div>
+				
+			<div class="buttons">
+				<input type="submit" class="cancel"value="Anuluj">
+				<input type="submit" class="add"value="Dodaj">
+			</div>
+				
+				
+		</form>		
+		
+	</div>
+		
+	<footer>
+	
+		<div class="info">
+			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
+		</div>
+		
+	</footer>
+	
+</body>
+
+</html>

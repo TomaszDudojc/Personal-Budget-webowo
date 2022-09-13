@@ -68,4 +68,4 @@
 .icon-calendar:before { content: '\e80b'; } /* '' */
 .icon-gauge:before { content: '\e80c'; } /* '' */
 .icon-calc:before { content: '\f1ec'; } /* '' */
-.icon-cc-visa:before { content: '\f1f0'; font-size: 15px; } /* '' */
+.icon-cc-visa:before { content: '\f1f0'; font-size: 16px; } /* '' */

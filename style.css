@@ -548,8 +548,7 @@ ul  > li > .dropdownmenu > li
 	border: 1px solid  #060B95;    
 	height: 24px;
 	width:136px;
-	padding-top: 3px;
-	display: block;
+	
 }
 
 .dropdownmenu a:focus
@@ -559,4 +558,46 @@ ul  > li > .dropdownmenu > li
 	border: 1px solid  #050a84;
 	width: 136px;	
 	height: 24px;	
+}
+
+.maincontainer
+{
+	width: 600px;
+	margin: 10px  auto;	
+	
+	text-align: center;
+}
+
+.tables
+{
+	margin: 10px  0;	
+	width: 100%;
+	box-sizing: border-box;
+}
+.table
+{
+	width: calc(50% - 4px);
+	float: left;
+	border: 2px solid #9DC7F7;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.summary
+{
+	width: calc(100% - 4px);
+	border: 2px solid #9DC7F7;
+	margin-bottom: 10px;	
+	border-radius: 5px;
+	background-color: white;
+}
+
+.piechart
+{
+	width: calc(100% - 4px);
+	height: 200px;
+	border: 2px solid #9DC7F7;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	background-color: white;
 }

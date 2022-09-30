@@ -1,48 +1,42 @@
 body
 {
-	background-color: #F1F4F9;
+	/*background-color: #F1F4F9;*/
+	
+	background-image: url("img/laptop.jpg");
+	background-size: cover;
+	bgproperties: fixed;
 	font-size: 16px;
 	width: 100%;	
-	font-family: 'Lato', sans-serif;
+	font-family: 'Lato', sans-serif !important; 
 	margin: 0px;	
 }
 
-.topcontainer
-{
-	width: 100%;
-	margin: 0px;	
+.mainNav
+{	
 	background-color: #D3DDE9;
-	border-bottom: 1px solid  #c2cce8;
+	border-bottom: 1px solid  #c2cce8;	
+	
 }
 
-h1.logo
+.navbar-brand
 {	
 	font-size: 60px;	
-	letter-spacing: 3px;	
+	letter-spacing: 5px;	
 	margin: 10px;
 	padding: 5px;
-}
-
-.topbar
-{	
-	width: 800px;
-	text-align: center;		
+	font-weight: bold;
 	color: #060B95;	
-	padding: 10px 0px;	
-	margin-right: auto;
-	margin-left: auto;
-	box-sizing: border-box;
 }
 
-.topbar > p
+p
 {	
-	padding: 5px 0px;	
+	color: #060B95;
 	text-align: justify;	
 }
 
-.autor
+div
 {
-	color: black;	
+	display: block;
 }
 
 .inputcontainer
@@ -51,26 +45,12 @@ h1.logo
 	margin: 10px  auto;	
 }
 
-.input
-{
-	width: 330px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 /* //////////////////  REJESTRACJA  /////////////////////// */
 
 h2.register
 {
-	width: 280px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 0px;
-	margin-top: 0px;
-	text-align: center;
-	padding: 10px;
-	font-size: 30px;
-	letter-spacing: 2px;
+	width: 100%;
+	background-color: #D3DDE9;
 	color: #008000;	
 }
 
@@ -78,17 +58,8 @@ input.register[type=text],
 input.register[type=email],
 input.register[type=password]
 {
-	font-family: 'Lato', sans-serif;
-	width: 300px;
-	height: 32px;
-	background-color: white;
 	color: #008000;	
-	border: 1px  solid #9DC7F7;
-	border-radius: 0px 5px 5px 0px;
-	font-size: 17px;	
-	padding: 3px;
-	box-sizing: border-box;
-	outline: none;
+	box-sizing: border-box;	
 	margin-top: 10px;
 }
 
@@ -104,30 +75,25 @@ input.register[type=password]:focus
 	color: #008000;
 }
 
-input.register[type=submit]
-{
-	font-family: 'Lato', sans-serif;
+button.register
+{	
 	width: 330px;
 	background-color: #008000;
 	font-size: 20px;
 	color: white;
 	padding: 10px;
-	margin-top: 10px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+	margin-top: 10px;	
 	letter-spacing: 2px;
-	outline: none;
 }
 
-input.register[type=submit]:focus
+button.register:focus
 {
 	-webkit-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
 	-moz-box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
 	box-shadow: 0px 0px 5px 5px rgba(165,205,165,0.9);
 }
 
-input.register[type=submit]:hover
+button.register:hover
 {
 	background-color: #229222;
 }
@@ -170,15 +136,11 @@ input.register:focus:-ms-input-placeholder
 }
 
 .iconregister
-{
-	float: left;
+{	
 	margin-top: 10px;	
 	font-size: 17px;	
 	padding: 5px 3px;	
-	border-top: 1px solid #9DC7F7;
-	border-bottom: 1px solid #9DC7F7;
-	border-left: 1px solid #9DC7F7;
-	border-radius: 5px 0px 0px 5px; 
+	border: 1px solid #9DC7F7;	
 	background-color: #e9f3e9;
 	color: #008000;
 	width: 30px;

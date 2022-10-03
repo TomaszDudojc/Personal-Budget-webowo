@@ -3,12 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<title>Personal Budget</title>
 	
 	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami" />
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie" />
 	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
@@ -18,32 +20,64 @@
 <body>
 
 	<header>
-	
-		<div class="topcontainer">
-	
-			<div class="topbar">
-			
-				<h1 class="logo"><span ><i class="icon-calc"></i></span>Personal Budget</h1>
-				<p> <i>"Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</i><br/><span class="autor"> - Warren Buffett</span></p>
-				
-			</div>
-			
-		</div>
 		
+		<nav class="navbar navbar-default   mainNav">
+			
+			<div class="container">
+				
+				<div class="navbar-header mx-auto">
+					<a class="navbar-brand  text-center m-0" href="#"><span ><i class="icon-calc"></i></span></a>
+					<a class="navbar-brand  text-center m-0" href="#">Personal</a>
+					<a class="navbar-brand  text-center m-0" href="#">Budget</a>					
+				</div>
+					
+				<blockquote class="blockquote mx-auto">					
+					<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+					<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
+				</blockquote>
+					
+			</div>
+
+		</nav>
+	
 	</header>
 	
-	<nav>		
-		
-		<ul class="menu">
-			<li><a href="#"><div class="inscription"><i class="icon-home-1"></i>Strona główna</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-money"></i>Dodaj przychód</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-basket"></i>Dodaj wydatek</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-chart-bar"></i>Przeglądaj bilans</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-wrench"></i>Ustawienia</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-off"></i>Wyloguj</div></a></li>
-		</ul>			
-				
-	</nav>
+	<div class="navcontainer">
+	
+		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
+			
+			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+					<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="mainmenu">
+			
+				<ul class="navbar-nav  inscription d-inlineblock mx-auto py-0">
+					<li class="nav-item active">
+						<a class="nav-link " href="#"><i class="icon-home-1"></i>Strona główna</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="icon-money"></i>Dodaj przychód</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="wydatek.html"><div class="inscription"><i class="icon-basket"></i>Dodaj wydatek</div></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="bilans.html"><div class="inscription"><i class="icon-chart-bar"></i>Przeglądaj bilans</div></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><div class="inscription"><i class="icon-wrench"></i>Ustawienia</div></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><div class="inscription"><i class="icon-off"></i>Wyloguj</div></a>
+					</li>
+				</ul>
+
+			</div>
+			
+		</nav>
+	
+	</div>
 	
 	<div id="welcome">
 	
@@ -62,6 +96,12 @@
 		</div>
 		
 	</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
 	
 </body>
 

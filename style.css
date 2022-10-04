@@ -1,7 +1,6 @@
 body
 {
-	/*background-color: #F1F4F9;*/
-	
+	/*background-color: #F1F4F9;*/	
 	background-image: url("img/laptop.jpg");
 	background-size: cover;	
 	font-size: 16px;
@@ -37,7 +36,7 @@ p
 	display: block;
 */
 
-.inputcontainer
+.inputContainer
 {
 	width: 330px;
 	margin: 10px  auto;	

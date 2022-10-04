@@ -56,10 +56,10 @@
 					<li class="nav-item">
 						<a class="nav-link " href="#"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
-					<li class="nav-item">
+					<li class="nav-item active">
 						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
-					<li class="nav-item  active">
+					<li class="nav-item">
 						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
@@ -84,7 +84,7 @@
 		<div class="inputContainer">			
 			
 			<header>
-				<h2 class="font-weight-bold rounded">Dopisz wydatek</h2>
+				<h2 class="font-weight-bold rounded">Dopisz przychód</h2>
 			</header>
 		
 			<form action="index.php" method="post">	
@@ -101,43 +101,18 @@
 						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
 					</div>
 					<input type="date" class="form-control  rounded-right" required>
-				</div>				
+				</div>		
 				
-				<div class="input-group">
-					<div class="input-group-prepend">				
-						<span class="input-group-text  rounded-left icon"><i class="icon-cc-visa"></i></span>
-					</div>
-					<select class="choice rounded-right" name="payment" required>
-						<option value selected disabled hidden>Wybierz sposób płatności</option>
-						<option value="g">Gotówka</option>
-						<option value="d">Karta debetowa</option>
-						<option value="k">Karta kredytowa</option>
-					</select>
-				</div>	
-
 				<div class="input-group">
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-ok"></i></span>
 					</div>
 					<select class="choice rounded-right" name="category" required>						
 						<option value selected disabled hidden>Wybierz kategorię</option>
-						<option value="1">Jedzenie</option>
-						<option value="2">Mieszkanie</option>
-						<option value="3">Transport</option>		
-						<option value="4">Telekomunikacja</option>		
-						<option value="5">Opieka zdrowotna</option>		
-						<option value="6">Ubranie</option>		
-						<option value="7">Higiena</option>		
-						<option value="8">Dzieci</option>		
-						<option value="9"> Rozrywka</option>		
-						<option value="10">Wycieczka</option>		
-						<option value="11">Szkolenia</option>		
-						<option value="12">Książki</option>		
-						<option value="13">Oszczędności</option>		
-						<option value="14">Na złotą jesień, czyli emeryturę</option>		
-						<option value="15">Spłata długów</option>		
-						<option value="16">Darowizna</option>		
-						<option value="17">Inne wydatki</option>				
+						<option value="a">Wynagrodzenie</option>
+						<option value="b">Odsetki bankowe</option>
+						<option value="c">Sprzedaż na allegro</option>		
+						<option value="d">Inne</option>
 					</select>
 				</div>	
 

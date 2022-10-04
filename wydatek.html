@@ -3,12 +3,14 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<title>Personal Budget</title>
 	
 	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami" />
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie" />
 	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
@@ -18,103 +20,142 @@
 <body>
 
 	<header>
-	
-		<div class="topcontainer">
-	
-			<div class="topbar">
+		
+		<nav class="navbar navbar-default   mainNav">
 			
-				<h1 class="logo"><span ><i class="icon-calc"></i></span>Personal Budget</h1>
-				<p> <i>"Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</i><br/><span class="autor"> - Warren Buffett</span></p>
+			<div class="container">
 				
+				<div class="navbar-header mx-auto">
+					<a class="navbar-brand  text-center m-0" href="#"><span ><i class="icon-calc"></i></span></a>
+					<a class="navbar-brand  text-center m-0" href="#">Personal</a>
+					<a class="navbar-brand  text-center m-0" href="#">Budget</a>					
+				</div>
+					
+				<blockquote class="blockquote mx-auto">					
+					<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+					<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
+				</blockquote>
+					
 			</div>
+
+		</nav>
+	
+	</header>
+	
+	<div class="navcontainer">
+	
+		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
+			
+			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+					<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="mainmenu">
+			
+				<ul class="navbar-nav  inscription d-inlineblock mx-auto py-0">
+					<li class="nav-item">
+						<a class="nav-link " href="#"><i class="icon-home-1"></i>Strona główna</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="icon-money"></i>Dodaj przychód</a>
+					</li>
+					<li class="nav-item  active">
+						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="icon-off"></i>Wyloguj</a>
+					</li>
+				</ul>
+
+			</div>
+			
+		</nav>
+	
+	</div>
+	
+	<main>
+	
+		<div class="inputcontainer">			
+			
+			<header>
+				<h2 class="font-weight-bold rounded">Dopisz wydatek</h2>
+			</header>
+		
+			<form action="index.php" method="post">	
+				
+				<div class="input-group">
+					<div class="input-group-prepend ">
+						<span class="input-group-text  rounded-left icon"><i class="icon-gauge"></i></span>
+					</div>
+					<input type="number" class="form-control  rounded-right " step="0.01" placeholder="Kwota" required>	
+				</div>
+					
+				<div class="input-group">
+					<div class="input-group-prepend">				
+						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
+					</div>
+					<input type="date" class="form-control  rounded-right" required>
+				</div>				
+				
+				<div class="input-group">
+					<div class="input-group-prepend">				
+						<span class="input-group-text  rounded-left icon"><i class="icon-cc-visa"></i></span>
+					</div>
+					<select class="choice rounded-right" name="payment" required>
+						<option value selected disabled hidden>Wybierz sposób płatności</option>
+						<option value="g">Gotówka</option>
+						<option value="d">Karta debetowa</option>
+						<option value="k">Karta kredytowa</option>
+					</select>
+				</div>	
+
+				<div class="input-group">
+					<div class="input-group-prepend">				
+						<span class="input-group-text  rounded-left icon"><i class="icon-ok"></i></span>
+					</div>
+					<select class="choice rounded-right" name="category" required  height="22">						
+						<option value selected disabled hidden>Wybierz kategorię</option>
+						<option value="1">Jedzenie</option>
+						<option value="2">Mieszkanie</option>
+						<option value="3">Transport</option>		
+						<option value="4">Telekomunikacja</option>		
+						<option value="5">Opieka zdrowotna</option>		
+						<option value="6">Ubranie</option>		
+						<option value="7">Higiena</option>		
+						<option value="8">Dzieci</option>		
+						<option value="9"> Rozrywka</option>		
+						<option value="10">Wycieczka</option>		
+						<option value="11">Szkolenia</option>		
+						<option value="12">Książki</option>		
+						<option value="13">Oszczędności</option>		
+						<option value="14">Na złotą jesień, czyli emeryturę</option>		
+						<option value="15">Spłata długów</option>		
+						<option value="16">Darowizna</option>		
+						<option value="17">Inne wydatki</option>				
+					</select>
+				</div>	
+
+				<div class="input-group">	
+					<div class="input-group-prepend ">
+						<span class="input-group-text  rounded-left icon"><i class="icon-pencil"></i></span>
+					</div>
+					<input type="text" class="form-control  rounded-right" placeholder="Komentarz">	
+				</div>				
+				
+				<button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button>
+				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">"Dodaj"</button>
+									
+			</form>		
 			
 		</div>
 		
-	</header>
-	
-	<nav>		
-		
-		<ul class="menu">
-			<li><a href="#"><div class="inscription"><i class="icon-home-1"></i>Strona główna</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-money"></i>Dodaj przychód</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-basket"></i>Dodaj wydatek</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-chart-bar"></i>Przeglądaj bilans</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-wrench"></i>Ustawienia</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-off"></i>Wyloguj</div></a></li>
-		</ul>			
-				
-	</nav>
-	
-	<div class="inputcontainer">
-
-		<header>
-			<h2>Dopisz wydatek</h2>
-		</header>
-	
-		<form action="index.php" method="post">
-				
-			<div class="input">
-				<span class="icon"><i class="icon-gauge"></i></span>
-				<input type="text" placeholder="Kwota">
-				<div style="clear: both"></div>
-			</div>
-				
-			<div class="input">
-				<span class="icon"><i class="icon-calendar"></i></span>
-				<input  type="text" placeholder="rrrr-mm-dd">
-				<div style="clear: both"></div>
-			</div>
-				
-			<div class="input">
-				<span class="icon"><i class="icon-cc-visa"></i></span>
-				<select class="choice" name="payment">
-					<option value selected disabled hidden>Wybierz sposób płatności</option>
-					<option value="g">Gotówka</option>
-					<option value="d">Karta debetowa</option>
-					<option value="k">Karta kredytowa</option>		
-				</select>
-				<div style="clear: both"></div>
-			</div>
-				
-			<div class="input">
-				<span class="icon"><i class="icon-ok"></i></span>
-				<select class="choice" name="payment">
-					<option value selected disabled hidden>Wybierz kategorię</option>
-					<option value="1">Jedzenie</option>
-					<option value="2">Mieszkanie</option>
-					<option value="3">Transport</option>		
-					<option value="4">Telekomunikacja</option>		
-					<option value="5">Opieka zdrowotna</option>		
-					<option value="6">Ubranie</option>		
-					<option value="7">Higiena</option>		
-					<option value="8">Dzieci</option>		
-					<option value="9"> Rozrywka</option>		
-					<option value="10">Wycieczka</option>		
-					<option value="11">Szkolenia</option>		
-					<option value="12">Książki</option>		
-					<option value="13">Oszczędności</option>		
-					<option value="14">Na złotą jesień, czyli emeryturę</option>		
-					<option value="15">Spłata długów</option>		
-					<option value="16">Darowizna</option>		
-					<option value="17">Inne wydatki</option>					
-				</select>
-				<div style="clear: both"></div>
-			</div>
-				
-			<div class="input">
-				<span class="icon"><i class="icon-pencil"></i></span>
-				<input type="text" placeholder="Komentarz">
-				<div style="clear: both"></div>
-			</div>
-				
-			<div class="buttons">
-				<input type="submit" class="cancel" value="Anuluj">
-				<input type="submit" class="add" value="Dodaj">
-			</div>				
-				
-		</form>		
-		
-	</div>
+	</main>
 		
 	<footer>
 	
@@ -123,6 +164,12 @@
 		</div>
 		
 	</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
 	
 </body>
 

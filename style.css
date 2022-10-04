@@ -177,8 +177,10 @@ input.register:focus:-ms-input-placeholder
 input[type=text],
 input[type=email],
 input[type=password],
+input[type=number],
+input[type=date],
 .choice
-{
+{	
 	font-family: 'Lato', sans-serif;
 	width: 300px;	
 	height: 32px;	
@@ -194,6 +196,8 @@ input[type=password],
 input[type=text]:focus,
 input[type=email]:focus,
 input[type=password]:focus,
+input[type=number]:focus,
+input[type=date]:focus,
 .choice:focus
 {
 	-webkit-box-shadow: 0px 0px 5px 1px rgba(157,199,247,0.9);
@@ -277,108 +281,35 @@ input:focus:-ms-input-placeholder
 }
 
 /* //////////////////  MENU  /////////////////////// */
+
 .navcontainer
 {
 	margin: auto;
-	/*background-color: #d8e2d8;*/	
-	background-color: #e9f3e9;	
+	/*background-color: #d8e2d8;	
+	background-color: #e9f3e9;
+	background-color: #e3f2fd;
+	background-color: #28EFD4;
+	background-color: #D6FCF7;*/
+	background-color: #E2FDFA;		
 	border-bottom: 1px solid #a5cda5;
 }
 
 li a:focus
 {	
 	background-color: #D3DDE9;	
-	
 }
-
-
 
 h3
 {	
 	color: #060B95;	
 }
 
-
 /* //////////////////  WYDATEK /////////////////////// */
 
-.buttons
-{
-	width: 330px;	
+option
+{	
+	background-color: white;	
 }
-
-input[type=submit].cancel
-{
-	font-family: 'Lato', sans-serif;
-	width: 80px;
-	background-color: #b30000;
-	font-size: 18px;
-	color: white;
-	padding: 10px;
-	margin-top: 10px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	outline: none;
-	float: left;
-}
-
-input[type=submit].add
-{
-	font-family: 'Lato', sans-serif;
-	width: 80px;
-	background-color: #008000;
-	font-size: 18px;
-	color: white;
-	padding: 10px;
-	margin-top: 10px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	outline: none;
-	float: right;
-}
-
-input.add[type=submit]:focus
-{
-	-webkit-box-shadow: 0px 0px 5px 5px rgba(0, 128, 0, 0.9);
-	-moz-box-shadow: 0px 0px 5px 5px rgba(0, 128, 0, 0.9);
-	box-shadow: 0px 0px 5px 5px rgba(10, 128, 0, 0.9);	
-}
-
-input.cancel[type=submit]:focus
-{
-	-webkit-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0, 0.9);
-	-moz-box-shadow: 0px 0px 5px 5px rgba(179, 0, 0, 0.9);
-	box-shadow: 0px 0px 5px 5px rgba(179, 0, 0, 0.9);	
-}
-
-input.add[type=submit]:hover
-{
-	background-color: #00cc00;	
-	
-}
-
-input.cancel[type=submit]:hover
-{
-	background-color: #ff1a1a;
-}
-
-/*option
-{
-	display: block;
-	font-family: 'Lato', sans-serif;
-	width: 270px;	
-	height: 32px;
-	background-color: white;
-	color: #060B95;
-	border: 1px  solid #9DC7F7;
-	border-radius: 0px 5px 5px 0px;
-	font-size: 17px;	
-	padding: 3px;
-	box-sizing: border-box;
-	outline: none;
-	margin-top: 10px;	
-}*/
 
 /* //////////////////  BILANS /////////////////////// */
 

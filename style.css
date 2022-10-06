@@ -40,6 +40,7 @@ p
 {
 	width: 330px;
 	margin: 10px  auto;	
+	padding-bottom: 100px;
 }
 
 h2
@@ -157,9 +158,7 @@ input.register:focus:-ms-input-placeholder
 
 .info
 {
-	width: 100%;
-	margin-left: 0px;
-	margin-right: 0px;	
+	width: 100%;		
 	text-align: center;
 	font-size: 14px;
 	position: fixed;
@@ -168,7 +167,7 @@ input.register:focus:-ms-input-placeholder
 	background-color: #D3DDE9;
 	padding: 3px;
 	border: 1px solid  #c2cce8;
-	color: #060B95;
+	color: #060B95;	
 }
 
 /* //////////////////  LOGOWANIE  /////////////////////// */
@@ -368,47 +367,10 @@ ul  > li > .dropdownmenu > li
 	height: 24px;	
 }
 
-.maincontainer
-{
-	width: 700px;
-	margin: 10px  auto;		
-	text-align: center;
-}
 
-.tables
-{
-	margin: 10px  0;	
-	width: 100%;
-	box-sizing: border-box;
-}
+
 .table
-{
-	margin: 10px  0;	
-	width: 50%;	
-	float: left;	
-	border-radius: 5px;	
-	background-color: #d8e2d8;	
-	border: 2px solid #a5cda5;	
-	box-sizing: border-box;
-}
-
-.summary
-{
-	width: 100%;	
-	margin-bottom: 10px;	
-	border-radius: 5px;		
-	background-color: #d8e2d8;	
-	border: 2px solid #a5cda5;	
-	box-sizing: border-box;
-}
-
-.piechart
-{
-	width: 100%;
-	height: 200px;	
-	margin-bottom: 30px;
-	border-radius: 5px;	
-	border: 2px solid #a5cda5;
-	background-color: #d8e2d8;	
-	box-sizing: border-box;
+{		
+	border: 5px solid #c2cce8;
+	background-color: white;
 }

@@ -2,13 +2,15 @@
 <html lang="pl">
 <head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<title>Personal Budget</title>
 	
 	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami" />
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie" />
 	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
@@ -18,69 +20,97 @@
 <body>
 
 	<header>
-	
-		<div class="topcontainer">
-	
-			<div class="topbar">
-			
-				<h1 class="logo"><span ><i class="icon-calc"></i></span>Personal Budget</h1>
-				<p> <i>"Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</i><br/><span class="autor"> - Warren Buffett</span></p>
-				
-			</div>
-			
-		</div>
 		
+		<nav class="navbar navbar-default mainNav">
+			
+			<div class="container">
+				
+				<div class="navbar-header mx-auto">
+					<a class="navbar-brand  text-center m-0" href="#"><span ><i class="icon-calc"></i></span></a>
+					<a class="navbar-brand  text-center m-0" href="#">Personal</a>
+					<a class="navbar-brand  text-center m-0" href="#">Budget</a>					
+				</div>
+					
+				<blockquote class="blockquote mx-auto">					
+					<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+					<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
+				</blockquote>
+					
+			</div>
+
+		</nav>
+	
 	</header>
 	
-	<nav>		
-		
-		<ul class="menu">
-			<li><a href="#"><div class="inscription"><i class="icon-home-1"></i>Strona główna</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-money"></i>Dodaj przychód</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-basket"></i>Dodaj wydatek</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-chart-bar"></i>Przeglądaj bilans</div></a></li>
-			<li><a href="#"><div class="inscription"><i class="icon-wrench"></i>Ustawienia</div></a></li>
-			<li ><a href="#" ><div class="inscription"><i class="icon-off"></i>Wyloguj</div></a></li>			
-			<li style="margin-left: 150px;"><a href="#"><div class="inscription"><i class="icon-calendar" ></i>Wybierz okres</div></a>
-				<ul class="dropdownmenu">
-					<li><a href="#">Bieżący miesiąc</a></li>
-					<li><a href="#">Poprzedni miesiąc</a></li>
-					<li><a href="#">Bieżący rok</a></li>
-					<li><a href="#">Niestandardowy</a></li>				
-				</ul>
-			</li>
-		</ul>	
-
-	</nav>
+	<div class="navcontainer">
 	
-	<div class="maincontainer">
+		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
+			
+			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+					<span class="navbar-toggler-icon"></span>
+			</button>
+			
+			<div class="collapse navbar-collapse" id="mainmenu">
+			
+				<ul class="navbar-nav  inscription d-inlineblock mx-auto py-0">
+					<li class="nav-item">
+						<a class="nav-link " href="#"><i class="icon-home-1"></i>Strona główna</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#"><i class="icon-off"></i>Wyloguj</a>
+					</li>
+				</ul>
 
-		<header>
-			<h2>Bieżący miesiąc</h2>
-		</header>		
-			
-			<div class="table">
-				<h2 style="color: #0C4905; border-bottom: 2px solid #a5cda5;">Przychody</h2>
-				<p>miejsce na przychody z wybranego okresu......</p><br>
 			</div>
 			
-			<div class="table">
-				<h2 style="color: #b30000; border-bottom: 2px solid #a5cda5; padding: 9px;">Wydatki</h2>
-				<p>miejsce na wydatki z wybranego okresu......</p><br>
-				<p>miejsce na wydatki z wybranego okresu......</p><br>
-				<p>miejsce na wydatki z wybranego okresu......</p><br>
-				<p>miejsce na wydatki z wybranego okresu......</p><br>										
+		</nav>
+	
+	</div>
+	
+	<div class="container my-3 text-center">
+	
+		<div class="row">	
+			
+				<h2 class="font-weight-bold rounded mx-auto px-5">Bieżący miesiąc</h2>			
+						
+			<div class="w-100"></div>		
+											
+				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
+					<h3 style="border-bottom: 3px solid #c2cce8">Przychody</h3>
+					<h5>przychody z wybranego okresu......</h5>	
+				</div>
+					
+				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
+					<h3 style="border-bottom: 3px solid #c2cce8">Wydatki</h3>	
+					<h5>wydatki z wybranego okresu......</h5>
+				</div>
+
+			<div class="w-100"></div>	
+			
+			<div class="table col-10 col-md-11 mx-auto rounded mt-2 mb-0">
+					<h3 style="border-bottom: 3px solid #c2cce8">Bilans</h3>
+					<h4 class="font-weight-bold rounded">27432 pln</h4>
+					<h3 class="text-success">Gratulacje. Świetnie zarządzasz finansami!</h3>
+					<h3 class="text-danger">Uważaj, wpadasz w długi!</h3>
 			</div>
-			
-			<div style="clear: both"></div>			
-			
-			<div class="summary">
-				<h3 style="margin: 10px;">Bilans: ...............</h3><br/>
-				<h3 style="color: #0C4905; margin: 10px;">Gratulacje. Świetnie zarządzasz finansami!</h3><br>
-				<h3 style="color: #b30000; margin: 10px;">Uważaj, wpadasz w długi!</h3>				
+
+			<div class="table col-10 col-md-11 mx-auto rounded mt-2 mb-5">						
+					<h3 style="border-bottom: 3px solid #c2cce8">Wykres kołowy</h3>
 			</div>
-			
-			<div class="piechart">Miejsce na wykres kołowy</div>
+				
+		</div>
 	
 	</div>
 		
@@ -91,6 +121,12 @@
 		</div>
 		
 	</footer>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
 	
 </body>
 

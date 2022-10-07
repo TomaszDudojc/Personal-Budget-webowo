@@ -21,7 +21,7 @@
 
 	<header>
 		
-		<nav class="navbar navbar-default mainNav">
+		<nav class="navbar navbar-default mainNav rounded">
 			
 			<div class="container">
 				
@@ -42,7 +42,7 @@
 	
 	</header>
 	
-	<div class="navcontainer">
+	<div class="navcontainer rounded">
 	
 		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
 			
@@ -52,9 +52,9 @@
 			
 			<div class="collapse navbar-collapse" id="mainmenu">
 			
-				<ul class="navbar-nav  inscription d-inlineblock mx-auto py-0">
+				<ul class="navbar-nav mx-auto py-0">
 					<li class="nav-item">
-						<a class="nav-link " href="#"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link" href="#"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
@@ -71,11 +71,63 @@
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-off"></i>Wyloguj</a>
 					</li>
+					
+				</ul>
+				
+				<ul class="navbar-nav py-0">
+				
+					<li class="nav-item dropdown active">
+						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspop="true"><i class="icon-calendar"></i>Wybierz okres</a>						
+						<div class="dropdown-menu" aria-labelledby="submenu">						
+							<a class="dropdown-item" href="#">Bieżący miesiąc</a>
+							<a class="dropdown-item" href="#">Poprzedni miesiąc</a>
+							<a class="dropdown-item" href="#">Bieżący rok</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
+						</div>
+					</li>
+					
 				</ul>
 
 			</div>
-			
+		
 		</nav>
+		
+		<div class="modal" id="dateRange" style="display: none">
+		  <div class="modal-dialog">
+			<div class="modal-content table rounded">
+			  <div class="modal-header">
+				<h3 class="modal-title">Wybierz zakres dat</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  
+			  <div class="modal-body">
+				<form action="index.php" method="post">
+					<div class="input-group">
+						<div class="input-group-prepend">				
+							<span class="input-group-text  rounded-left icon my-0"><i class="icon-calendar"></i></span>
+						</div>						
+						<input type="date" class="form-control  rounded-right my-0" required>
+						<div class="mx-2"></div>
+						<div class="input-group-prepend">				
+							<span class="input-group-text  rounded-left icon  my-0"><i class="icon-calendar"></i></span>
+						</div>
+						<input type="date" class="form-control  rounded-right my-0" required>
+					</div>
+				</form>					
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+				<button type="button" class="btn btn-success">Zapisz</button>
+			 </div>
+						
+			</div> 		
+		</div>
+	</div>
+		
 	
 	</div>
 	
@@ -88,26 +140,28 @@
 			<div class="w-100"></div>		
 											
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="border-bottom: 3px solid #c2cce8">Przychody</h3>
+					<h3 style="border-bottom: 2px solid #060B95">Przychody</h3>
 					<h5>przychody z wybranego okresu......</h5>	
 				</div>
 					
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="border-bottom: 3px solid #c2cce8">Wydatki</h3>	
+					<h3 style="border-bottom: 2px solid #060B95">Wydatki</h3>	
 					<h5>wydatki z wybranego okresu......</h5>
 				</div>
 
 			<div class="w-100"></div>	
 			
-			<div class="table col-10 col-md-11 mx-auto rounded mt-2 mb-0">
-					<h3 style="border-bottom: 3px solid #c2cce8">Bilans</h3>
-					<h4 class="font-weight-bold rounded">27432 pln</h4>
+			<div class="table col-10 col-md-6 mx-auto rounded mt-2 mb-0">
+					<h3 style="border-bottom: 2px solid #060B95">Bilans</h3>
+					<h4 class="font-weight-bold rounded">0 pln</h4>
 					<h3 class="text-success">Gratulacje. Świetnie zarządzasz finansami!</h3>
 					<h3 class="text-danger">Uważaj, wpadasz w długi!</h3>
 			</div>
-
-			<div class="table col-10 col-md-11 mx-auto rounded mt-2 mb-5">						
-					<h3 style="border-bottom: 3px solid #c2cce8">Wykres kołowy</h3>
+			
+			<div class="w-100"></div>
+			
+			<div class="table col-10 col-md-6 mx-auto rounded mt-2 mb-5">						
+					<h3 style="border-bottom: 2px solid #060B95">Wykres kołowy</h3>
 			</div>
 				
 		</div>
@@ -116,7 +170,7 @@
 		
 	<footer>
 	
-		<div class="info">
+		<div class="info rounded">
 			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
 		</div>
 		

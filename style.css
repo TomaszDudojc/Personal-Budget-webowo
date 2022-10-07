@@ -12,7 +12,7 @@ body
 .mainNav
 {	
 	background-color: #D3DDE9;
-	border-bottom: 1px solid  #c2cce8;	
+	border: 1px solid  #c2cce8;	
 }
 
 .navbar-brand
@@ -189,6 +189,7 @@ input[type=date],
 	box-sizing: border-box;
 	outline: none;
 	margin-top: 10px;
+	
 }
 
 input[type=text]:focus,
@@ -289,11 +290,12 @@ input:focus:-ms-input-placeholder
 	background-color: #28EFD4;
 	background-color: #D6FCF7;*/
 	background-color: #E2FDFA;		
-	border-bottom: 1px solid #a5cda5;
+	border: 1px solid #a5cda5;
+	border-top: none;	
 }
 
-li a:focus
-{	
+.navbar-nav .active
+{
 	background-color: #D3DDE9;	
 }
 
@@ -311,66 +313,12 @@ option
 
 /* //////////////////  BILANS /////////////////////// */
 
-.dropdownmenu
-{
-	list-style-type: none;
-	margin: 1px 0px;	
-	text-align: center;
-	background-color: #d8e2d8;	
-	padding: 0;	
-	display: none;		
-	position: absolute;
-}
-ul  > li:hover > .dropdownmenu
-{
-	display: block;
-	border-right: 1px solid #a5cda5;
-	border-left: 1px solid #a5cda5;
-	border-bottom: 1px solid #a5cda5;
-	width:148px;	
-}
-
-ul  > li > .dropdownmenu > li
-{	
-	position: relative;
-	z-index: 100;
-}
-
-.dropdownmenu a
-/*.menu > li > a*/
-{
-	display: block;
-	width:140px;	
-	height: 26px;
-	text-decoration: none;	
-	padding-left: 10px;
-	padding-top: 4px;
-	text-align: justify;
-	margin: 1px 0px;	
-}
-
-.dropdownmenu a:hover
-{	
-	color: #060B95;
-	background-color: #F1F4F9;	
-	border: 1px solid  #060B95;    
-	height: 24px;
-	width:136px;	
-}
-
-.dropdownmenu a:focus
-{		
-	color: white;
-	background-color: #060B95;
-	border: 1px solid  #050a84;
-	width: 136px;	
-	height: 24px;	
-}
-
-
-
 .table
 {		
-	border: 5px solid #c2cce8;
-	background-color: white;
+	border: 1px solid #c2cce8;
+	background-color: #F1F4F9;
+	background-color: #D3DDE9;
+	position: relative;
+	z-index: 100;	
 }
+

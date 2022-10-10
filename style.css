@@ -310,7 +310,7 @@ option
 .table
 {		
 	border: 1px solid #c2cce8;
-	background-color: #F1F4F9;
+	/*background-color: #F1F4F9;*/
 	background-color: #D3DDE9;
 	position: relative;
 	z-index: 100;	

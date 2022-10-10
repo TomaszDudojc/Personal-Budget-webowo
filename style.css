@@ -31,11 +31,6 @@ p
 	text-align: justify;	
 }
 
-/*div
-{
-	display: block;
-*/
-
 .inputContainer
 {
 	width: 330px;
@@ -189,7 +184,6 @@ input[type=date],
 	box-sizing: border-box;
 	outline: none;
 	margin-top: 10px;
-	
 }
 
 input[type=text]:focus,
@@ -291,15 +285,15 @@ input:focus:-ms-input-placeholder
 	background-color: #D6FCF7;*/
 	background-color: #E2FDFA;		
 	border: 1px solid #a5cda5;
-	border-top: none;	
+	border-top: none;
 }
 
 .navbar-nav .active
 {
 	background-color: #D3DDE9;	
 }
-
-h3
+ 
+ h3
 {	
 	color: #060B95;	
 }
@@ -308,7 +302,7 @@ h3
 
 option
 {	
-	background-color: white;	
+	background-color: white;		 
 }
 
 /* //////////////////  BILANS /////////////////////// */

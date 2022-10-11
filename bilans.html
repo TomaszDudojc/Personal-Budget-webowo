@@ -1,45 +1,41 @@
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<title>Personal Budget</title>
 	
-	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami" />
-	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie" />
+	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami">
+	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="stylesheet" href="css/fontello.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
 </head>
 
 <body>
-
-	<header>
-		
-		<nav class="navbar navbar-default mainNav rounded">
 			
-			<div class="container">
+	<nav class="navbar navbar-default mainNav rounded">
+			
+		<div class="container">
 				
-				<div class="navbar-header mx-auto">
-					<a class="navbar-brand  text-center" href="#"><span><i class="icon-calc"></i></span>Personal Budget</a>
-				</div>
-					
-				<blockquote class="blockquote mx-auto">					
-					<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
-					<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
-				</blockquote>
-					
+			<div class="navbar-header mx-auto">
+				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
+					
+			<blockquote class="blockquote mx-auto">					
+				<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+				<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
+			</blockquote>
+					
+		</div>
 
-		</nav>
-	
-	</header>
-	
+	</nav>	
+		
 	<div class="navcontainer rounded">
 	
 		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
@@ -51,8 +47,9 @@
 			<div class="collapse navbar-collapse" id="mainmenu">
 			
 				<ul class="navbar-nav mx-auto py-0">
+				
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link" href="menu.html"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
@@ -62,12 +59,11 @@
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
-					</li>
-					
-					<ul class="navbar-nav py-0 px-3 active">
-				
+					</li>					
+					<li class="nav-item ">
+					<ul class="navbar-nav py-0 px-3 active">				
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu" aria-haspop="true"><i class="icon-calendar"></i>Wybierz okres</a>						
+							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
 							<div class="dropdown-menu" aria-labelledby="submenu">						
 								<a class="dropdown-item" href="#">Bieżący miesiąc</a>
 								<a class="dropdown-item" href="#">Poprzedni miesiąc</a>
@@ -75,10 +71,9 @@
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
 							</div>
-						</li>
-					
+						</li>					
 					</ul>
-					
+					</li>					
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>

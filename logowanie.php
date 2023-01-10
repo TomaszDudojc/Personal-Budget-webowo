@@ -1,3 +1,21 @@
+<?php
+/*
+	session_start();
+	
+	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
+	if (isset($_SESSION['fr_nick'])) unset($_SESSION['fr_nick']);
+	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+	if (isset($_SESSION['fr_haslo1'])) unset($_SESSION['fr_haslo1']);
+	if (isset($_SESSION['fr_haslo2'])) unset($_SESSION['fr_haslo2']);	
+	
+	//Usuwanie błędów rejestracji
+	if (isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
+	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+	if (isset($_SESSION['e_haslo'])) unset($_SESSION['e_haslo']);	
+	*/
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -18,11 +36,11 @@
 </head>
 
 <body>	
-			
+		
 	<nav class="navbar navbar-default mainNav rounded">
 			
 		<div class="container">
-				
+			
 			<div class="navbar-header mx-auto">
 				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
@@ -38,45 +56,39 @@
 		
 	<main>
 	
-		<div class="inputContainer mt-3">
-
+		<div class="inputContainer mt-3">			
+			
 			<header>
-				<h2 class="register font-weight-bold rounded">Rejestracja</h2>
+				<h2 class="font-weight-bold rounded">Logowanie</h2>
 			</header>
 		
-			<form action="index.php" method="post">
-				
-				<div class="input-group">	
+			<form action="index.php" method="post">			
+								
+				<div class="input-group">
 					<div class="input-group-prepend ">
-						<span class="input-group-text  rounded-left iconregister"><i class="icon-user-3"></i></span>
+						<span class="input-group-text  rounded-left icon"><i class="icon-mail-3"></i></span>
 					</div>
-					<input type="text" class="form-control  rounded-right register" placeholder="Imię" required>	
-				</div>
-				
-				<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text  rounded-left iconregister"><i class="icon-mail-3"></i></span>
-					</div>
-					<input type="email" class="form-control  rounded-right register" placeholder="Email" required>	
+					<input type="email" class="form-control  rounded-right " placeholder="Email" required>	
 				</div>
 					
 				<div class="input-group">
 					<div class="input-group-prepend">				
-						<span class="input-group-text  rounded-left iconregister"><i class="icon-lock"></i></span>
+						<span class="input-group-text  rounded-left icon"><i class="icon-lock"></i></span>
 					</div>
-					<input type="password" class="form-control  rounded-right register" placeholder="Hasło" required>
-				</div>
+					<input type="password" class="form-control  rounded-right" placeholder="Hasło" required>
+				</div>			
 				
-				<div class="input-group">
-					<div class="input-group-prepend">				
-						<span class="input-group-text  rounded-left iconregister"><i class="icon-lock"></i></span>
-					</div>
-					<input type="password" class="form-control  rounded-right register" placeholder="Powtórz hasło" required>					
-				</div>
-					
-				<button  type="submit" class="btn register">Zarejestruj się</button>
-					
-			</form>		
+				<button  type="submit" class="btn login">"Zaloguj się"</button>
+				
+			</form>	
+			<?php			
+					/*
+					if (isset($_SESSION['udanarejestracja']))
+					{
+						echo '<span style="color: blue;">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</span>';
+						unset($_SESSION['udanarejestracja']);
+					}*/
+				?>
 			
 		</div>
 		

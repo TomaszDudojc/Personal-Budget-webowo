@@ -1,5 +1,5 @@
 <?php
-/*
+
 	session_start();
 	
 	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
@@ -12,7 +12,7 @@
 	if (isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
 	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
 	if (isset($_SESSION['e_haslo'])) unset($_SESSION['e_haslo']);	
-	*/
+	
 ?>
 
 
@@ -82,12 +82,12 @@
 				
 			</form>	
 			<?php			
-					/*
+					
 					if (isset($_SESSION['udanarejestracja']))
 					{
 						echo '<span style="color: blue;">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</span>';
 						unset($_SESSION['udanarejestracja']);
-					}*/
+					}
 				?>
 			
 		</div>

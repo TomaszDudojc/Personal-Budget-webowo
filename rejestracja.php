@@ -57,7 +57,7 @@
 		$_SESSION['fr_email'] = $email;
 		$_SESSION['fr_haslo1'] = $haslo1;
 		$_SESSION['fr_haslo2'] = $haslo2;
-		/*	
+			
 		require_once "connect.php";
 		mysqli_report(MYSQLI_REPORT_STRICT);
 		
@@ -99,11 +99,8 @@
 					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 					
 					if ($polaczenie->query
-					("INSERT INTO users VALUES (NULL, '$nick', '$haslo_hash', '$email')")					
-					("SELECT * FROM expenses_category_default")
-					//("INSERT INTO expenses_category_assigned_to_users VALUES")
-					
-					
+					("INSERT INTO users VALUES (NULL, '$nick', '$haslo_hash', '$email')")			
+										
 					)
 					{
 						$_SESSION['udanarejestracja']=true;
@@ -124,8 +121,8 @@
 		{
 			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
 			echo '<br />Informacja developerska: '.$e;
-		}*/
-		if ($wszystko_OK==true)echo "UDANA REJESTRACJA";
+		}
+		
 	}
 	
 	
@@ -146,18 +143,18 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
-	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">	
+		
 	<style>
 		.error
 		{
 			color:red;
 			margin-top: 10px;
 			margin-bottom: 10px;
-			background-color: yellow;
+			background-color: pink;
+			border: 1px solid red;
 		}
 	</style>
-	
 </head>
 
 <body>	
@@ -193,18 +190,18 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left iconregister"><i class="icon-user-3"></i></span>
 					</div>
-					<input type="text" class="form-control  rounded-right register" value="<?php
+					<input type="text" class="form-control  rounded-right register" name="nick" value="<?php
 					if (isset($_SESSION['fr_nick']))
 					{
 						echo $_SESSION['fr_nick'];
 						unset($_SESSION['fr_nick']);
 					}
-					?>" name="nick" placeholder="Imię" required>						
+					?>"  placeholder="Imię" required>						
 				</div>
 				<?php
 					if (isset($_SESSION['e_nick']))
 					{
-						echo '<div class="error">'.$_SESSION['e_nick'].'</div>';
+						echo '<div class="error rounded" >'.$_SESSION['e_nick'].'</div>';
 						unset($_SESSION['e_nick']);
 					}
 					?>
@@ -213,7 +210,7 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text  rounded-left iconregister"><i class="icon-mail-3"></i></span>
 					</div>
-					<input type="email" class="form-control  rounded-right register" name="email"  value="	<?php
+					<input type="email" class="form-control  rounded-right register" name="email"  value="<?php
 						if (isset($_SESSION['fr_email']))
 						{
 							echo $_SESSION['fr_email'];
@@ -224,7 +221,7 @@
 				<?php
 						if (isset($_SESSION['e_email']))
 						{
-							echo '<div class="error">'.$_SESSION['e_email'].'</div>';
+							echo '<div class="error rounded">'.$_SESSION['e_email'].'</div>';
 							unset($_SESSION['e_email']);
 						}
 					?>
@@ -244,7 +241,7 @@
 				<?php
 						if (isset($_SESSION['e_haslo']))
 						{
-							echo '<div class="error">'.$_SESSION['e_haslo'].'</div>';
+							echo '<div class="error rounded">'.$_SESSION['e_haslo'].'</div>';
 							unset($_SESSION['e_haslo']);
 						}
 					?>	

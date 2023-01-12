@@ -1,3 +1,12 @@
+<?php
+
+	session_start();
+	
+	
+	
+?>
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -61,8 +70,16 @@
 				</div>			
 				
 				<button  type="submit" class="btn login">"Zaloguj się"</button>
+				
+			</form>	
+			<?php			
 					
-			</form>		
+					if (isset($_SESSION['udanarejestracja']))
+					{
+						echo '<span style="color: blue;">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</span>';
+						unset($_SESSION['udanarejestracja']);
+					}
+				?>
 			
 		</div>
 		

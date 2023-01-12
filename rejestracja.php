@@ -99,14 +99,11 @@
 					//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 					
 					if ($polaczenie->query("INSERT INTO users VALUES (NULL, '$nick', '$haslo_hash', '$email')"))
-					{
-<<<<<<< HEAD
+					{		
 						
-						
-						
-=======
 						$polaczenie->query("INSERT INTO expenses_category_assigned_to_users (name) SELECT name FROM expenses_category_default");
 						$polaczenie->query("INSERT INTO incomes_category_assigned_to_users (name) SELECT name FROM incomes_category_default");
+						$polaczenie->query("INSERT INTO payment_methods_assigned_to_users (name) SELECT name FROM payment_methods_default");
 												
 						$rezultat = $polaczenie->query("SELECT * FROM users ORDER BY id DESC LIMIT 1");
 						$wiersz = $rezultat->fetch_assoc();
@@ -115,8 +112,8 @@
 						
 						$polaczenie->query("UPDATE expenses_category_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");
 						$polaczenie->query("UPDATE incomes_category_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");					
+						$polaczenie->query("UPDATE payment_methods_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");					
 												
->>>>>>> feature_user-register-php
 						$_SESSION['udanarejestracja']=true;
 						header('Location: logowanie.php');
 					}

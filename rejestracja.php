@@ -100,9 +100,23 @@
 					
 					if ($polaczenie->query("INSERT INTO users VALUES (NULL, '$nick', '$haslo_hash', '$email')"))
 					{
+<<<<<<< HEAD
 						
 						
 						
+=======
+						$polaczenie->query("INSERT INTO expenses_category_assigned_to_users (name) SELECT name FROM expenses_category_default");
+						$polaczenie->query("INSERT INTO incomes_category_assigned_to_users (name) SELECT name FROM incomes_category_default");
+												
+						$rezultat = $polaczenie->query("SELECT * FROM users ORDER BY id DESC LIMIT 1");
+						$wiersz = $rezultat->fetch_assoc();
+						$_SESSION['registered_user_id']=$wiersz['id'];
+						$rezultat->free_result();
+						
+						$polaczenie->query("UPDATE expenses_category_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");
+						$polaczenie->query("UPDATE incomes_category_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");					
+												
+>>>>>>> feature_user-register-php
 						$_SESSION['udanarejestracja']=true;
 						header('Location: logowanie.php');
 					}
@@ -202,7 +216,7 @@
 				<?php
 					if (isset($_SESSION['e_nick']))
 					{
-						echo '<div class="error rounded" >'.$_SESSION['e_nick'].'</div>';
+						echo '<div class="error rounded text-center" >'.$_SESSION['e_nick'].'</div>';
 						unset($_SESSION['e_nick']);
 					}
 					?>
@@ -222,7 +236,7 @@
 				<?php
 						if (isset($_SESSION['e_email']))
 						{
-							echo '<div class="error rounded">'.$_SESSION['e_email'].'</div>';
+							echo '<div class="error rounded text-center">'.$_SESSION['e_email'].'</div>';
 							unset($_SESSION['e_email']);
 						}
 					?>
@@ -242,7 +256,7 @@
 				<?php
 						if (isset($_SESSION['e_haslo']))
 						{
-							echo '<div class="error rounded">'.$_SESSION['e_haslo'].'</div>';
+							echo '<div class="error rounded text-center">'.$_SESSION['e_haslo'].'</div>';
 							unset($_SESSION['e_haslo']);
 						}
 					?>	

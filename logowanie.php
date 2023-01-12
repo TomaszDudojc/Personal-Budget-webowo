@@ -33,6 +33,16 @@
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
+	<style>
+		.information
+		{
+			color:blue;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			//background-color: blue;
+			border: 1px solid blue;
+		}
+	</style>
 </head>
 
 <body>	
@@ -85,7 +95,7 @@
 					
 					if (isset($_SESSION['udanarejestracja']))
 					{
-						echo '<span style="color: blue;">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</span>';
+						echo '<div class="information rounded text-center">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</div>';
 						unset($_SESSION['udanarejestracja']);
 					}
 				?>

@@ -1,8 +1,3 @@
-<?php
-//Usuwanie błędów logowania
-	if ((isset($_SESSION['blad'])))unset($_SESSION['blad']);	
-?>
-
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>

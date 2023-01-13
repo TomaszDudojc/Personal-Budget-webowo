@@ -4,6 +4,7 @@
 		
 	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
 	{
+		$_SESSION['info_logged_user'] = "Jesteś już zalogowany!";
 		header('Location: menu.php');
 		exit();
 	}
@@ -86,7 +87,8 @@
 				</div>
 				
 				<?php			
-					if(isset($_SESSION['blad']))echo '<div class="error rounded text-center" >'.$_SESSION['blad'].'</div>';					
+					if(isset($_SESSION['blad']))echo '<div class="error rounded text-center" >'.$_SESSION['blad'].'</div>';	
+					unset($_SESSION['blad']);
 				?>
 				
 				<button  type="submit" class="btn login">"Zaloguj się"</button>

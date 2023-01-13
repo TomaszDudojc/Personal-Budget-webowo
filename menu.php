@@ -94,10 +94,15 @@
 				<div class="col-7  text-center rounded mx-auto mb-5" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">
 					<?php
 					echo "<h3>Witaj ".$_SESSION['user']."!</h3>";
-					echo "<h3>Wybierz opcję z powyższego menu</h3>";
+					echo "<h3>Wybierz opcję z powyższego menu</h3>";					
 					?>			
 				</div>
-				
+				<?php												
+					if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 w-100" >'.$_SESSION['e_registred_user'].'</div>';	
+					unset($_SESSION['e_registred_user']);	
+					if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_logged_user'].'</div>';	
+					unset($_SESSION['info_logged_user']);	
+				?>			
 				<div class="w-100"></div>
 				
 				<div class="col-9  mx-auto mt-5">

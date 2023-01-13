@@ -1,3 +1,15 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: indeks.php');
+		exit();
+	}
+	
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -11,7 +23,7 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
@@ -24,7 +36,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -48,22 +60,22 @@
 				
 				<ul class="navbar-nav mx-auto py-0">
 					<li class="nav-item active">
-						<a class="nav-link " href="menu.html"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link " href="indeks.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="wydatek.phpl"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 				</ul>
 
@@ -80,10 +92,17 @@
 			<div class="row">
 			
 				<div class="col-7  text-center rounded mx-auto mb-5" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">
-					<h3>"Witaj Użytkowniku!</h3>
-					<h3>"Wybierz opcję z powyższego menu"</h3>
+					<?php
+					echo "<h3>Witaj ".$_SESSION['user']."!</h3>";
+					echo "<h3>Wybierz opcję z powyższego menu</h3>";					
+					?>			
 				</div>
-				
+				<?php												
+					if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 w-100" >'.$_SESSION['e_registred_user'].'</div>';	
+					unset($_SESSION['e_registred_user']);	
+					if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_logged_user'].'</div>';	
+					unset($_SESSION['info_logged_user']);	
+				?>			
 				<div class="w-100"></div>
 				
 				<div class="col-9  mx-auto mt-5">

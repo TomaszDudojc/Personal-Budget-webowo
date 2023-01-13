@@ -1,11 +1,28 @@
 <?php
 
-	session_start();
+	session_start();		
+		
+	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+	{
+		$_SESSION['info_logged_user'] = "Jesteś już zalogowany!";
+		header('Location: menu.php');
+		exit();
+	}
 	
+	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
+	if (isset($_SESSION['fr_nick'])) unset($_SESSION['fr_nick']);
+	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
+	if (isset($_SESSION['fr_haslo1'])) unset($_SESSION['fr_haslo1']);
+	if (isset($_SESSION['fr_haslo2'])) unset($_SESSION['fr_haslo2']);
+		
+	//Usuwanie błędów rejestracji
+	if (isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
+	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
+	if (isset($_SESSION['e_haslo'])) unset($_SESSION['e_haslo']);		
 	
-	
+	//Usuwanie błędów l
+	if ((isset($_SESSION['udanarejestracja'])))unset($_SESSION['blad']);	
 ?>
-
 
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -20,20 +37,10 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
-	<link rel="stylesheet" href="css/fontello.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
+	<link rel="stylesheet" href="css/fontello.css" type="text/css">	
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
-	
-	<style>
-		.information
-		{
-			color:blue;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			//background-color: blue;
-			border: 1px solid blue;
-		}
-	</style>
+		
 </head>
 
 <body>	
@@ -43,7 +50,7 @@
 		<div class="container">
 			
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -63,27 +70,31 @@
 				<h2 class="font-weight-bold rounded">Logowanie</h2>
 			</header>
 		
-			<form action="index.php" method="post">			
+			<form action="zaloguj.php" method="post">			
 								
 				<div class="input-group">
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-mail-3"></i></span>
 					</div>
-					<input type="email" class="form-control  rounded-right " placeholder="Email" required>	
+					<input type="email" class="form-control  rounded-right " name="email" placeholder="Email" required>	
 				</div>
 					
 				<div class="input-group">
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-lock"></i></span>
 					</div>
-					<input type="password" class="form-control  rounded-right" placeholder="Hasło" required>
-				</div>			
+					<input type="password" class="form-control  rounded-right" name="haslo" placeholder="Hasło" required>
+				</div>
+				
+				<?php			
+					if(isset($_SESSION['blad']))echo '<div class="error rounded text-center" >'.$_SESSION['blad'].'</div>';	
+					unset($_SESSION['blad']);
+				?>
 				
 				<button  type="submit" class="btn login">"Zaloguj się"</button>
 				
 			</form>	
-			<?php			
-					
+			<?php
 					if (isset($_SESSION['udanarejestracja']))
 					{
 						echo '<div class="information rounded text-center">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</div>';

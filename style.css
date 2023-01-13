@@ -318,10 +318,24 @@ option
 
 /* //////////////////  rejestracja.php /////////////////////// */
 
-php.error
+.error
 {
-	color: red;
+	color:red;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	background-color: #F1F4F9;
+	background-color: pink;
+	border: 1px solid red;
+}
+		
+/* //////////////////  logowanie.php /////////////////////// */
+	
+.information
+{
+	color:blue;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: #D3DDE9;
+	border: 1px solid blue;
+	
+	
 }

@@ -1,6 +1,7 @@
 <?php
 
-	session_start();
+	session_start();	
+	
 	
 	if (isset($_POST['email']))
 	{
@@ -153,20 +154,13 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">	
 		
-	<style>
-		.error
-		{
-			color:red;
-			margin-top: 10px;
-			margin-bottom: 10px;
-			background-color: pink;
-			border: 1px solid red;
-		}
-	</style>
+
+
+
 </head>
 
 <body>	
@@ -176,7 +170,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					

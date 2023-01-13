@@ -1,3 +1,8 @@
+<?php
+//Usuwanie błędów logowania
+	if ((isset($_SESSION['blad'])))unset($_SESSION['blad']);	
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -11,7 +16,7 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
@@ -24,7 +29,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -68,8 +73,8 @@
 					<a href="rejestracja.php" ><button  type="button" class="btn register" style="width: 100%">Rejestracja</button></a>
 				</div>
 				
-				<div class="col-lg-5 col-8 mt-3 mx-auto">					
-					<button  type="submit" class="btn login" style="width: 100%" >Logowanie</button>
+				<div class="col-lg-5 col-8 mt-3 mx-auto">		
+					<a href="logowanie.php" ><button  type="button" class="btn login" style="width: 100%">Logowanie</button></a>
 				</div>
 				
 			</div>

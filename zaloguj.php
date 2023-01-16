@@ -48,8 +48,8 @@
 				if (password_verify($haslo, $wiersz['password']))
 				{
 					$_SESSION['zalogowany'] = true;
-					$_SESSION['id'] = $wiersz['id'];
-					$_SESSION['user'] = $wiersz['username'];				
+					$_SESSION['id_of_logged_user'] = $wiersz['id'];
+					$_SESSION['name_of_logged_user'] = $wiersz['username'];				
 					
 					unset($_SESSION['blad']);
 					$rezultat->free_result();

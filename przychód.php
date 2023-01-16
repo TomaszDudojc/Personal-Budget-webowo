@@ -1,3 +1,42 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: indeks.php');
+		exit();
+	}
+	
+	require_once "connect.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);
+			
+	try 
+	{
+		$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+		if ($polaczenie->connect_errno!=0)
+		{
+			throw new Exception(mysqli_connect_errno());
+		}
+		else
+		{
+			//pobierz kategorie przychodów użytkownika
+			$rezultat = $polaczenie->query("SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+			//$numbers_of_icome_category = $rezultat->num_rows;			
+			$income_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+			
+			$rezultat->free_result();		
+			}
+	}
+	
+	catch(Exception $e)
+			{
+				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+				echo '<br />Informacja developerska: '.$e;
+			
+			}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -11,7 +50,7 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
@@ -48,16 +87,16 @@
 			
 				<ul class="navbar-nav d-inlineblock mx-auto py-0">
 					<li class="nav-item">
-						<a class="nav-link " href="menu.html"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
@@ -81,7 +120,7 @@
 				<h2 class="font-weight-bold rounded">Dopisz przychód</h2>
 			</header>
 		
-			<form action="index.php" method="post">	
+			<form method="post">	
 				
 				<div class="input-group">
 					<div class="input-group-prepend ">
@@ -103,10 +142,21 @@
 					</div>
 					<select class="choice rounded-right" name="category" required>						
 						<option value selected disabled hidden>Wybierz kategorię</option>
-						<option value="a">Wynagrodzenie</option>
-						<option value="b">Odsetki bankowe</option>
-						<option value="c">Sprzedaż na allegro</option>		
-						<option value="d">Inne</option>
+						<?php
+						//print_r($income_category);
+					//for ($i=0; $i<$numbers_of_icome_category; $i++)
+							//foreach ($categories as $category )
+							//foreach ($income_cateogries as $income_category)
+						//foreach ($income_categories as $income_category)
+						foreach ($income_categories as $income_category)
+						{
+						//echo"<option value=$_SESSION[id_of_income_category]>$_SESSION[name_of_income_category]</option>";}
+						echo"<option value=$income_category[d]>$income_category[name]</option>";}
+						//<option value="a">Wynagrodzenie</option>
+						//<option value="b">Odsetki bankowe</option>
+						//<option value="c">Sprzedaż na allegro</option>		
+						//<option value="d">Inne</option>
+						?>
 					</select>
 				</div>	
 

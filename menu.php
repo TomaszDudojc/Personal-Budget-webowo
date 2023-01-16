@@ -93,7 +93,7 @@
 			
 				<div class="col-7  text-center rounded mx-auto mb-5" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">
 					<?php
-					echo "<h3>Witaj ".$_SESSION['user']."!</h3>";
+					echo "<h3>Witaj ".$_SESSION['name_of_logged_user']."!</h3>";
 					echo "<h3>Wybierz opcję z powyższego menu</h3>";					
 					?>			
 				</div>

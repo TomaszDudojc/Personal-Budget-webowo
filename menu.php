@@ -66,7 +66,7 @@
 						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.phpl"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
@@ -89,24 +89,26 @@
 	
 		<div class="container mt-3 mb-5">
 		
-			<div class="row">
-			
-				<div class="col-7  text-center rounded mx-auto mb-5" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">
+			<div class="row">	
+				
 					<?php
-					if(isset($_SESSION['info_welcome']))echo '<h3>'.$_SESSION['info_welcome'].'</h3>';	
-					unset($_SESSION['info_welcome']);	
-					//echo "<h3>Witaj ".$_SESSION['name_of_logged_user']."!</h3>";
-					echo "<h3>Wybierz opcję z powyższego menu</h3>";					
-					?>			
+						if(isset($_SESSION['info_welcome']))echo'<div class="col-7  text-center rounded mx-auto mb-1" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">'.'<h3>'.$_SESSION['info_welcome'].'</h3>'.'</div>';	
+						unset($_SESSION['info_welcome']);										
+					?>	
+				
+				<div class="col-7  text-center rounded mx-auto mb-5" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">				
+					<h3>Wybierz opcję z powyższego menu</h3>	
 				</div>
-				<?php												
-					if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 w-100" >'.$_SESSION['e_registred_user'].'</div>';	
-					unset($_SESSION['e_registred_user']);	
-					if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_logged_user'].'</div>';	
-					unset($_SESSION['info_logged_user']);	
-					if(isset($_SESSION['info_income_added']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_income_added'].'</div>';	
-					unset($_SESSION['info_income_added']);	
-				?>			
+					<?php												
+						if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 w-100" >'.$_SESSION['e_registred_user'].'</div>';	
+						unset($_SESSION['e_registred_user']);	
+						if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_logged_user'].'</div>';	
+						unset($_SESSION['info_logged_user']);	
+						if(isset($_SESSION['info_income_added']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_income_added'].'</div>';	
+						unset($_SESSION['info_income_added']);	
+						if(isset($_SESSION['info_expense_added']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_expense_added'].'</div>';	
+						unset($_SESSION['info_expense_added']);	
+					?>			
 				<div class="w-100"></div>
 				
 				<div class="col-9  mx-auto mt-5">

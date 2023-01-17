@@ -53,7 +53,10 @@
 					
 					unset($_SESSION['blad']);
 					$rezultat->free_result();
+					$_SESSION['info_welcome']="Witaj ".$_SESSION['name_of_logged_user']."!";
 					header('Location: menu.php');
+					//exit();
+					//header('Location: menu.php');
 				}
 				else 
 				{

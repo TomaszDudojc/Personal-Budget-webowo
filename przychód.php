@@ -30,11 +30,51 @@
 	}
 	
 	catch(Exception $e)
-			{
-				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-				echo '<br />Informacja developerska: '.$e;
+	{
+		echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+		echo '<br />Informacja developerska: '.$e;
 			
+	}
+	
+	if (isset($_POST['amount']))
+	{
+		$amount_of_income = $_POST['amount'];
+		$date_of_income = $_POST['date'];
+		$id_of_income_category = $_POST['category'];
+		$comment_of_income = $_POST['comment'];
+		//echo $amount_of_income. "=kwota____";
+		//echo $date_of_income. "=data____";
+		//echo $id_of_income_category. "=id przych____";
+		//echo $comment_of_income. "=komentarz____";
+		//echo $_SESSION['id_of_logged_user']. "=id użytkownika____";
+		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+			
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
 			}
+			else
+			{
+				$polaczenie->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
+								
+				$_SESSION['info_income_added']="Przychód został dodany";
+				header('Location: menu.php');
+				exit();
+			}
+			
+		}
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			echo '<br />Informacja developerska: '.$e;			
+		}
+	}
+		
 ?>
 
 <!DOCTYPE HTML>
@@ -63,7 +103,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -102,7 +142,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 				</ul>
 
@@ -126,14 +166,14 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-gauge"></i></span>
 					</div>
-					<input type="number" class="form-control  rounded-right " step="0.01" placeholder="Kwota" required>	
+					<input type="number" class="form-control  rounded-right " step="0.01" name="amount"placeholder="Kwota" required>	
 				</div>
 					
 				<div class="input-group">
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
 					</div>
-					<input type="date" class="form-control  rounded-right" required>
+					<input type="date" class="form-control  rounded-right" name="date" required>
 				</div>		
 				
 				<div class="input-group">
@@ -142,20 +182,11 @@
 					</div>
 					<select class="choice rounded-right" name="category" required>						
 						<option value selected disabled hidden>Wybierz kategorię</option>
-						<?php
-						//print_r($income_category);
-					//for ($i=0; $i<$numbers_of_icome_category; $i++)
-							//foreach ($categories as $category )
-							//foreach ($income_cateogries as $income_category)
-						//foreach ($income_categories as $income_category)
-						foreach ($income_categories as $income_category)
-						{
-						//echo"<option value=$_SESSION[id_of_income_category]>$_SESSION[name_of_income_category]</option>";}
-						echo"<option value=$income_category[d]>$income_category[name]</option>";}
-						//<option value="a">Wynagrodzenie</option>
-						//<option value="b">Odsetki bankowe</option>
-						//<option value="c">Sprzedaż na allegro</option>		
-						//<option value="d">Inne</option>
+						<?php						
+							foreach ($income_categories as $income_category)
+							{
+								echo"<option value=$income_category[id]>$income_category[name]</option>";
+							}							
 						?>
 					</select>
 				</div>	
@@ -164,10 +195,10 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-pencil"></i></span>
 					</div>
-					<input type="text" class="form-control  rounded-right" placeholder="Komentarz">	
+					<input type="text" class="form-control  rounded-right" name="comment"placeholder="Komentarz">	
 				</div>				
 				
-				<button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button>
+				<a href="menu.php" ><button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button></a>
 				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">"Dodaj"</button>
 									
 			</form>		

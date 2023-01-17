@@ -1,3 +1,85 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: indeks.php');
+		exit();
+	}
+	
+	require_once "connect.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);
+			
+	try 
+	{
+		$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+		if ($polaczenie->connect_errno!=0)
+		{
+			throw new Exception(mysqli_connect_errno());
+		}
+		else
+		{
+			//pobierz kategorie wydatków użytkownika
+			$rezultat = $polaczenie->query("SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+			//$numbers_of_icome_category = $rezultat->num_rows;			
+			$expense_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+			
+			$rezultat->free_result();	
+
+			//pobierz metody płatności użytkownika
+			$rezultat = $polaczenie->query("SELECT * FROM payment_methods_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");				
+			$payment_methods= $rezultat->fetch_all(MYSQLI_ASSOC);
+			
+			$rezultat->free_result();	
+			
+			}
+	}
+	
+	catch(Exception $e)
+	{
+		echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+		echo '<br />Informacja developerska: '.$e;
+			
+	}
+	
+	if (isset($_POST['amount']))
+	{
+		$amount_of_expense = $_POST['amount'];
+		$date_of_expense = $_POST['date'];
+		$id_of_expense_category = $_POST['category'];
+		$id_of_payment_method = $_POST['method'];
+		$comment_of_expense = $_POST['comment'];		
+		
+		require_once "connect.php";
+		mysqli_report(MYSQLI_REPORT_STRICT);
+			
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			else
+			{
+				$polaczenie->query("INSERT INTO expenses VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_expense_category', '$id_of_payment_method', '$amount_of_expense', '$date_of_expense', '$comment_of_expense' )" );			
+								
+				$_SESSION['info_expense_added']="Wydatek został dodany";
+				header('Location: menu.php');
+				exit();
+			}
+			
+		}
+		catch(Exception $e)
+		{
+			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			echo '<br />Informacja developerska: '.$e;			
+		}
+	}
+		
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -11,7 +93,7 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
@@ -24,7 +106,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -48,16 +130,16 @@
 			
 				<ul class="navbar-nav d-inlineblock mx-auto py-0">
 					<li class="nav-item">
-						<a class="nav-link " href="menu.html"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item  active">
-						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
@@ -81,31 +163,34 @@
 				<h2 class="font-weight-bold rounded">Dopisz wydatek</h2>
 			</header>
 		
-			<form action="index.php" method="post">	
+			<form method="post">	
 				
 				<div class="input-group">
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-gauge"></i></span>
-					</div>
-					<input type="number" class="form-control  rounded-right " step="0.01" placeholder="Kwota" required>	
+					</div>			
+					<input type="number" class="form-control  rounded-right " step="0.01" name="amount" placeholder="Kwota" required>	
 				</div>
 					
 				<div class="input-group">
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
 					</div>
-					<input type="date" class="form-control  rounded-right" required>
+					<input type="date" class="form-control  rounded-right" name="date" required>
 				</div>				
 				
 				<div class="input-group">
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-cc-visa"></i></span>
 					</div>
-					<select class="choice rounded-right" name="payment" required>
+					<select class="choice rounded-right" name="method" required>
 						<option value selected disabled hidden>Wybierz sposób płatności</option>
-						<option value="g">Gotówka</option>
-						<option value="d">Karta debetowa</option>
-						<option value="k">Karta kredytowa</option>
+						<?php						
+							foreach ($payment_methods as $payment_method)
+							{
+								echo"<option value=$payment_method[id]>$payment_method[name]</option>";
+							}						
+						?>
 					</select>
 				</div>	
 
@@ -115,23 +200,12 @@
 					</div>
 					<select class="choice rounded-right" name="category" required>						
 						<option value selected disabled hidden>Wybierz kategorię</option>
-						<option value="1">Jedzenie</option>
-						<option value="2">Mieszkanie</option>
-						<option value="3">Transport</option>		
-						<option value="4">Telekomunikacja</option>		
-						<option value="5">Opieka zdrowotna</option>		
-						<option value="6">Ubranie</option>		
-						<option value="7">Higiena</option>		
-						<option value="8">Dzieci</option>		
-						<option value="9"> Rozrywka</option>		
-						<option value="10">Wycieczka</option>		
-						<option value="11">Szkolenia</option>		
-						<option value="12">Książki</option>		
-						<option value="13">Oszczędności</option>		
-						<option value="14">Na złotą jesień, czyli emeryturę</option>		
-						<option value="15">Spłata długów</option>		
-						<option value="16">Darowizna</option>		
-						<option value="17">Inne wydatki</option>				
+						<?php						
+							foreach ($expense_categories as $expense_category)
+							{
+								echo"<option value=$expense_category[id]>$expense_category[name]</option>";
+							}									
+						?>						
 					</select>
 				</div>	
 
@@ -139,10 +213,10 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-pencil"></i></span>
 					</div>
-					<input type="text" class="form-control  rounded-right" placeholder="Komentarz">	
+					<input type="text" class="form-control  rounded-right" name="comment" placeholder="Komentarz">	
 				</div>				
 				
-				<button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button>
+				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button></a>
 				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">"Dodaj"</button>
 									
 			</form>		

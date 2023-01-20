@@ -7,8 +7,8 @@
 		header('Location: indeks.php');
 		exit();
 	}	
-		
-	$current_month = date('Y-m');
+	
+	$previous_month=date("Y-m",strtotime("-1 month",time()));	
 	
 	require_once "connect.php";
 	mysqli_report(MYSQLI_REPORT_STRICT);
@@ -23,7 +23,7 @@
 			
 			else
 			{	//INCOMES			
-				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$current_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
+				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$previous_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
 				
 				$amount_of_incomes = $rezultat->num_rows;				
 				
@@ -31,18 +31,18 @@
 								
 				$rezultat->free_result();				
 				
-				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$current_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
+				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$previous_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
 				
 				$incomes= $rezultat->fetch_all(MYSQLI_ASSOC);				
 				$rezultat->free_result();					
 					
-				$rezultat=($polaczenie->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE '$current_month-%' "));		
+				$rezultat=($polaczenie->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE '$previous_month-%' "));		
 								
 				$wiersz = $rezultat->fetch_assoc();				
 				$_SESSION['amount_of_all_incomes'] = $wiersz['AmountOfAllIncomes'];
 				$rezultat->free_result();
 				//EXPENSES
-				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$current_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
+				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$previous_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
 				
 				$amount_of_expenses = $rezultat->num_rows;
 				
@@ -50,12 +50,12 @@
 								
 				$rezultat->free_result();				
 				
-				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$current_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
+				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$previous_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
 				
 				$expenses= $rezultat->fetch_all(MYSQLI_ASSOC);				
 				$rezultat->free_result();					
 					
-				$rezultat=($polaczenie->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE '$current_month-%' "));		
+				$rezultat=($polaczenie->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE '$previous_month-%' "));		
 								
 				$wiersz = $rezultat->fetch_assoc();				
 				$_SESSION['amount_of_all_expenses'] = $wiersz['AmountOfAllExpenses'];
@@ -209,7 +209,7 @@
 	
 		<div class="row">	
 			
-				<h2 class="font-weight-bold rounded mx-auto px-5">Bieżący miesiąc</h2>			
+				<h2 class="font-weight-bold rounded mx-auto px-5">Poprzedni miesiąc</h2>			
 						
 			<div class="w-100"></div>		
 											

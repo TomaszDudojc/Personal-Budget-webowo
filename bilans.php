@@ -1,3 +1,88 @@
+<?php
+
+	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: indeks.php');
+		exit();
+	}
+	
+	/*wyznaczanie poprzedniego miesiąca
+	$date = new DateTime();
+	$date->modify('-1 month');*/
+
+
+	
+	$current_month = date('Y-m');
+	//$previous_month =strtotime(date ('m -1 month'));
+	require_once "connect.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);
+			
+		try 
+		{
+			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			if ($polaczenie->connect_errno!=0)
+			{
+				throw new Exception(mysqli_connect_errno());
+			}
+			
+			else
+			{	//INCOMES			
+				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$current_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
+				
+				$amount_of_incomes = $rezultat->num_rows;				
+				
+				$categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+								
+				$rezultat->free_result();				
+				
+				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$current_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
+				
+				$incomes= $rezultat->fetch_all(MYSQLI_ASSOC);				
+				$rezultat->free_result();					
+					
+				$rezultat=($polaczenie->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE '$current_month-%' "));		
+								
+				$wiersz = $rezultat->fetch_assoc();				
+				$_SESSION['amount_of_all_incomes'] = $wiersz['AmountOfAllIncomes'];
+				$rezultat->free_result();
+				//EXPENSES
+				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$current_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
+				
+				$amount_of_expenses = $rezultat->num_rows;
+				
+				$categories_of_expense= $rezultat->fetch_all(MYSQLI_ASSOC);
+								
+				$rezultat->free_result();				
+				
+				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$current_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
+				
+				$expenses= $rezultat->fetch_all(MYSQLI_ASSOC);				
+				$rezultat->free_result();					
+					
+				$rezultat=($polaczenie->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE '$current_month-%' "));		
+								
+				$wiersz = $rezultat->fetch_assoc();				
+				$_SESSION['amount_of_all_expenses'] = $wiersz['AmountOfAllExpenses'];
+				$rezultat->free_result();	
+				
+				$_SESSION['ballance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
+				
+				
+				$polaczenie->close();
+			}
+		}
+		
+		catch(Exception $e)
+			{
+				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+				echo '<br />Informacja developerska: '.$e;			
+			}
+		
+	
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -11,7 +96,7 @@
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
+	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
 	<link href="https://fonts.googleapis.com/css2?family=Lato&family=swap" rel="stylesheet">
 	
@@ -24,7 +109,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.html"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -49,23 +134,24 @@
 				<ul class="navbar-nav mx-auto py-0">
 				
 					<li class="nav-item">
-						<a class="nav-link" href="menu.html"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link" href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="przychód.html"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.html"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="bilans.html"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>					
 					<li class="nav-item ">
+
 					<ul class="navbar-nav py-0 px-3 active">				
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
 							<div class="dropdown-menu" aria-labelledby="submenu">						
-								<a class="dropdown-item" href="#">Bieżący miesiąc</a>
+								<a class="dropdown-item active" href="#">Bieżący miesiąc</a>
 								<a class="dropdown-item" href="#">Poprzedni miesiąc</a>
 								<a class="dropdown-item" href="#">Bieżący rok</a>
 								<div class="dropdown-divider"></div>
@@ -78,7 +164,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 					
 				</ul>		
@@ -134,23 +220,71 @@
 			<div class="w-100"></div>		
 											
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="border-bottom: 2px solid #060B95">Przychody</h3>
-					<h5 class="bg-white rounded">przychody z wybranego okresu......</h5>	
+					<h3 style="border-bottom: 2px solid #060B95">Przychody<i class="icon-money ml-5"></i><?php	echo $_SESSION['amount_of_all_incomes'];?></h3>
+					<?php						
+						if  ($amount_of_incomes == 0)
+						{								
+								echo '<div class="information rounded text-center mx-auto p-2 w-100" >Brak przychdów w wybranym okresie</div>';	
+							}						
+							
+						else
+							{
+								foreach ($categories as $category)
+								{							
+									//echo"<h5 class=bg-white>$category[income_category_assigned_to_user_id]"."||"."$category[name]"."||"."$category[username]"."||"."$category[AmountOfIncomes]</h5>";
+									echo"<h5 class=bg-white>$category[name]"."<i class=icon-money mr-5></i>"."$category[AmountOfIncomes]</h5>";							
+									
+									foreach ($incomes as $income)
+									{								
+										if ($category['income_category_assigned_to_user_id']==$income['income_category_assigned_to_user_id'])
+										echo"<h6 class=bg-white rounded><i class=icon-money mr-1></i>$income[date_of_income]"."&#8680"."$income[income_comment]"."&#8680;"."$income[amount]</h6>";
+									}
+								}						
+								
+							}
+						
+					
+					?>
+					
 				</div>
 					
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="border-bottom: 2px solid #060B95">Wydatki</h3>	
-					<h5 class="bg-white rounded">wydatki z wybranego okresu......</h5>
-					<h5 class="bg-white rounded">wydatki z wybranego okresu......</h5>
+					<h3 style="border-bottom: 2px solid #060B95">Wydatki<i class="icon-basket ml-5"></i><?php	echo $_SESSION['amount_of_all_expenses'];?></h3>
+					<?php						
+						if  ($amount_of_expenses == 0)
+						{								
+								echo '<div class="information rounded text-center mx-auto p-2 w-100" >Brak wydatków w wybranym okresie</div>';	
+							}
+						
+						else 
+						{	
+							foreach ($categories_of_expense as $category_of_expense)
+							{							
+								//echo"<h5 class=bg-white>$categoryof_expense[expense_category_assigned_to_user_id]"."||"."$categoryof_expense[name]"."||"."$categoryof_expense[username]"."||"."$categoryof_expense[AmountOfExpenses]</h5>";
+								echo"<h5 class=bg-white>$category_of_expense[name]"."<i class=icon-basket mr-1></i>"."$category_of_expense[AmountOfExpenses]</h5>";
+														
+								foreach ($expenses as $expense)
+								{								
+									if ($category_of_expense['expense_category_assigned_to_user_id']==$expense['expense_category_assigned_to_user_id'])
+									echo"<h6 class=bg-white rounded><i class=icon-basket mr-1></i>$expense[date_of_expense]"."&#8680"."$expense[expense_comment]"."&#8680;"."$expense[amount]</h6>";
+								}
+							}
+						}
+					?>
+					
 				</div>
 
 			<div class="w-100"></div>	
 			
 			<div class="table col-10 col-md-6 mx-auto rounded mt-2 mb-0">
-					<h3 style="border-bottom: 2px solid #060B95">Bilans</h3>
-					<h4 class="font-weight-bold bg-white rounded">0 pln</h4>
-					<h3 class="text-success bg-white rounded">Gratulacje. Świetnie zarządzasz finansami!</h3>
-					<h3 class="text-danger bg-white rounded">Uważaj, wpadasz w długi!</h3>
+					<h3 style="border-bottom: 2px solid #060B95">Bilans</h3>					
+					<h4 class="font-weight-bold bg-white rounded"><?php echo $_SESSION['ballance'] ;?></h4>
+					<?php
+					if ($_SESSION['ballance']<0)					
+					echo"<h3 class=text-danger bg-white rounded>Uważaj, wpadasz w długi!</h3>";
+					else
+					echo "<h3 class=text-success bg-white rounded>Gratulacje. Świetnie zarządzasz finansami!</h3>";
+					?>
 			</div>
 			
 			<div class="w-100"></div>

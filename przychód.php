@@ -173,7 +173,7 @@
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
 					</div>
-					<input type="date" class="form-control  rounded-right" name="date" required>
+					<input type="date" class="form-control  rounded-right" name="date" value="<?php echo date('Y-m-d')?>" required>
 				</div>		
 				
 				<div class="input-group">

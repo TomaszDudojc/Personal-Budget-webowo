@@ -62,7 +62,7 @@
 				$rezultat->free_result();	
 				
 				$_SESSION['ballance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
-				
+				$_SESSION['ballance'] = number_format($_SESSION['ballance'] , 2, '.', '');				
 				
 				$polaczenie->close();
 			}
@@ -137,19 +137,19 @@
 						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" style="color: #060B95;" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>					
 					<li class="nav-item ">
 
 					<ul class="navbar-nav py-0 px-3 active">				
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
-							<div class="dropdown-menu" aria-labelledby="submenu">						
-								<a class="dropdown-item active" href="#">Bieżący miesiąc</a>
-								<a class="dropdown-item" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
-								<a class="dropdown-item" href="#">Bieżący rok</a>
+							<a class="nav-link dropdown-toggle" style="color: #060B95;" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
+							<div class="dropdown-menu" aria-labelledby="submenu" style="background-color: #E2FDFA; border: 1px solid #a5cda5;">						
+								<a class="dropdown-item active" style="color: #060B95;" href="bilans.php">Bieżący miesiąc</a>
+								<a class="dropdown-item" style="color: #060B95;" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
+								<a class="dropdown-item" style="color:#060B95;" href="#">Bieżący rok</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
+								<a class="dropdown-item" style="color: #060B95;" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
 							</div>
 						</li>					
 					</ul>
@@ -158,7 +158,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 					
 				</ul>		
@@ -214,7 +214,7 @@
 			<div class="w-100"></div>		
 											
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="border-bottom: 2px solid #060B95">Przychody<i class="icon-money ml-5"></i><?php	echo $_SESSION['amount_of_all_incomes'];?></h3>
+					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Przychody<i class="icon-money ml-5"></i><?php	echo $_SESSION['amount_of_all_incomes'];?></h3>
 					<?php						
 						if  ($amount_of_incomes == 0)
 						{								
@@ -227,12 +227,12 @@
 								{							
 									//echo"<h5 class=bg-white>$category[income_category_assigned_to_user_id]"."||"."$category[name]"."||"."$category[username]"."||"."$category[AmountOfIncomes]</h5>";
 								
-									echo'<h5 class="bg-white rounded">'."$category[name]".'<i class="icon-money ml-3"></i>'."$category[AmountOfIncomes]</h5>";							
+									echo'<h5 class="rounded bg-white my-2" style="color: #060B95;">'."$category[name]".'<i class="icon-money ml-3"></i>'."$category[AmountOfIncomes]</h5>";							
 								
 									foreach ($incomes as $income)
 									{								
 										if ($category['income_category_assigned_to_user_id']==$income['income_category_assigned_to_user_id'])
-										echo'<h6 class="bg-white rounded">'.'<i class="icon-money">'."</i>$income[date_of_income]".'<span class="m-2">&#8680</span>'."$income[income_comment]".'<span class="m-2">&#8680;</span>'."$income[amount]</h6>";
+										echo'<h6 class="bg-white rounded">'.'<i class="icon-money">'."</i>$income[date_of_income]".'<span class="mx-2">&#8680</span>'."$income[income_comment]".'<span class="mx-2">&#8680;</span>'."$income[amount]</h6>";
 									}
 								}						
 								
@@ -244,7 +244,7 @@
 				</div>
 					
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="border-bottom: 2px solid #060B95">Wydatki<i class="icon-basket ml-5"></i><?php	echo $_SESSION['amount_of_all_expenses'];?></h3>
+					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Wydatki<i class="icon-basket ml-5"></i><?php	echo $_SESSION['amount_of_all_expenses'];?></h3>
 					<?php						
 						if  ($amount_of_expenses == 0)
 						{								
@@ -256,7 +256,7 @@
 							foreach ($categories_of_expense as $category_of_expense)
 							{							
 								//echo"<h5 class=bg-white>$categoryof_expense[expense_category_assigned_to_user_id]"."||"."$categoryof_expense[name]"."||"."$categoryof_expense[username]"."||"."$categoryof_expense[AmountOfExpenses]</h5>";
-								echo'<h5 class="bg-white rounded">'."$category_of_expense[name]".'<i class="icon-basket ml-3"></i>'."$category_of_expense[AmountOfExpenses]</h5>";
+								echo'<h5 class="rounded bg-white my-2" style="color: #060B95;">'."$category_of_expense[name]".'<i class="icon-basket ml-3"></i>'."$category_of_expense[AmountOfExpenses]</h5>";
 														
 								foreach ($expenses as $expense)
 								{								
@@ -272,15 +272,15 @@
 			<div class="w-100"></div>	
 			
 			<div class="table col-10 col-md-6 mx-auto rounded mt-2 mb-0">
-					<h3 style="border-bottom: 2px solid #060B95">Bilans</h3>					
-					<h4 class="font-weight-bold bg-white rounded"><?php echo $_SESSION['ballance'] ;?></h4>
+					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Bilans<i class="icon-chart-bar ml-5 mr-1"></i><?php echo $_SESSION['ballance'] ;?></h3>					
+					<h4 class="font-weight-bold bg-white rounded" style="color: #060B95;"></h4>
 					<?php
 						if ($_SESSION['ballance']!=0)
 						{
 							if ($_SESSION['ballance']<0)					
-						echo"<h3 class=text-danger bg-white rounded>Uważaj, wpadasz w długi!</h3>";
+						echo'<h4 class="text-danger bg-white rounded">&#128201; Uważaj, wpadasz w długi!</h4>';
 						else
-						echo "<h3 class=text-success bg-white rounded>Gratulacje. Świetnie zarządzasz finansami!</h3>";
+						echo '<h4 class="text-success bg-white rounded">&#128200; Gratulacje. Świetnie zarządzasz finansami!</h4>';
 						}					
 					?>
 			</div>

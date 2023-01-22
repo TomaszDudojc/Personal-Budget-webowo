@@ -60,7 +60,7 @@
 				
 				<ul class="navbar-nav mx-auto py-0">
 					<li class="nav-item active">
-						<a class="nav-link " href="indeks.php"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link" style="color: #060B95;" href="indeks.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
@@ -75,7 +75,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 				</ul>
 
@@ -100,13 +100,13 @@
 					<h3>Wybierz opcję z powyższego menu</h3>	
 				</div>
 					<?php												
-						if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 w-100" >'.$_SESSION['e_registred_user'].'</div>';	
+						if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 col-7" >'.$_SESSION['e_registred_user'].'</div>';	
 						unset($_SESSION['e_registred_user']);	
-						if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_logged_user'].'</div>';	
+						if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_logged_user'].'</div>';	
 						unset($_SESSION['info_logged_user']);	
-						if(isset($_SESSION['info_income_added']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_income_added'].'</div>';	
+						if(isset($_SESSION['info_income_added']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_income_added'].'</div>';	
 						unset($_SESSION['info_income_added']);	
-						if(isset($_SESSION['info_expense_added']))echo '<div class="information rounded text-center mx-auto p-2 w-100" >'.$_SESSION['info_expense_added'].'</div>';	
+						if(isset($_SESSION['info_expense_added']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_expense_added'].'</div>';	
 						unset($_SESSION['info_expense_added']);	
 					?>			
 				<div class="w-100"></div>

@@ -130,7 +130,7 @@
 						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" style="color: #060B95;" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
@@ -142,7 +142,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 				</ul>
 

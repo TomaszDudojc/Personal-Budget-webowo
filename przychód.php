@@ -198,8 +198,8 @@
 					<input type="text" class="form-control  rounded-right" name="comment" placeholder="Komentarz">	
 				</div>				
 				
-				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button></a>
-				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">"Dodaj"</button>
+				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">Anuluj</button></a>
+				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">Dodaj</button>
 									
 			</form>		
 			

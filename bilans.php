@@ -147,7 +147,7 @@
 							<div class="dropdown-menu" aria-labelledby="submenu" style="background-color: #E2FDFA; border: 1px solid #a5cda5;">						
 								<a class="dropdown-item active" style="color: #060B95;" href="bilans.php">Bieżący miesiąc</a>
 								<a class="dropdown-item" style="color: #060B95;" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
-								<a class="dropdown-item" style="color:#060B95;" href="#">Bieżący rok</a>
+								<a class="dropdown-item" style="color:#060B95;" href="ballanceOfCurrentYear.php">Bieżący rok</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" style="color: #060B95;" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
 							</div>

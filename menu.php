@@ -108,6 +108,8 @@
 						unset($_SESSION['info_income_added']);	
 						if(isset($_SESSION['info_expense_added']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_expense_added'].'</div>';	
 						unset($_SESSION['info_expense_added']);	
+						if(isset($_SESSION['uncorret_date_range']))echo '<div class="error rounded text-center m-auto p-2 col-7" >'.$_SESSION['uncorret_date_range'].'</div>';	
+						unset($_SESSION['uncorret_date_range']);	
 					?>			
 				<div class="w-100"></div>
 				

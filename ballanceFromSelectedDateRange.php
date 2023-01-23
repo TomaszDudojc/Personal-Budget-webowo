@@ -7,73 +7,86 @@
 		header('Location: indeks.php');
 		exit();
 	}	
-	
-	$previous_month=date("Y-m",strtotime("-1 month",time()));	
-	
-	require_once "connect.php";
-	mysqli_report(MYSQLI_REPORT_STRICT);
-			
-		try 
-		{
-			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
+		
+	if (isset($_POST['starting_date']))
+	{
+		$_SESSION['starting_date'] = $_POST['starting_date'];
+		$_SESSION['end_date'] = $_POST['end_date'];
+		
+		if  ($_SESSION['starting_date']>$_SESSION['end_date'])
 			{
-				throw new Exception(mysqli_connect_errno());
+				$_SESSION['uncorret_date_range'] = 'Nieprawidłowy zakres dat: '.$_SESSION['starting_date'].' &#8655; '. $_SESSION['end_date'];
+				header('Location: menu.php');				
+				exit();
+			}
+		else
+		{			
+			require_once "connect.php";
+			mysqli_report(MYSQLI_REPORT_STRICT);
+				
+			try 
+			{
+				$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+				if ($polaczenie->connect_errno!=0)
+				{
+					throw new Exception(mysqli_connect_errno());
+				}
+				
+				else
+				{	//INCOMES			
+					$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
+					
+					$amount_of_incomes = $rezultat->num_rows;				
+					
+					$categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+									
+					$rezultat->free_result();				
+					
+					$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
+					
+					$incomes= $rezultat->fetch_all(MYSQLI_ASSOC);				
+					$rezultat->free_result();					
+						
+					$rezultat=($polaczenie->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' "));		
+									
+					$wiersz = $rezultat->fetch_assoc();				
+					$_SESSION['amount_of_all_incomes'] = $wiersz['AmountOfAllIncomes'];
+					$rezultat->free_result();
+					//EXPENSES
+					$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
+					
+					$amount_of_expenses = $rezultat->num_rows;
+					
+					$categories_of_expense= $rezultat->fetch_all(MYSQLI_ASSOC);
+									
+					$rezultat->free_result();				
+					
+					$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
+					
+					$expenses= $rezultat->fetch_all(MYSQLI_ASSOC);				
+					$rezultat->free_result();					
+						
+					$rezultat=($polaczenie->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]'"));		
+									
+					$wiersz = $rezultat->fetch_assoc();				
+					$_SESSION['amount_of_all_expenses'] = $wiersz['AmountOfAllExpenses'];
+					$rezultat->free_result();	
+					
+					$_SESSION['ballance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
+					$_SESSION['ballance'] = number_format($_SESSION['ballance'] , 2, '.', '');				
+					
+					$polaczenie->close();
+				}
 			}
 			
-			else
-			{	//INCOMES			
-				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$previous_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
-				
-				$amount_of_incomes = $rezultat->num_rows;				
-				
-				$categories= $rezultat->fetch_all(MYSQLI_ASSOC);
-								
-				$rezultat->free_result();				
-				
-				$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE'$previous_month-%'  AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
-				
-				$incomes= $rezultat->fetch_all(MYSQLI_ASSOC);				
-				$rezultat->free_result();					
-					
-				$rezultat=($polaczenie->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income LIKE '$previous_month-%' "));		
-								
-				$wiersz = $rezultat->fetch_assoc();				
-				$_SESSION['amount_of_all_incomes'] = $wiersz['AmountOfAllIncomes'];
-				$rezultat->free_result();
-				//EXPENSES
-				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$previous_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
-				
-				$amount_of_expenses = $rezultat->num_rows;
-				
-				$categories_of_expense= $rezultat->fetch_all(MYSQLI_ASSOC);
-								
-				$rezultat->free_result();				
-				
-				$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE'$previous_month-%'  AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
-				
-				$expenses= $rezultat->fetch_all(MYSQLI_ASSOC);				
-				$rezultat->free_result();					
-					
-				$rezultat=($polaczenie->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense LIKE '$previous_month-%' "));		
-								
-				$wiersz = $rezultat->fetch_assoc();				
-				$_SESSION['amount_of_all_expenses'] = $wiersz['AmountOfAllExpenses'];
-				$rezultat->free_result();	
-				
-				$_SESSION['ballance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
-				$_SESSION['ballance'] = number_format($_SESSION['ballance'] , 2, '.', '');	
-				
-				$polaczenie->close();
-			}
+			catch(Exception $e)
+				{
+					echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+					echo '<br />Informacja developerska: '.$e;			
+				}		
 		}
 		
-		catch(Exception $e)
-			{
-				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-				echo '<br />Informacja developerska: '.$e;			
-			}
-		
+	}	
 	
 ?>
 
@@ -146,10 +159,10 @@
 							<a class="nav-link dropdown-toggle" style="color: #060B95;" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
 							<div class="dropdown-menu" aria-labelledby="submenu" style="background-color: #E2FDFA; border: 1px solid #a5cda5;">						
 								<a class="dropdown-item" style="color: #060B95;" href="bilans.php">Bieżący miesiąc</a>
-								<a class="dropdown-item active" style="color: #060B95;" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
+								<a class="dropdown-item" style="color: #060B95;" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
 								<a class="dropdown-item" style="color:#060B95;" href="ballanceOfCurrentYear.php">Bieżący rok</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" style="color: #060B95;" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
+								<a class="dropdown-item active" style="color: #060B95;" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
 							</div>
 						</li>					
 					</ul>
@@ -163,7 +176,7 @@
 					
 				</ul>		
 				
-			</div>			
+			</div>	
 			
 			<div class="modal" id="dateRange" style="display: none">
 			  <div class="modal-dialog">
@@ -176,26 +189,25 @@
 						  </div>
 				  
 						  <div class="modal-body">
-							<form action="ballanceFromSelectedDateRange.php" method="post">
+							<form method="post">
 								<div class="input-group">
 									<div class="input-group-prepend">				
 										<span class="input-group-text  rounded-left icon my-0"><i class="icon-calendar"></i></span>
 									</div>						
-									<input type="date" class="form-control  rounded-right my-0 mr-2" name="starting_date" required>
+									<input type="date" class="form-control  rounded-right my-0 mr-2" name="starting date" required>
 									
 									<div class="input-group-prepend">				
 										<span class="input-group-text  rounded-left icon  my-0 ml-2"><i class="icon-calendar"></i></span>
 									</div>
-									<input type="date" class="form-control  rounded-right my-0" name="end_date" required>
+									<input type="date" class="form-control  rounded-right my-0" name="end date" required>
 								</div>
-								
 								<div class="modal-footer">
 									<button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
 									<button type="submit" class="btn btn-success">Zapisz</button>
-								</div>														
+								</div>						
 							</form>					
-						</div>				
-								
+						</div>			
+						
 					</div> 		
 				</div>
 			</div>
@@ -210,8 +222,8 @@
 	
 		<div class="row">	
 			
-				<h2 class="font-weight-bold rounded mx-auto px-5">Poprzedni miesiąc</h2>			
-						
+			<h2 class="font-weight-bold rounded mx-auto px-5"><?php	echo $_SESSION['starting_date'].' &#8680; '. $_SESSION['end_date'];?></h2>	
+				
 			<div class="w-100"></div>		
 											
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		

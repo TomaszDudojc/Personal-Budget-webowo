@@ -167,7 +167,7 @@
 			
 			<div class="modal" id="dateRange" style="display: none">
 			  <div class="modal-dialog">
-				<div class="modal-content table rounded">
+				<div class="modal-content table rounded" style="background-color: #E2FDFA;">
 						  <div class="modal-header">
 							<h3 class="modal-title">Wybierz zakres dat</h3>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,25 +176,26 @@
 						  </div>
 				  
 						  <div class="modal-body">
-							<form action="index.php" method="post">
+							<form action="ballanceFromSelectedDateRange.php" method="post">
 								<div class="input-group">
 									<div class="input-group-prepend">				
 										<span class="input-group-text  rounded-left icon my-0"><i class="icon-calendar"></i></span>
 									</div>						
-									<input type="date" class="form-control  rounded-right my-0 mr-2" required>
+									<input type="date" class="form-control  rounded-right my-0 mr-2" name="starting_date" required>
 									
 									<div class="input-group-prepend">				
 										<span class="input-group-text  rounded-left icon  my-0 ml-2"><i class="icon-calendar"></i></span>
 									</div>
-									<input type="date" class="form-control  rounded-right my-0" required>
+									<input type="date" class="form-control  rounded-right my-0" name="end_date" required>
 								</div>
+								
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
+									<button type="submit" class="btn btn-success">Zapisz</button>
+								</div>														
 							</form>					
-						</div>
-				
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
-							<button type="button" class="btn btn-success">Zapisz</button>
-						 </div>						
+						</div>				
+								
 					</div> 		
 				</div>
 			</div>

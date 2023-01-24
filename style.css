@@ -295,7 +295,7 @@ input:focus:-ms-input-placeholder
  
  h3
 {	
-	color: #060B95;	
+	color: #060B95;		
 }
 
 /* //////////////////  WYDATEK /////////////////////// */
@@ -309,9 +309,10 @@ option
 
 .table
 {		
-	border: 1px solid #c2cce8;
+	/*border: 1px solid #c2cce8;*/
 	/*background-color: #F1F4F9;*/
-	background-color: #D3DDE9;
+	/*background-color: #D3DDE9;*/
+	background-color: none;
 	position: relative;
 	z-index: 100;	
 }

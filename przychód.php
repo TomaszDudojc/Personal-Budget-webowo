@@ -130,7 +130,7 @@
 						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" style="color: #060B95;" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
@@ -142,7 +142,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 				</ul>
 
@@ -173,7 +173,7 @@
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
 					</div>
-					<input type="date" class="form-control  rounded-right" name="date" required>
+					<input type="date" class="form-control  rounded-right" name="date" value="<?php echo date('Y-m-d')?>" required>
 				</div>		
 				
 				<div class="input-group">
@@ -198,8 +198,8 @@
 					<input type="text" class="form-control  rounded-right" name="comment" placeholder="Komentarz">	
 				</div>				
 				
-				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">"Anuluj"</button></a>
-				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">"Dodaj"</button>
+				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">Anuluj</button></a>
+				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">Dodaj</button>
 									
 			</form>		
 			

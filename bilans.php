@@ -89,6 +89,47 @@
 	<meta name="description" content="Aplikacja ułatwiająca zarządzanie własnymi finansami">
 	<meta name="keywords" content="budżet osobisty, budżet domowy, zarządzanie swoimi finansami, oszczedzanie">
 	
+	<script>
+		window.onload = function () {
+
+		var chart = new CanvasJS.Chart("chartContainer", {
+			exportEnabled: true,
+			animationEnabled: true,
+			title:{
+				text: "Twoje wydatki"
+			},
+			legend:{
+				cursor: "pointer",
+				itemclick: explodePie
+			},
+			data: [{
+				type: "pie",
+				showInLegend: true,
+				toolTipContent: "{name}: <strong>{y}%</strong>",
+				indexLabel: "{name} - {y}PLN",
+				dataPoints: [
+				<?php
+					foreach ($categories_of_expense as $category_of_expense)
+					{	
+						echo "{"."y: ".$category_of_expense['AmountOfExpenses'].", "."name: ".'"'.$category_of_expense['name'].'"'.", exploded: true"."}".",";
+					}
+				?>			
+				]
+			}]
+		});
+		chart.render();
+		}
+
+		function explodePie (e) {
+			if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+				e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+			} else {
+				e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+			}
+			e.chart.render();
+	}
+</script>		
+	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css?v=<?php echo time(); ?>" type="text/css">
 	<link rel="stylesheet" href="css/fontello.css" type="text/css">
@@ -206,7 +247,7 @@
 	
 	<main>
 	
-	<div class="container my-3 text-center">
+	<div class="container my-3 text-center pb-5">
 	
 		<div class="row">	
 			
@@ -283,22 +324,21 @@
 						else
 						echo '<h4 class="text-success bg-white rounded">&#128200; Gratulacje. Świetnie zarządzasz finansami!</h4>';
 						}					
-					?>
-			</div>
+					?>					
+			</div>	
 			
-			<div class="w-100"></div>
-			
-			<div class="table col-10 col-md-6 mx-auto rounded mt-2 mb-5">						
-					<h3 style="border-bottom: 2px solid #060B95">Wykres kołowy</h3>
-					<div class="rounded bg-white my-2 mx-1 p-2">
-					<div class="rounded-circle bg-primary mx-auto" style="height: 250px; width: 250px;"></div>
-					</div>
-			</div>
+			<?php
+				if  ($_SESSION['amount_of_all_expenses']!=0)				
+				echo '<div id="chartContainer" style="height: 450px; width: 90%; margin-left: auto; margin-right: auto;"></div>';
+			?>
 				
+			<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>			
+			
 		</div>
 	
 	</div>
 	
+				
 	</main>
 		
 	<footer>
@@ -309,6 +349,8 @@
 		
 	</footer>
 	
+	
+		
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

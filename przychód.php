@@ -166,7 +166,7 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-gauge"></i></span>
 					</div>
-					<input type="number" class="form-control  rounded-right " step="0.01" name="amount"placeholder="Kwota" required>	
+					<input type="number" class="form-control  rounded-right " step="0.01" min="0.01" name="amount"placeholder="Kwota" required>	
 				</div>
 					
 				<div class="input-group">

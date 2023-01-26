@@ -23,6 +23,7 @@ body
 	padding: 5px;
 	font-weight: bold;
 	color: #060B95;	
+	white-space: pre-wrap;
 }
 
 p

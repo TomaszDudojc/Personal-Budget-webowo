@@ -96,7 +96,7 @@
 			exportEnabled: true,
 			animationEnabled: true,
 			title:{
-				text: "Twoje wydatki"
+				text: "Struktura wydatków"
 			},
 			legend:{
 				cursor: "pointer",
@@ -105,8 +105,8 @@
 			data: [{
 				type: "pie",
 				showInLegend: true,
-				toolTipContent: "{name}: <strong>{y}%</strong>",
-				indexLabel: "{name} - {y}PLN",
+				toolTipContent: "{name}: <strong>{y} PLN</strong>",
+				indexLabel: "{name} - {y} PLN",
 				dataPoints: [
 				<?php
 					foreach ($categories_of_expense as $category_of_expense)

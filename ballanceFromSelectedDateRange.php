@@ -109,7 +109,7 @@
 			exportEnabled: true,
 			animationEnabled: true,
 			title:{
-				text: "Twoje wydatki"
+				text: "Struktura wydatków"
 			},
 			legend:{
 				cursor: "pointer",
@@ -118,8 +118,8 @@
 			data: [{
 				type: "pie",
 				showInLegend: true,
-				toolTipContent: "{name}: <strong>{y}%</strong>",
-				indexLabel: "{name} - {y}PLN",
+				toolTipContent: "{name}: <strong>{y} PLN</strong>",
+				indexLabel: "{name} - {y} PLN",
 				dataPoints: [
 				<?php
 					foreach ($categories_of_expense as $category_of_expense)
@@ -263,7 +263,10 @@
 	
 		<div class="row">	
 			
-			<h2 class="font-weight-bold rounded mx-auto px-5"><?php	echo $_SESSION['starting_date'].' &#8680; '. $_SESSION['end_date'];?></h2>	
+			<h2 class="font-weight-bold rounded mx-auto px-5"><?php	
+			if ($_SESSION['starting_date']==$_SESSION['end_date'] ) echo $_SESSION['starting_date'];
+			else
+			echo $_SESSION['starting_date'].' &#8680; '. $_SESSION['end_date'];?></h2>	
 				
 			<div class="w-100"></div>		
 											

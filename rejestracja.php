@@ -109,16 +109,18 @@
 						
 						if ($polaczenie->query("INSERT INTO users VALUES (NULL, '$nick', '$haslo_hash', '$email')"))
 						{		
-							
+							//przypisanie kategorii dla zarejestrowanego użytkownika
 							$polaczenie->query("INSERT INTO expenses_category_assigned_to_users (name) SELECT name FROM expenses_category_default");
 							$polaczenie->query("INSERT INTO incomes_category_assigned_to_users (name) SELECT name FROM incomes_category_default");
 							$polaczenie->query("INSERT INTO payment_methods_assigned_to_users (name) SELECT name FROM payment_methods_default");
-													
+								
+							//pobranie id zarejestrowanego użytkownika
 							$rezultat = $polaczenie->query("SELECT * FROM users ORDER BY id DESC LIMIT 1");
 							$wiersz = $rezultat->fetch_assoc();
 							$_SESSION['registered_user_id']=$wiersz['id'];
 							$rezultat->free_result();
 							
+							//wstawienie id zarejestrowanego użytkownika do tabeli z kategoriami
 							$polaczenie->query("UPDATE expenses_category_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");
 							$polaczenie->query("UPDATE incomes_category_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");					
 							$polaczenie->query("UPDATE payment_methods_assigned_to_users SET user_id=$_SESSION[registered_user_id] WHERE user_id=''");					
@@ -177,7 +179,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					

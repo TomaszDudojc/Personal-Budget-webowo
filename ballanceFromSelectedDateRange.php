@@ -157,7 +157,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -263,7 +263,7 @@
 	
 		<div class="row">	
 			
-			<h2 class="font-weight-bold rounded mx-auto px-5"><?php	
+			<h2 class="col-10 col-md-6 font-weight-bold rounded mx-auto"><?php	
 			if ($_SESSION['starting_date']==$_SESSION['end_date'] ) echo $_SESSION['starting_date'];
 			else
 			echo $_SESSION['starting_date'].' &#8680; '. $_SESSION['end_date'];?></h2>	

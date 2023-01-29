@@ -24,7 +24,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -42,13 +42,13 @@
 								
 			<div class="row">
 				
-				<div class="col-lg-5 col-8 mx-auto">					
-					<h3 class="text-center rounded mx-auto p-3" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">Jak to działa?</h3>
+				<div class="col-11 mx-auto">					
+					<h3 class="text-center rounded mx-auto p-2" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">Jak to działa?</h3>
 				</div>
 				
 				<div class="w-100"></div>
 				
-				<div class="col-lg-5 col-8 mt-3 mx-auto">	
+				<div class="col-lg-5 col-11 mt-3 mx-auto">	
 					<p class="rounded mx-auto p-3" style="background-color: #D3DDE9; border: 5px solid white; font-size: 17px;">						
 					To darmowa aplikacja, która pomaga w szybki i intuicyjny sposób zarządzać własnymi finanasami. Po zarejestrowaniu możesz logować się na swoje konto i korzystać z menu oferującego następujące funkcjonalności:<br>
 					<i class="icon-money mr-1"></i>dodaj przychód - opcja prosta i przyjemna<br>
@@ -58,17 +58,17 @@
 					</p>
 				</div>
 				
-				<div class="col-lg-5 col-8 mt-3 mx-auto">	
+				<div class="col-lg-5 col-11 mt-3 mx-auto">	
 					<img class="img-thumbnail" src="img/żarówki.jpg" alt="żarówki">
 				</div>
 				
 				<div class="w-100"></div>
 				
-				<div class="col-lg-5 col-8 mt-3 mx-auto">					
+				<div class="col-lg-5 col-11 mt-3 mx-auto">					
 					<a href="rejestracja.php" ><button  type="button" class="btn register" style="width: 100%">Rejestracja</button></a>
 				</div>
 				
-				<div class="col-lg-5 col-8 mt-3 mx-auto">		
+				<div class="col-lg-5 col-11 mt-3 mx-auto">		
 					<a href="logowanie.php" ><button  type="button" class="btn login" style="width: 100%">Logowanie</button></a>
 				</div>
 				

@@ -4,7 +4,7 @@
 		
 	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
 	{
-		$_SESSION['info_logged_user'] = "Jesteś już zalogowany!";
+		$_SESSION['info_logged_user'] = "Jesteś już zalogowany jako: ".$_SESSION['name_of_logged_user']."!";
 		header('Location: menu.php');
 		exit();
 	}
@@ -50,7 +50,7 @@
 		<div class="container">
 			
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					

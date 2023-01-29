@@ -106,7 +106,7 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
@@ -145,7 +145,7 @@
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-danger" href="#"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
 					</li>
 				</ul>
 

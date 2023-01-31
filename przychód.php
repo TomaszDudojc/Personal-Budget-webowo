@@ -157,7 +157,7 @@
 		<div class="inputContainer mt-3">			
 			
 			<header>
-				<h2 class="font-weight-bold rounded">Dopisz przychód</h2>
+				<h2 class="font-weight-bold rounded">Nowy przychód<i class="icon-money ml-3"></i></h2>
 			</header>
 		
 			<form method="post">	

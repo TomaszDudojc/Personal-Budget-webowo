@@ -43,7 +43,7 @@
 			<div class="row">
 				
 				<div class="col-11 mx-auto">					
-					<h3 class="text-center rounded mx-auto p-2" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">Jak to działa?</h3>
+					<h3 class="text-center rounded mx-auto p-2" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">&#128161; Jak to działa?</h3>
 				</div>
 				
 				<div class="w-100"></div>

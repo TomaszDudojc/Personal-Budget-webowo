@@ -264,9 +264,9 @@
 		<div class="row">	
 			
 			<h2 class="col-10 col-md-6 font-weight-bold rounded mx-auto"><?php	
-			if ($_SESSION['starting_date']==$_SESSION['end_date'] ) echo $_SESSION['starting_date'];
+			if ($_SESSION['starting_date']==$_SESSION['end_date'] ) echo '<i class="icon-calendar mr-3"></i>',$_SESSION['starting_date'];
 			else
-			echo $_SESSION['starting_date'].' &#8680; '. $_SESSION['end_date'];?></h2>	
+			echo '<i class="icon-calendar mr-3"></i>'.$_SESSION['starting_date'].' &#8680; '. $_SESSION['end_date'];?></h2>	
 				
 			<div class="w-100"></div>		
 											

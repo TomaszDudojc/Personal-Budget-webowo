@@ -251,7 +251,7 @@
 	
 		<div class="row">	
 			
-				<h2 class="col-10 col-md-6 font-weight-bold rounded mx-auto">Poprzedni miesiąc</h2>			
+				<h2 class="col-10 col-md-6 font-weight-bold rounded mx-auto"><i class="icon-calendar mr-3"></i>Poprzedni miesiąc</h2>			
 						
 			<div class="w-100"></div>		
 											

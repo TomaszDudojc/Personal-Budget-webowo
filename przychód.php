@@ -4,76 +4,78 @@
 	
 	if (!isset($_SESSION['zalogowany']))
 	{
-		header('Location: indeks.php');
+		header('Location: index.php');
 		exit();
 	}
 	
-	require_once "connect.php";
-	mysqli_report(MYSQLI_REPORT_STRICT);
-			
-	try 
-	{
-		$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-		if ($polaczenie->connect_errno!=0)
-		{
-			throw new Exception(mysqli_connect_errno());
-		}
-		else
-		{
-			//pobierz kategorie przychodów użytkownika
-			$rezultat = $polaczenie->query("SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
-			//$numbers_of_icome_category = $rezultat->num_rows;			
-			$income_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
-			
-			$rezultat->free_result();		
-			}
-	}
+	//require_once "connect.php";
+	//mysqli_report(MYSQLI_REPORT_STRICT);
+	require_once 'database.php';
 	
-	catch(Exception $e)
-	{
-		echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-		echo '<br />Informacja developerska: '.$e;
+	//try 
+	//{
+		//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+		//if ($polaczenie->connect_errno!=0)
+		//{
+			//throw new Exception(mysqli_connect_errno());
+		//}
+		//else
+		//{
+			//pobierz kategorie przychodów użytkownika
+			//$rezultat = $polaczenie->query("SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+			$rezultat = $db->query("SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+					
+			//$income_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+			$income_categories= $rezultat->fetchAll();
 			
-	}
+			///$rezultat->free_result();		
+			//}
+	//}
+	
+	//catch(Exception $e)
+	//{
+		//echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+		//echo '<br />Informacja developerska: '.$e;
+			
+	//}
 	
 	if (isset($_POST['amount']))
 	{
-		$amount_of_income = $_POST['amount'];
-		$date_of_income = $_POST['date'];
-		$id_of_income_category = $_POST['category'];
-		$comment_of_income = $_POST['comment'];
-		//echo $amount_of_income. "=kwota____";
-		//echo $date_of_income. "=data____";
-		//echo $id_of_income_category. "=id przych____";
-		//echo $comment_of_income. "=komentarz____";
-		//echo $_SESSION['id_of_logged_user']. "=id użytkownika____";
-		
-		require_once "connect.php";
-		mysqli_report(MYSQLI_REPORT_STRICT);
+		//$amount_of_income = $_POST['amount'];
+		//$date_of_income = $_POST['date'];
+		//$id_of_income_category = $_POST['category'];
+		//$comment_of_income = $_POST['comment'];
+		$amount_of_income = filter_input(INPUT_POST, 'amount');
+		$date_of_income = filter_input(INPUT_POST, 'date');
+		$id_of_income_category = filter_input(INPUT_POST, 'category');
+		$comment_of_income = filter_input(INPUT_POST, 'comment');
+		//require_once "connect.php";
+		//mysqli_report(MYSQLI_REPORT_STRICT);
 			
-		try 
-		{
-			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				throw new Exception(mysqli_connect_errno());
-			}
-			else
-			{
-				$polaczenie->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
+		//try 
+		//{
+			//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			//if ($polaczenie->connect_errno!=0)
+			//{
+				//throw new Exception(mysqli_connect_errno());
+			//}
+			//else
+			//{
+				//$polaczenie->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
+				$db->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
 								
 				$_SESSION['info_income_added']="Przychód został dodany";
 				header('Location: menu.php');
 				exit();
-			}
+			//}
 			
 		}
-		catch(Exception $e)
-		{
-			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-			echo '<br />Informacja developerska: '.$e;			
-		}
-	}
+		//catch(Exception $e)
+		//{
+			//echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			//echo '<br />Informacja developerska: '.$e;			
+		//}
+	//}
 		
 ?>
 

@@ -4,78 +4,88 @@
 	
 	if (!isset($_SESSION['zalogowany']))
 	{
-		header('Location: indeks.php');
+		header('Location: index.php');
 		exit();
-	}
+	}	
 	
-	require_once "connect.php";
-	mysqli_report(MYSQLI_REPORT_STRICT);
+	//require_once "connect.php";
+	//mysqli_report(MYSQLI_REPORT_STRICT);
+	require_once 'database.php';
 			
-	try 
-	{
-		$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-		if ($polaczenie->connect_errno!=0)
-		{
-			throw new Exception(mysqli_connect_errno());
-		}
-		else
-		{
+	//try 
+	//{
+		//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+		//if ($polaczenie->connect_errno!=0)
+		//{
+			//throw new Exception(mysqli_connect_errno());
+		//}
+		//else
+		//{
 			//pobierz kategorie wydatków użytkownika
-			$rezultat = $polaczenie->query("SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
-			//$numbers_of_icome_category = $rezultat->num_rows;			
-			$expense_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+			//$rezultat = $polaczenie->query("SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+			$rezultat = $db->query("SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+					
+			//$expense_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
+			$expense_categories= $rezultat->fetchAll();
 			
-			$rezultat->free_result();	
+			//$rezultat->free_result();	
 
 			//pobierz metody płatności użytkownika
-			$rezultat = $polaczenie->query("SELECT * FROM payment_methods_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");				
-			$payment_methods= $rezultat->fetch_all(MYSQLI_ASSOC);
+			//$rezultat = $polaczenie->query("SELECT * FROM payment_methods_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");				
+			$rezultat = $db->query("SELECT * FROM payment_methods_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");				
+			//$payment_methods= $rezultat->fetch_all(MYSQLI_ASSOC);
+			$payment_methods= $rezultat->fetchAll();
 			
-			$rezultat->free_result();	
+			//$rezultat->free_result();	
 			
-			}
-	}
+			//}
+	//}
 	
-	catch(Exception $e)
-	{
-		echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-		echo '<br />Informacja developerska: '.$e;
+	//catch(Exception $e)
+	//{
+		//echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+		//echo '<br />Informacja developerska: '.$e;
 			
-	}
+	//}
 	
 	if (isset($_POST['amount']))
 	{
-		$amount_of_expense = $_POST['amount'];
-		$date_of_expense = $_POST['date'];
-		$id_of_expense_category = $_POST['category'];
-		$id_of_payment_method = $_POST['method'];
-		$comment_of_expense = $_POST['comment'];		
+		//$amount_of_expense = $_POST['amount'];
+		//$date_of_expense = $_POST['date'];
+		//$id_of_expense_category = $_POST['category'];
+		//$id_of_payment_method = $_POST['method'];
+		//$comment_of_expense = $_POST['comment'];
+		$amount_of_expense = filter_input(INPUT_POST, 'amount');
+		$date_of_expense = filter_input(INPUT_POST, 'date');
+		$id_of_expense_category = filter_input(INPUT_POST, 'category');
+		$id_of_payment_method = filter_input(INPUT_POST, 'method');
+		$comment_of_expense = filter_input(INPUT_POST, 'comment');
 		
-		require_once "connect.php";
-		mysqli_report(MYSQLI_REPORT_STRICT);
+		//require_once "connect.php";
+		//mysqli_report(MYSQLI_REPORT_STRICT);
 			
-		try 
-		{
-			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				throw new Exception(mysqli_connect_errno());
-			}
-			else
-			{
-				$polaczenie->query("INSERT INTO expenses VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_expense_category', '$id_of_payment_method', '$amount_of_expense', '$date_of_expense', '$comment_of_expense' )" );			
+		//try 
+		//{
+			//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			//if ($polaczenie->connect_errno!=0)
+			//{
+				//throw new Exception(mysqli_connect_errno());
+			//}
+			//else
+			//{
+				$db->query("INSERT INTO expenses VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_expense_category', '$id_of_payment_method', '$amount_of_expense', '$date_of_expense', '$comment_of_expense' )" );			
 								
 				$_SESSION['info_expense_added']="Wydatek został dodany";
 				header('Location: menu.php');
 				exit();
-			}
+			//}
 			
-		}
-		catch(Exception $e)
-		{
-			echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-			echo '<br />Informacja developerska: '.$e;			
-		}
+		//}
+		//catch(Exception $e)
+		//{
+			//echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			//echo '<br />Informacja developerska: '.$e;			
+		//}
 	}
 		
 ?>

@@ -17,8 +17,8 @@
 			$wszystko_OK=true;
 			
 			//Sprawdź poprawność nickname'a
-			$nick = $_POST['nick'];
-			
+			//$nick = $_POST['nick'];
+			$nick = filter_input(INPUT_POST, 'nick');
 			//Sprawdzenie długości nicka
 			if ((strlen($nick)<3) || (strlen($nick)>20))
 			{
@@ -33,7 +33,8 @@
 			}
 			
 			// Sprawdź poprawność adresu email
-			$email = $_POST['email'];
+			//$email = $_POST['email'];
+			$email = filter_input(INPUT_POST, 'email');
 			$emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
 			
 			if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
@@ -43,8 +44,10 @@
 			}
 			
 			//Sprawdź poprawność hasła
-			$haslo1 = $_POST['haslo1'];
-			$haslo2 = $_POST['haslo2'];
+			//$haslo1 = $_POST['haslo1'];
+			//$haslo2 = $_POST['haslo2'];
+			$haslo1 = filter_input(INPUT_POST, 'haslo1');
+			$haslo2 = filter_input(INPUT_POST, 'haslo2');
 			
 			if ((strlen($haslo1)<8) || (strlen($haslo1)>20))
 			{
@@ -67,24 +70,29 @@
 			$_SESSION['fr_haslo1'] = $haslo1;
 			$_SESSION['fr_haslo2'] = $haslo2;
 				
-			require_once "connect.php";
-			mysqli_report(MYSQLI_REPORT_STRICT);
+			//require_once "connect.php";
+			//mysqli_report(MYSQLI_REPORT_STRICT);
+			require_once 'database.php';
 			
-			try 
+			/*try 
 			{
 				$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
 				if ($polaczenie->connect_errno!=0)
 				{
 					throw new Exception(mysqli_connect_errno());
-				}
-				else
-				{
+				}*/				
+							
+				//else
+				//{
 					//Czy email już istnieje?
-					$rezultat = $polaczenie->query("SELECT id FROM users WHERE email='$email'");
+					//$rezultat = $polaczenie->query("SELECT id FROM users WHERE email='$email'");
+					$rezultat = $db->prepare('SELECT id FROM users WHERE email = :email');
+					$rezultat->bindValue(':email', $email, PDO::PARAM_STR);
+					$rezultat->execute();
 					
-					if (!$rezultat) throw new Exception($polaczenie->error);
+					//if (!$rezultat) throw new Exception($polaczenie->error);
 					
-					$ile_takich_maili = $rezultat->num_rows;
+					$ile_takich_maili = $rezultat->rowCount();
 					if($ile_takich_maili>0)
 					{
 						$wszystko_OK=false;
@@ -92,11 +100,14 @@
 					}		
 
 					//Czy nick jest już zarezerwowany?
-					$rezultat = $polaczenie->query("SELECT id FROM users WHERE username='$nick'");
+					//$rezultat = $polaczenie->query("SELECT id FROM users WHERE username='$nick'");
+					$rezultat = $db->prepare('SELECT id FROM users WHERE username = :nick');
+					$rezultat->bindValue(':nick', $nick, PDO::PARAM_STR);
+					$rezultat->execute();
 					
-					if (!$rezultat) throw new Exception($polaczenie->error);
+					//if (!$rezultat) throw new Exception($polaczenie->error);
 					
-					$ile_takich_nickow = $rezultat->num_rows;
+					$ile_takich_nickow = $rezultat->rowCount();
 					if($ile_takich_nickow>0)
 					{
 						$wszystko_OK=false;
@@ -107,50 +118,52 @@
 					{
 						//Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 						
-						if ($polaczenie->query("INSERT INTO users (`username`, `password`, `email`) VALUES ('$nick', '$haslo_hash', '$email')"))
+						if ($db->query("INSERT INTO users (`username`, `password`, `email`) VALUES ('$nick', '$haslo_hash', '$email')"))
 						{		
 							//przypisanie kategorii dla zarejestrowanego użytkownika
-							$polaczenie->query("INSERT INTO expenses_category_assigned_to_users (name) SELECT name FROM expenses_category_default");							
-							$polaczenie->query("INSERT INTO incomes_category_assigned_to_users (name) SELECT name FROM incomes_category_default");
-							$polaczenie->query("INSERT INTO payment_methods_assigned_to_users (name) SELECT name FROM payment_methods_default");
+							$db->query("INSERT INTO expenses_category_assigned_to_users (name) SELECT name FROM expenses_category_default");							
+							$db->query("INSERT INTO incomes_category_assigned_to_users (name) SELECT name FROM incomes_category_default");
+							$db->query("INSERT INTO payment_methods_assigned_to_users (name) SELECT name FROM payment_methods_default");
+							
 							
 							//pobranie id zarejestrowanego użytkownika
-							$rezultat = $polaczenie->query("SELECT * FROM users ORDER BY id DESC LIMIT 1");
+							$rezultat = $db->query("SELECT * FROM users ORDER BY id DESC LIMIT 1");
 
-							$wiersz = $rezultat->fetch_assoc();
+							$wiersz = $rezultat->fetch();
 							$_SESSION['registered_user_id']=$wiersz['id'];
-							$rezultat->free_result();
+							//$rezultat->free_result();
 
 							$id = $wiersz['id'];
 							
 							//wstawienie id zarejestrowanego użytkownika do tabeli z kategoriami
-							$polaczenie->query("UPDATE expenses_category_assigned_to_users SET user_id = '$id' ORDER BY id DESC LIMIT 16");
-							$polaczenie->query("UPDATE incomes_category_assigned_to_users SET `user_id` = '$id' ORDER BY id DESC LIMIT 4");					
-							$polaczenie->query("UPDATE payment_methods_assigned_to_users SET `user_id` = '$id' ORDER BY id DESC LIMIT 3");					
+							$db->query("UPDATE expenses_category_assigned_to_users SET user_id = '$id' ORDER BY id DESC LIMIT 16");
+							$db->query("UPDATE incomes_category_assigned_to_users SET `user_id` = '$id' ORDER BY id DESC LIMIT 4");					
+							$db->query("UPDATE payment_methods_assigned_to_users SET `user_id` = '$id' ORDER BY id DESC LIMIT 3");					
 													
 							$_SESSION['udanarejestracja']=true;
 							header('Location: logowanie.php');
+							
 						}
-						else
-						{
-							throw new Exception($polaczenie->error);
-						}
+						//else
+						//{
+							//throw new Exception($polaczenie->error);
+						//}
 						
 					}
 					
-					$polaczenie->close();
-				}
+					//$polaczenie->close();
+				//}
 				
 			}
-			catch(Exception $e)
-			{
-				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-				echo '<br />Informacja developerska: '.$e;			
-			}
+			//catch(Exception $e)
+			//{
+				//echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+				//echo '<br />Informacja developerska: '.$e;			
+			//}
 			
 		}
 	
-	}
+	//}
 ?>
 
 <!DOCTYPE HTML>

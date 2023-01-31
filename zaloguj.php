@@ -18,41 +18,49 @@
 	//}
 	
 	
-	require_once "connect.php";
-	mysqli_report(MYSQLI_REPORT_STRICT);
-			
-		try 
-		{
-			$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			if ($polaczenie->connect_errno!=0)
-			{
-				throw new Exception(mysqli_connect_errno());
-			}
+	//require_once "connect.php";
+	//mysqli_report(MYSQLI_REPORT_STRICT);
+	require_once 'database.php';		
+		//try 
+		//{
+			//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
+			//if ($polaczenie->connect_errno!=0)
+			//{
+				//throw new Exception(mysqli_connect_errno());
+			//}
 	
-	else
-	{
-		$email = $_POST['email'];
-		$haslo = $_POST['haslo'];
+	//else
+	//{
+		//$email = $_POST['email'];
+		//$haslo = $_POST['haslo'];
+		$email = filter_input(INPUT_POST, 'email');
+		$haslo = filter_input(INPUT_POST, 'haslo');
 		
-		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
+		$email = htmlentities($email, ENT_QUOTES, "UTF-8");
 	
-		if ($rezultat = @$polaczenie->query(
-		sprintf("SELECT * FROM users WHERE email='%s'",
-		mysqli_real_escape_string($polaczenie,$email))))
-		{
-			$ilu_userow = $rezultat->num_rows;
+		//if ($rezultat = @$polaczenie->query(
+		//sprintf("SELECT * FROM users WHERE email='%s'",
+		//mysqli_real_escape_string($polaczenie,$email))))
+		$rezultat = $db->prepare('SELECT * FROM users WHERE email = :email');
+		$rezultat->bindValue(':email', $email, PDO::PARAM_STR);
+		$rezultat->execute();
+					
+		//{
+			$ilu_userow = $rezultat->rowCount();
 			if($ilu_userow>0)
 			{
-				$wiersz = $rezultat->fetch_assoc();
+				//$wiersz = $rezultat->fetch_assoc();
+				$wiersz = $rezultat->fetch();
 				
-				if (password_verify($haslo, $wiersz['password']))
+				//if (password_verify($haslo, $wiersz['password']))
+				if ($wiersz && password_verify($haslo, $wiersz['password']))
 				{
 					$_SESSION['zalogowany'] = true;
 					$_SESSION['id_of_logged_user'] = $wiersz['id'];
 					$_SESSION['name_of_logged_user'] = $wiersz['username'];				
 					
 					unset($_SESSION['blad']);
-					$rezultat->free_result();
+					//$rezultat->free_result();
 					$_SESSION['info_welcome']="Witaj ".$_SESSION['name_of_logged_user']."!";
 					header('Location: menu.php');
 					//exit();
@@ -71,20 +79,20 @@
 				
 			}
 			
-		}
-		else
-		{
-			throw new Exception($polaczenie->error);
-		}
-		$polaczenie->close();
-	}
+		//}
+		//else
+		//{
+			//throw new Exception($polaczenie->error);
+		//}
+		//$polaczenie->close();
+	//}
 	
-	}
+	//}
 	
-	catch(Exception $e)
-			{
-				echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-				echo '<br />Informacja developerska: '.$e;
+	//catch(Exception $e)
+			//{
+			//	echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+			//	echo '<br />Informacja developerska: '.$e;
 			
-			}
+			//}
 ?>

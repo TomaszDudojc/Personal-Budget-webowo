@@ -170,7 +170,7 @@
 		<div class="inputContainer mt-3">			
 			
 			<header>
-				<h2 class="font-weight-bold rounded">Nowy wydatek<i class="icon-basket ml-3"></i></h2>
+				<h2 class="font-weight-bold rounded">New expense<i class="icon-basket ml-3"></i></h2>
 			</header>
 		
 			<form method="post">	

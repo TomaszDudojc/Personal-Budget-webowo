@@ -17,7 +17,7 @@
 		
 		if  ($_SESSION['starting_date']>$_SESSION['end_date'])
 			{
-				$_SESSION['uncorret_date_range'] = 'Nieprawidłowy zakres dat: '.'<span style="font-size: 22px;">'.$_SESSION['starting_date'].' &#8655; '. $_SESSION['end_date'].'</span>';
+				$_SESSION['uncorret_date_range'] = 'Invalid date range: '.'<span style="font-size: 22px;">'.$_SESSION['starting_date'].' &#8655; '. $_SESSION['end_date'].'</span>';
 				header('Location: menu.php');				
 				exit();
 			}
@@ -87,8 +87,8 @@
 					$_SESSION['amount_of_all_expenses'] = $row['AmountOfAllExpenses'];
 					//$result->free_result();	
 					
-					$_SESSION['ballance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
-					$_SESSION['ballance'] = number_format($_SESSION['ballance'] , 2, '.', '');				
+					$_SESSION['balance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
+					$_SESSION['balance'] = number_format($_SESSION['balance'] , 2, '.', '');				
 					
 					//$connection->close();
 				//}
@@ -124,7 +124,7 @@
 			exportEnabled: true,
 			animationEnabled: true,
 			title:{
-				text: "Struktura wydatków"
+				text: "Expense structure"
 			},
 			legend:{
 				cursor: "pointer",
@@ -176,7 +176,7 @@
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
-				<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+				<p class="mb-1"> "If you buy things you don't need, soon you will have to sell things you need"</p>
 				<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
 			</blockquote>
 					
@@ -188,7 +188,7 @@
 	
 		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
 			
-			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation switch">
 					<span class="navbar-toggler-icon"></span>
 			</button>
 			
@@ -197,37 +197,37 @@
 				<ul class="navbar-nav mx-auto py-0">
 				
 					<li class="nav-item">
-						<a class="nav-link" href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link" href="menu.php"><i class="icon-home-1"></i>Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="income.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="income.php"><i class="icon-money"></i>Add income</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Add expense</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" style="color: #060B95;" href="ballance.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" style="color: #060B95;" href="balance.php"><i class="icon-chart-bar"></i>View balance</a>
 					</li>					
 					<li class="nav-item ">
 
 					<ul class="navbar-nav py-0 px-3 active">				
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" style="color: #060B95;" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
+							<a class="nav-link dropdown-toggle" style="color: #060B95;" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Select a period</a>						
 							<div class="dropdown-menu" aria-labelledby="submenu" style="background-color: #E2FDFA; border: 1px solid #a5cda5;">						
-								<a class="dropdown-item" style="color: #060B95;" href="ballance.php">Bieżący miesiąc</a>
-								<a class="dropdown-item" style="color: #060B95;" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
-								<a class="dropdown-item" style="color:#060B95;" href="ballanceOfCurrentYear.php">Bieżący rok</a>
+								<a class="dropdown-item" style="color: #060B95;" href="balance.php">Current month</a>
+								<a class="dropdown-item" style="color: #060B95;" href="balanceOfPreviousMonth.php">Previous month</a>
+								<a class="dropdown-item" style="color:#060B95;" href="balanceOfCurrentYear.php">Current year</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item active" style="color: #060B95;" data-toggle="modal" data-target="#dateRange" href="#">Niestandardowy</a>						
+								<a class="dropdown-item active" style="color: #060B95;" data-toggle="modal" data-target="#dateRange" href="#">Custom</a>						
 							</div>
 						</li>					
 					</ul>
 					</li>					
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
+						<a class="nav-link" href="#"><i class="icon-wrench"></i>Settings</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Log out</a>
 					</li>
 					
 				</ul>		
@@ -238,7 +238,7 @@
 			  <div class="modal-dialog">
 				<div class="modal-content table rounded" style="background-color: #E2FDFA;">
 						  <div class="modal-header">
-							<h3 class="modal-title">Wybierz zakres dat</h3>
+							<h3 class="modal-title">Select a date range</h3>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							</button>
@@ -258,8 +258,8 @@
 									<input type="date" class="form-control  rounded-right my-0" name="end date" required>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Anuluj</button>
-									<button type="submit" class="btn btn-success">Zapisz</button>
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+									<button type="submit" class="btn btn-success">Save</button>
 								</div>						
 							</form>					
 						</div>			
@@ -286,11 +286,11 @@
 			<div class="w-100"></div>		
 											
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Przychody<i class="icon-money ml-5"></i><?php	echo $_SESSION['amount_of_all_incomes'];?></h3>
+					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Incomes<i class="icon-money ml-5"></i><?php	echo $_SESSION['amount_of_all_incomes'];?></h3>
 					<?php						
 						if  ($number_of_incomes == 0)
 						{								
-								echo '<div class="information rounded text-center mx-auto p-2 w-100" >Brak przychdów w wybranym okresie</div>';	
+								echo '<div class="information rounded text-center mx-auto p-2 w-100" >No income in the selected period</div>';	
 							}						
 							
 						else
@@ -316,11 +316,11 @@
 				</div>
 					
 				<div class="table col-10 col-md-5 mx-auto rounded mt-2 mb-0">		
-					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Wydatki<i class="icon-basket ml-5"></i><?php	echo $_SESSION['amount_of_all_expenses'];?></h3>
+					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Expenses<i class="icon-basket ml-5"></i><?php	echo $_SESSION['amount_of_all_expenses'];?></h3>
 					<?php						
 						if  ($number_of_expenses == 0)
 						{								
-								echo '<div class="information rounded text-center mx-auto p-2 w-100" >Brak wydatków w wybranym okresie</div>';	
+								echo '<div class="information rounded text-center mx-auto p-2 w-100" >No expenses in the selected period</div>';	
 							}
 						
 						else 
@@ -344,15 +344,15 @@
 			<div class="w-100"></div>	
 			
 			<div class="table col-10 col-md-6 mx-auto rounded mt-2 mb-0">
-					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Bilans<i class="icon-chart-bar ml-5 mr-1"></i><?php echo $_SESSION['ballance'] ;?></h3>					
+					<h3 style="background-color: #D3DDE9; border: 1px solid  #c2cce8;" class="rounded">Balance<i class="icon-chart-bar ml-5 mr-1"></i><?php echo $_SESSION['balance'] ;?></h3>					
 					<h4 class="font-weight-bold bg-white rounded" style="color: #060B95;"></h4>
 					<?php
-						if ($_SESSION['ballance']!=0)
+						if ($_SESSION['balance']!=0)
 						{
-							if ($_SESSION['ballance']<0)					
-						echo'<h4 class="text-danger bg-white rounded">&#128201; Uważaj, wpadasz w długi!</h4>';
+							if ($_SESSION['balance']<0)					
+						echo'<h4 class="text-danger bg-white rounded">&#128201; Watch out, you are getting into debt!</h4>';
 						else
-						echo '<h4 class="text-success bg-white rounded">&#128200; Gratulacje. Świetnie zarządzasz finansami!</h4>';
+						echo '<h4 class="text-success bg-white rounded">&#128200; Congratulations. You manage your finances very well!</h4>';
 						}					
 					?>
 			</div>
@@ -373,7 +373,7 @@
 	<footer>
 	
 		<div class="info rounded">
-			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
+			All rights reserved &copy; 2022 Thank you for visit!
 		</div>
 		
 	</footer>

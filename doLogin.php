@@ -65,20 +65,20 @@
 					
 					unset($_SESSION['error']);
 					//$result->free_result();
-					$_SESSION['info_welcome']="Witaj ".$_SESSION['name_of_logged_user']."!";
+					$_SESSION['info_welcome']="Hello ".$_SESSION['name_of_logged_user']."!";
 					header('Location: menu.php');
 					//exit();
 					//header('Location: menu.php');
 				}
 				else 
 				{
-					$_SESSION['error'] = 'Nieprawidłowy email lub hasło!';
+					$_SESSION['error'] = 'Invalid email or password!';
 					header('Location: login.php');
 				}
 				
 			} else {
 				
-				$_SESSION['error'] = 'Nieprawidłowy email lub hasło!';
+				$_SESSION['error'] = 'Invalid email or password!';
 				header('Location: login.php');
 				
 			}

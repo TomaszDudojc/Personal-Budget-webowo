@@ -4,7 +4,7 @@
 		
 	if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
 	{
-		$_SESSION['e_registred_user'] = "Aby zarejestrować kolejne konto musisz wylogować się z aktualnego!";
+		$_SESSION['e_registred_user'] = "To register another account, you must log out of the current one!";
 		header('Location: menu.php');
 		exit();
 	}
@@ -23,13 +23,13 @@
 			if ((strlen($nick)<3) || (strlen($nick)>20))
 			{
 				$everything_OK=false;
-				$_SESSION['e_nick']="Nick musi posiadać od 3 do 20 znaków!";
+				$_SESSION['e_nick']="Nick must be between 3 and 20 characters long!";
 			}
 			
 			if (ctype_alnum($nick)==false)
 			{
 				$everything_OK=false;
-				$_SESSION['e_nick']="Nick może składać się tylko z liter i cyfr (od 3 do 20 znaków, bez polskich ogonków)";
+				$_SESSION['e_nick']="Nick can only consist of letters and numbers (from 3 to 20 characters, without Polish tails)!";
 			}
 			
 			// Sprawdź poprawność adresu email
@@ -40,7 +40,7 @@
 			if ((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
 			{
 				$everything_OK=false;
-				$_SESSION['e_email']="Podaj poprawny adres e-mail!";
+				$_SESSION['e_email']="Please enter a valid email address!";
 			}
 			
 			//Sprawdź poprawność hasła
@@ -52,13 +52,13 @@
 			if ((strlen($password1)<8) || (strlen($password1)>20))
 			{
 				$everything_OK=false;
-				$_SESSION['e_password']="Hasło musi posiadać od 8 do 20 znaków!";
+				$_SESSION['e_password']="The password must be between 8 and 20 characters long!";
 			}
 			
 			if ($password1!=$password2)
 			{
 				$everything_OK=false;
-				$_SESSION['e_password']="Podane hasła nie są identyczne!";
+				$_SESSION['e_password']="The passwords provided are not identical!";
 			}	
 
 			$password_hash = password_hash($password1, PASSWORD_DEFAULT);
@@ -96,7 +96,7 @@
 					if($how_many_emails>0)
 					{
 						$everything_OK=false;
-						$_SESSION['e_email']="Istnieje już konto przypisane do tego adresu e-mail!";
+						$_SESSION['e_email']="There is already an account assigned to this email address!";
 					}		
 
 					//Czy nick jest już zarezerwowany?
@@ -111,7 +111,7 @@
 					if($how_many_nicks>0)
 					{
 						$everything_OK=false;
-						$_SESSION['e_nick']="Istnieje już osoba o takim nicku! Wybierz inny.";
+						$_SESSION['e_nick']="There is already a person with this nick! Choose another!";
 					}
 					
 					if ($everything_OK==true)
@@ -199,7 +199,7 @@
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
-				<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+				<p class="mb-1"> "If you buy things you don't need, soon you will have to sell things you need"</p>
 				<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
 			</blockquote>
 					
@@ -212,7 +212,7 @@
 		<div class="inputContainer mt-3">
 
 			<header>
-				<h2 class="register font-weight-bold rounded">Rejestracja</h2>
+				<h2 class="register font-weight-bold rounded">Registration</h2>
 			</header>
 		
 			<form  method="post">
@@ -227,7 +227,7 @@
 						echo $_SESSION['fr_nick'];
 						unset($_SESSION['fr_nick']);
 					}
-					?>"  placeholder="Imię" required>						
+					?>"  placeholder="Name" required>						
 				</div>
 				<?php
 					if (isset($_SESSION['e_nick']))
@@ -267,7 +267,7 @@
 							echo $_SESSION['fr_password1'];
 							unset($_SESSION['fr_password1']);
 						}
-					?>" placeholder="Hasło" required>					
+					?>" placeholder="Password" required>					
 				</div>
 				<?php
 						if (isset($_SESSION['e_password']))
@@ -287,10 +287,10 @@
 							echo $_SESSION['fr_password2'];
 							unset($_SESSION['fr_password2']);
 						}
-					?>" placeholder="Powtórz hasło" required>					
+					?>" placeholder="Repeat password" required>					
 				</div>
 					
-				<button  type="submit" class="btn register">Zarejestruj się</button>
+				<button  type="submit" class="btn register">Register</button>
 					
 			</form>		
 			
@@ -301,7 +301,7 @@
 	<footer>
 	
 		<div class="info rounded">
-			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
+			All rights reserved &copy; 2022 Thank you for visit!
 		</div>
 		
 	</footer>

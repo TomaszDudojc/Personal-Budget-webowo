@@ -64,7 +64,7 @@
 				//$connection->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
 				$db->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
 								
-				$_SESSION['info_income_added']="Przychód został dodany";
+				$_SESSION['info_income_added']="Income has been added";
 				header('Location: menu.php');
 				exit();
 			//}
@@ -109,7 +109,7 @@
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
-				<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+				<p class="mb-1"> "If you buy things you don't need, soon you will have to sell things you need"</p>
 				<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
 			</blockquote>
 					
@@ -121,7 +121,7 @@
 	
 		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
 			
-			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation switch">
 					<span class="navbar-toggler-icon"></span>
 			</button>
 			
@@ -129,22 +129,22 @@
 			
 				<ul class="navbar-nav d-inlineblock mx-auto py-0">
 					<li class="nav-item">
-						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Home</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" style="color: #060B95;" href="income.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" style="color: #060B95;" href="income.php"><i class="icon-money"></i>Add income</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Add expense</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="ballance.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="balance.php"><i class="icon-chart-bar"></i>View balance</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
+						<a class="nav-link" href="#"><i class="icon-wrench"></i>Settings</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Log out</a>
 					</li>
 				</ul>
 
@@ -159,7 +159,7 @@
 		<div class="inputContainer mt-3">			
 			
 			<header>
-				<h2 class="font-weight-bold rounded">Nowy przychód<i class="icon-money ml-3"></i></h2>
+				<h2 class="font-weight-bold rounded">New income<i class="icon-money ml-3"></i></h2>
 			</header>
 		
 			<form method="post">	
@@ -168,7 +168,7 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-gauge"></i></span>
 					</div>
-					<input type="number" class="form-control  rounded-right " step="0.01" min="0.01" name="amount" placeholder="Kwota" required>	
+					<input type="number" class="form-control  rounded-right " step="0.01" min="0.01" name="amount" placeholder="Amount" required>	
 				</div>
 					
 				<div class="input-group">
@@ -183,7 +183,7 @@
 						<span class="input-group-text  rounded-left icon"><i class="icon-ok"></i></span>
 					</div>
 					<select class="choice rounded-right" name="category" required>						
-						<option value selected disabled hidden>Wybierz kategorię</option>
+						<option value selected disabled hidden>Select a category</option>
 						<?php						
 							foreach ($income_categories as $income_category)
 							{
@@ -197,11 +197,11 @@
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-pencil"></i></span>
 					</div>
-					<input type="text" class="form-control  rounded-right" name="comment" placeholder="Komentarz">	
+					<input type="text" class="form-control  rounded-right" name="comment" placeholder="Comment">	
 				</div>				
 				
-				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">Anuluj</button></a>
-				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">Dodaj</button>
+				<a href="menu.php"><button  type="button" class="btn btn-danger btn-lg float-left mt-3">Cancel</button></a>
+				<button  type="submit" class="btn btn-success btn-lg  float-right mt-3">Add</button>
 									
 			</form>		
 			
@@ -212,7 +212,7 @@
 	<footer>
 	
 		<div class="info rounded ">
-			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
+			All rights reserved &copy; 2022 Thank you for visit!
 		</div>
 		
 	</footer>

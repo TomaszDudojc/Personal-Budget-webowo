@@ -2,7 +2,7 @@
 
 	session_start();
 	
-	if (!isset($_SESSION['zalogowany']))
+	if (!isset($_SESSION['logged']))
 	{
 		header('Location: index.php');
 		exit();
@@ -28,69 +28,69 @@
 			require_once 'database.php';		
 			//try 
 			//{
-				//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			//	if ($polaczenie->connect_errno!=0)
+				//$connection = new mysqli($host, $db_user, $db_password, $db_name);
+			//	if ($connection->connect_errno!=0)
 				//{
 				//	throw new Exception(mysqli_connect_errno());
 			//	}
 				
 				//else
 				//{	//INCOMES			
-					//$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
-					$rezultat= $db->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC");
+					//$result=($connection->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC"));
+					$result= $db->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount, SUM(incomes.amount) AS AmountOfIncomes FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id GROUP BY incomes.income_category_assigned_to_user_id ORDER BY AmountOfIncomes DESC");
 					
-					//$number_of_incomes = $rezultat->num_rows;				
-					$number_of_incomes = $rezultat->rowCount();					
+					//$number_of_incomes = $result->num_rows;				
+					$number_of_incomes = $result->rowCount();					
 					
-					//$categories= $rezultat->fetch_all(MYSQLI_ASSOC);
-					$categories= $rezultat->fetchAll();
+					//$categories= $result->fetch_all(MYSQLI_ASSOC);
+					$categories= $result->fetchAll();
 									
-					//$rezultat->free_result();				
+					//$result->free_result();				
 					
-					//$rezultat=($polaczenie->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
-					$rezultat= $db->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income");
+					//$result=($connection->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income"));
+					$result= $db->query("SELECT incomes_category_assigned_to_users.name, incomes.income_category_assigned_to_user_id, users.username, incomes.date_of_income, incomes.income_comment, incomes.amount FROM incomes, incomes_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=incomes_category_assigned_to_users.user_id AND users.id=incomes.user_id AND incomes.income_category_assigned_to_user_id=incomes_category_assigned_to_users.id  ORDER BY incomes.date_of_income");
 					
-					//$incomes= $rezultat->fetch_all(MYSQLI_ASSOC);				
-					$incomes= $rezultat->fetchAll();			
-					//$rezultat->free_result();					
+					//$incomes= $result->fetch_all(MYSQLI_ASSOC);				
+					$incomes= $result->fetchAll();			
+					//$result->free_result();					
 						
-					//$rezultat=($polaczenie->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' "));		
-					$rezultat=($db->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' "));		
+					//$result=($connection->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' "));		
+					$result=($db->query("SELECT SUM(incomes.amount) AS AmountOfAllIncomes FROM incomes WHERE  incomes.user_id='$_SESSION[id_of_logged_user]' AND incomes.date_of_income BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' "));		
 									
-					//$wiersz = $rezultat->fetch_assoc();				
-					$wiersz = $rezultat->fetch();				
-					$_SESSION['amount_of_all_incomes'] = $wiersz['AmountOfAllIncomes'];
-					//$rezultat->free_result();
+					//$row = $result->fetch_assoc();				
+					$row = $result->fetch();				
+					$_SESSION['amount_of_all_incomes'] = $row['AmountOfAllIncomes'];
+					//$result->free_result();
 					//EXPENSES
-					//$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
-					$rezultat= $db->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC");
+					//$result=($connection->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC"));
+					$result= $db->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount, SUM(expenses.amount) AS AmountOfExpenses FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id GROUP BY expenses.expense_category_assigned_to_user_id ORDER BY AmountOfExpenses DESC");
 					
-					//$number_of_expenses = $rezultat->num_rows;
-					$number_of_expenses = $rezultat->rowCount();
+					//$number_of_expenses = $result->num_rows;
+					$number_of_expenses = $result->rowCount();
 					
-					//$categories_of_expense= $rezultat->fetch_all(MYSQLI_ASSOC);
-					$categories_of_expense= $rezultat->fetchAll();	
+					//$categories_of_expense= $result->fetch_all(MYSQLI_ASSOC);
+					$categories_of_expense= $result->fetchAll();	
 									
-					//$rezultat->free_result();				
+					//$result->free_result();				
 					
-					//$rezultat=($polaczenie->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
-					$rezultat= $db->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense");
+					//$result=($connection->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense"));
+					$result= $db->query("SELECT expenses_category_assigned_to_users.name, expenses.expense_category_assigned_to_user_id, users.username, expenses.date_of_expense, expenses.expense_comment, expenses.amount FROM expenses, expenses_category_assigned_to_users, users  WHERE  users.id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]' AND  users.id=expenses_category_assigned_to_users.user_id AND users.id=expenses.user_id AND expenses.expense_category_assigned_to_user_id=expenses_category_assigned_to_users.id  ORDER BY expenses.date_of_expense");
 					
-					//$expenses= $rezultat->fetch_all(MYSQLI_ASSOC);				
-					$expenses= $rezultat->fetchAll();				
-					//$rezultat->free_result();					
+					//$expenses= $result->fetch_all(MYSQLI_ASSOC);				
+					$expenses= $result->fetchAll();				
+					//$result->free_result();					
 						
-					//$rezultat=($polaczenie->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]'"));		
-					$rezultat=$db->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]'");		
+					//$result=($connection->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]'"));		
+					$result=$db->query("SELECT SUM(expenses.amount) AS AmountOfAllExpenses FROM expenses WHERE  expenses.user_id='$_SESSION[id_of_logged_user]' AND expenses.date_of_expense BETWEEN '$_SESSION[starting_date]' AND  '$_SESSION[end_date]'");		
 									
-					$wiersz = $rezultat->fetch();				
-					$_SESSION['amount_of_all_expenses'] = $wiersz['AmountOfAllExpenses'];
-					//$rezultat->free_result();	
+					$row = $result->fetch();				
+					$_SESSION['amount_of_all_expenses'] = $row['AmountOfAllExpenses'];
+					//$result->free_result();	
 					
 					$_SESSION['ballance'] = $_SESSION['amount_of_all_incomes'] - $_SESSION['amount_of_all_expenses'];
 					$_SESSION['ballance'] = number_format($_SESSION['ballance'] , 2, '.', '');				
 					
-					//$polaczenie->close();
+					//$connection->close();
 				//}
 			//}
 			
@@ -200,13 +200,13 @@
 						<a class="nav-link" href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="income.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" style="color: #060B95;" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" style="color: #060B95;" href="ballance.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>					
 					<li class="nav-item ">
 
@@ -214,7 +214,7 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" style="color: #060B95;" href="#" data-toggle="dropdown" role="button" aria-expanded="false" id="submenu"><i class="icon-calendar"></i>Wybierz okres</a>						
 							<div class="dropdown-menu" aria-labelledby="submenu" style="background-color: #E2FDFA; border: 1px solid #a5cda5;">						
-								<a class="dropdown-item" style="color: #060B95;" href="bilans.php">Bieżący miesiąc</a>
+								<a class="dropdown-item" style="color: #060B95;" href="ballance.php">Bieżący miesiąc</a>
 								<a class="dropdown-item" style="color: #060B95;" href="ballanceOfPreviousMonth.php">Poprzedni miesiąc</a>
 								<a class="dropdown-item" style="color:#060B95;" href="ballanceOfCurrentYear.php">Bieżący rok</a>
 								<div class="dropdown-divider"></div>

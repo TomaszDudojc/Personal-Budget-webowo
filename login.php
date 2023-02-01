@@ -2,7 +2,7 @@
 
 	session_start();		
 		
-	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+	if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
 	{
 		$_SESSION['info_logged_user'] = "Jesteś już zalogowany jako: ".$_SESSION['name_of_logged_user']."!";
 		header('Location: menu.php');
@@ -12,16 +12,16 @@
 	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
 	if (isset($_SESSION['fr_nick'])) unset($_SESSION['fr_nick']);
 	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
-	if (isset($_SESSION['fr_haslo1'])) unset($_SESSION['fr_haslo1']);
-	if (isset($_SESSION['fr_haslo2'])) unset($_SESSION['fr_haslo2']);
+	if (isset($_SESSION['fr_password1'])) unset($_SESSION['fr_password1']);
+	if (isset($_SESSION['fr_password2'])) unset($_SESSION['fr_password2']);
 		
 	//Usuwanie błędów rejestracji
 	if (isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
 	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
-	if (isset($_SESSION['e_haslo'])) unset($_SESSION['e_haslo']);		
+	if (isset($_SESSION['e_password'])) unset($_SESSION['e_password']);		
 	
 	//Usuwanie błędów l
-	if ((isset($_SESSION['udanarejestracja'])))unset($_SESSION['blad']);	
+	if ((isset($_SESSION['successful_registration'])))unset($_SESSION['error']);	
 ?>
 
 <!DOCTYPE HTML>
@@ -70,7 +70,7 @@
 				<h2 class="font-weight-bold rounded">Logowanie</h2>
 			</header>
 		
-			<form action="zaloguj.php" method="post">			
+			<form action="doLogin.php" method="post">			
 								
 				<div class="input-group">
 					<div class="input-group-prepend ">
@@ -83,22 +83,22 @@
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-lock"></i></span>
 					</div>
-					<input type="password" class="form-control  rounded-right" name="haslo" placeholder="Hasło" required>
+					<input type="password" class="form-control  rounded-right" name="password" placeholder="Hasło" required>
 				</div>
 				
 				<?php			
-					if(isset($_SESSION['blad']))echo '<div class="error rounded text-center" >'.$_SESSION['blad'].'</div>';	
-					unset($_SESSION['blad']);
+					if(isset($_SESSION['error']))echo '<div class="error rounded text-center" >'.$_SESSION['error'].'</div>';	
+					unset($_SESSION['error']);
 				?>
 				
 				<button  type="submit" class="btn login">"Zaloguj się"</button>
 				
 			</form>	
 			<?php
-					if (isset($_SESSION['udanarejestracja']))
+					if (isset($_SESSION['successful_registration']))
 					{
 						echo '<div class="information rounded text-center">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</div>';
-						unset($_SESSION['udanarejestracja']);
+						unset($_SESSION['successful_registration']);
 					}
 				?>
 			

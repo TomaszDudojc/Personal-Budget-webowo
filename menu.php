@@ -2,7 +2,7 @@
 
 	session_start();
 	
-	if (!isset($_SESSION['zalogowany']))
+	if (!isset($_SESSION['logged']))
 	{
 		header('Location: index.php');
 		exit();
@@ -63,13 +63,13 @@
 						<a class="nav-link" style="color: #060B95;" href="index.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="income.php"><i class="icon-money"></i>Dodaj przychód</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="ballance.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>

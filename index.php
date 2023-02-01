@@ -65,11 +65,11 @@
 				<div class="w-100"></div>
 				
 				<div class="col-lg-5 col-11 mt-3 mx-auto">					
-					<a href="rejestracja.php" ><button  type="button" class="btn register" style="width: 100%">Rejestracja</button></a>
+					<a href="registration.php" ><button  type="button" class="btn register" style="width: 100%">Rejestracja</button></a>
 				</div>
 				
 				<div class="col-lg-5 col-11 mt-3 mx-auto">		
-					<a href="logowanie.php" ><button  type="button" class="btn login" style="width: 100%">Logowanie</button></a>
+					<a href="login.php" ><button  type="button" class="btn login" style="width: 100%">Logowanie</button></a>
 				</div>
 				
 			</div>

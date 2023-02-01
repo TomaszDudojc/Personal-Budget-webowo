@@ -2,33 +2,42 @@
 
 	session_start();
 	
-	if (!isset($_SESSION['zalogowany']))
+	if (!isset($_SESSION['logged']))
 	{
 		header('Location: index.php');
 		exit();
-	}
+	}	
 	
 	//require_once "connect.php";
 	//mysqli_report(MYSQLI_REPORT_STRICT);
 	require_once 'database.php';
-	
+			
 	//try 
 	//{
-		//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-		//if ($polaczenie->connect_errno!=0)
+		//$connection = new mysqli($host, $db_user, $db_password, $db_name);
+		//if ($connection->connect_errno!=0)
 		//{
 			//throw new Exception(mysqli_connect_errno());
 		//}
 		//else
 		//{
-			//pobierz kategorie przychodów użytkownika
-			//$rezultat = $polaczenie->query("SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
-			$rezultat = $db->query("SELECT * FROM incomes_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+			//pobierz kategorie wydatków użytkownika
+			//$result = $connection->query("SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
+			$result = $db->query("SELECT * FROM expenses_category_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");
 					
-			//$income_categories= $rezultat->fetch_all(MYSQLI_ASSOC);
-			$income_categories= $rezultat->fetchAll();
+			//$expense_categories= $result->fetch_all(MYSQLI_ASSOC);
+			$expense_categories= $result->fetchAll();
 			
-			///$rezultat->free_result();		
+			//$result->free_result();	
+
+			//pobierz metody płatności użytkownika
+			//$result = $connection->query("SELECT * FROM payment_methods_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");				
+			$result = $db->query("SELECT * FROM payment_methods_assigned_to_users WHERE user_id = '$_SESSION[id_of_logged_user]' ");				
+			//$payment_methods= $result->fetch_all(MYSQLI_ASSOC);
+			$payment_methods= $result->fetchAll();
+			
+			//$result->free_result();	
+			
 			//}
 	//}
 	
@@ -41,41 +50,43 @@
 	
 	if (isset($_POST['amount']))
 	{
-		//$amount_of_income = $_POST['amount'];
-		//$date_of_income = $_POST['date'];
-		//$id_of_income_category = $_POST['category'];
-		//$comment_of_income = $_POST['comment'];
-		$amount_of_income = filter_input(INPUT_POST, 'amount');
-		$date_of_income = filter_input(INPUT_POST, 'date');
-		$id_of_income_category = filter_input(INPUT_POST, 'category');
-		$comment_of_income = filter_input(INPUT_POST, 'comment');
+		//$amount_of_expense = $_POST['amount'];
+		//$date_of_expense = $_POST['date'];
+		//$id_of_expense_category = $_POST['category'];
+		//$id_of_payment_method = $_POST['method'];
+		//$comment_of_expense = $_POST['comment'];
+		$amount_of_expense = filter_input(INPUT_POST, 'amount');
+		$date_of_expense = filter_input(INPUT_POST, 'date');
+		$id_of_expense_category = filter_input(INPUT_POST, 'category');
+		$id_of_payment_method = filter_input(INPUT_POST, 'method');
+		$comment_of_expense = filter_input(INPUT_POST, 'comment');
+		
 		//require_once "connect.php";
 		//mysqli_report(MYSQLI_REPORT_STRICT);
 			
 		//try 
 		//{
-			//$polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-			//if ($polaczenie->connect_errno!=0)
+			//$connection = new mysqli($host, $db_user, $db_password, $db_name);
+			//if ($connection->connect_errno!=0)
 			//{
 				//throw new Exception(mysqli_connect_errno());
 			//}
 			//else
 			//{
-				//$polaczenie->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
-				$db->query("INSERT INTO incomes VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_income_category', '$amount_of_income', '$date_of_income', '$comment_of_income' )" );			
+				$db->query("INSERT INTO expenses VALUES(NULL, '$_SESSION[id_of_logged_user]', '$id_of_expense_category', '$id_of_payment_method', '$amount_of_expense', '$date_of_expense', '$comment_of_expense' )" );			
 								
-				$_SESSION['info_income_added']="Przychód został dodany";
+				$_SESSION['info_expense_added']="Wydatek został dodany";
 				header('Location: menu.php');
 				exit();
 			//}
 			
-		}
+		//}
 		//catch(Exception $e)
 		//{
 			//echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
 			//echo '<br />Informacja developerska: '.$e;			
 		//}
-	//}
+	}
 		
 ?>
 
@@ -115,7 +126,7 @@
 					
 		</div>
 
-	</nav>
+	</nav>	
 		
 	<div class="navcontainer rounded">
 	
@@ -131,14 +142,14 @@
 					<li class="nav-item">
 						<a class="nav-link " href="menu.php"><i class="icon-home-1"></i>Strona główna</a>
 					</li>
-					<li class="nav-item active">
-						<a class="nav-link" style="color: #060B95;" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
+					<li class="nav-item">
+						<a class="nav-link" href="income.php"><i class="icon-money"></i>Dodaj przychód</a>
+					</li>
+					<li class="nav-item  active">
+						<a class="nav-link" style="color: #060B95;" href="expense.php"><i class="icon-basket"></i>Dodaj wydatek</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="ballance.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
@@ -159,7 +170,7 @@
 		<div class="inputContainer mt-3">			
 			
 			<header>
-				<h2 class="font-weight-bold rounded">Nowy przychód<i class="icon-money ml-3"></i></h2>
+				<h2 class="font-weight-bold rounded">Nowy wydatek<i class="icon-basket ml-3"></i></h2>
 			</header>
 		
 			<form method="post">	
@@ -167,8 +178,8 @@
 				<div class="input-group">
 					<div class="input-group-prepend ">
 						<span class="input-group-text  rounded-left icon"><i class="icon-gauge"></i></span>
-					</div>
-					<input type="number" class="form-control  rounded-right " step="0.01" min="0.01" name="amount"placeholder="Kwota" required>	
+					</div>			
+					<input type="number" class="form-control  rounded-right " step="0.01" min="0.01" name="amount" placeholder="Kwota" required>	
 				</div>
 					
 				<div class="input-group">
@@ -176,8 +187,23 @@
 						<span class="input-group-text  rounded-left icon"><i class="icon-calendar"></i></span>
 					</div>
 					<input type="date" class="form-control  rounded-right" name="date" value="<?php echo date('Y-m-d')?>" required>
-				</div>		
+				</div>				
 				
+				<div class="input-group">
+					<div class="input-group-prepend">				
+						<span class="input-group-text  rounded-left icon"><i class="icon-cc-visa"></i></span>
+					</div>
+					<select class="choice rounded-right" name="method" required>
+						<option value selected disabled hidden>Wybierz sposób płatności</option>
+						<?php						
+							foreach ($payment_methods as $payment_method)
+							{
+								echo"<option value=$payment_method[id]>$payment_method[name]</option>";
+							}						
+						?>
+					</select>
+				</div>	
+
 				<div class="input-group">
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-ok"></i></span>
@@ -185,11 +211,11 @@
 					<select class="choice rounded-right" name="category" required>						
 						<option value selected disabled hidden>Wybierz kategorię</option>
 						<?php						
-							foreach ($income_categories as $income_category)
+							foreach ($expense_categories as $expense_category)
 							{
-								echo"<option value=$income_category[id]>$income_category[name]</option>";
-							}							
-						?>
+								echo"<option value=$expense_category[id]>$expense_category[name]</option>";
+							}									
+						?>						
 					</select>
 				</div>	
 
@@ -211,7 +237,7 @@
 		
 	<footer>
 	
-		<div class="info rounded ">
+		<div class="info rounded">
 			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
 		</div>
 		

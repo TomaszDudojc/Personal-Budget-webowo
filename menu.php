@@ -2,9 +2,9 @@
 
 	session_start();
 	
-	if (!isset($_SESSION['zalogowany']))
+	if (!isset($_SESSION['logged']))
 	{
-		header('Location: indeks.php');
+		header('Location: index.php');
 		exit();
 	}
 	
@@ -36,11 +36,11 @@
 		<div class="container">
 				
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
-				<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+				<p class="mb-1"> "If you buy things you don't need, soon you will have to sell things you need"</p>
 				<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
 			</blockquote>
 					
@@ -52,7 +52,7 @@
 		
 		<nav class="navbar navbar-light py-0 navbar-expand-lg">		
 				
-			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+			<button class="navbar-toggler colapsed" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false" aria-label="Navigation switch">
 					<span class="navbar-toggler-icon"></span>
 			</button>
 				
@@ -60,22 +60,22 @@
 				
 				<ul class="navbar-nav mx-auto py-0">
 					<li class="nav-item active">
-						<a class="nav-link" style="color: #060B95;" href="indeks.php"><i class="icon-home-1"></i>Strona główna</a>
+						<a class="nav-link" style="color: #060B95;" href="index.php"><i class="icon-home-1"></i>Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="przychód.php"><i class="icon-money"></i>Dodaj przychód</a>
+						<a class="nav-link" href="income.php"><i class="icon-money"></i>Add income</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="wydatek.php"><i class="icon-basket"></i>Dodaj wydatek</a>
+						<a class="nav-link" href="expense.php"><i class="icon-basket"></i>Add expense</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="bilans.php"><i class="icon-chart-bar"></i>Przeglądaj bilans</a>
+						<a class="nav-link" href="balance.php"><i class="icon-chart-bar"></i>View balance</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#"><i class="icon-wrench"></i>Ustawienia</a>
+						<a class="nav-link" href="#"><i class="icon-wrench"></i>Settings</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Wyloguj</a>
+						<a class="nav-link text-danger" href="logout.php"><i class="icon-off"></i>Log out</a>
 					</li>
 				</ul>
 
@@ -92,28 +92,28 @@
 			<div class="row">	
 				
 					<?php
-						if(isset($_SESSION['info_welcome']))echo'<div class="col-7  text-center rounded mx-auto mb-1" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">'.'<h3>'.$_SESSION['info_welcome'].'</h3>'.'</div>';	
+						if(isset($_SESSION['info_welcome']))echo'<div class="col-8  text-center rounded mx-auto mb-1" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">'.'<h3>'.$_SESSION['info_welcome'].'</h3>'.'</div>';	
 						unset($_SESSION['info_welcome']);										
 					?>	
 				
-				<div class="col-7  text-center rounded mx-auto mb-5" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">				
-					<h3>Wybierz opcję z powyższego menu</h3>	
+				<div class="col-8 text-center rounded mx-auto mb-3" style="background-color: #D3DDE9; border: 1px solid  #c2cce8;">				
+					<h3>Select an option from the menu above</h3>	
 				</div>
 					<?php												
-						if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 col-7" >'.$_SESSION['e_registred_user'].'</div>';	
+						if(isset($_SESSION['e_registred_user']))echo '<div class="error rounded text-center m-auto p-2 col-8" >'.$_SESSION['e_registred_user'].'</div>';	
 						unset($_SESSION['e_registred_user']);	
-						if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_logged_user'].'</div>';	
+						if(isset($_SESSION['info_logged_user']))echo '<div class="information rounded text-center mx-auto p-2 col-8" >'.$_SESSION['info_logged_user'].'</div>';	
 						unset($_SESSION['info_logged_user']);	
-						if(isset($_SESSION['info_income_added']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_income_added'].'</div>';	
+						if(isset($_SESSION['info_income_added']))echo '<div class="information rounded text-center mx-auto p-2 col-8" >'.$_SESSION['info_income_added'].'</div>';	
 						unset($_SESSION['info_income_added']);	
-						if(isset($_SESSION['info_expense_added']))echo '<div class="information rounded text-center mx-auto p-2 col-7" >'.$_SESSION['info_expense_added'].'</div>';	
+						if(isset($_SESSION['info_expense_added']))echo '<div class="information rounded text-center mx-auto p-2 col-8" >'.$_SESSION['info_expense_added'].'</div>';	
 						unset($_SESSION['info_expense_added']);	
-						if(isset($_SESSION['uncorret_date_range']))echo '<div class="error rounded text-center m-auto p-2 col-7" >'.$_SESSION['uncorret_date_range'].'</div>';	
+						if(isset($_SESSION['uncorret_date_range']))echo '<div class="error rounded text-center m-auto p-2 col-8" >'.$_SESSION['uncorret_date_range'].'</div>';	
 						unset($_SESSION['uncorret_date_range']);	
 					?>			
 				<div class="w-100"></div>
 				
-				<div class="col-9  mx-auto mt-5">
+				<div class="col-9 mx-auto mt-3">
 					<div class="row">
 						<div class="col-lg-5 col-9 mt-3 mx-auto">				
 							<img class="img-thumbnail" src="img/plan.jpg" alt="plan">
@@ -133,7 +133,7 @@
 	<footer>
 	
 		<div class="info rounded">
-			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
+			All rights reserved &copy; 2022 Thank you for visit!
 		</div>
 		
 	</footer>

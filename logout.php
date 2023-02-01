@@ -4,6 +4,6 @@
 	
 	session_unset();
 	
-	header('Location: indeks.php');
+	header('Location: index.php');
 
 ?>

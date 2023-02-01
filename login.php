@@ -2,9 +2,9 @@
 
 	session_start();		
 		
-	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+	if ((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
 	{
-		$_SESSION['info_logged_user'] = "Jesteś już zalogowany!";
+		$_SESSION['info_logged_user'] = "You are already logged in as: ".$_SESSION['name_of_logged_user']."!";
 		header('Location: menu.php');
 		exit();
 	}
@@ -12,16 +12,16 @@
 	//Usuwanie zmiennych pamiętających wartości wpisane do formularza
 	if (isset($_SESSION['fr_nick'])) unset($_SESSION['fr_nick']);
 	if (isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
-	if (isset($_SESSION['fr_haslo1'])) unset($_SESSION['fr_haslo1']);
-	if (isset($_SESSION['fr_haslo2'])) unset($_SESSION['fr_haslo2']);
+	if (isset($_SESSION['fr_password1'])) unset($_SESSION['fr_password1']);
+	if (isset($_SESSION['fr_password2'])) unset($_SESSION['fr_password2']);
 		
 	//Usuwanie błędów rejestracji
 	if (isset($_SESSION['e_nick'])) unset($_SESSION['e_nick']);
 	if (isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
-	if (isset($_SESSION['e_haslo'])) unset($_SESSION['e_haslo']);		
+	if (isset($_SESSION['e_password'])) unset($_SESSION['e_password']);		
 	
 	//Usuwanie błędów l
-	if ((isset($_SESSION['udanarejestracja'])))unset($_SESSION['blad']);	
+	if ((isset($_SESSION['successful_registration'])))unset($_SESSION['error']);	
 ?>
 
 <!DOCTYPE HTML>
@@ -50,11 +50,11 @@
 		<div class="container">
 			
 			<div class="navbar-header mx-auto">
-				<a class="navbar-brand  text-center" href="indeks.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
+				<a class="navbar-brand  text-center" href="index.php"><span><i class="icon-calc"></i></span>Personal Budget</a>
 			</div>
 					
 			<blockquote class="blockquote mx-auto">					
-				<p class="mb-1"> "Jeśli kupujesz rzeczy, których nie potrzebujesz, wkrótce będziesz musiał sprzedawać rzeczy, które są ci niezbędne"</p>
+				<p class="mb-1"> "If you buy things you don't need, soon you will have to sell things you need"</p>
 				<footer class="blockquote-footer mt-0">Warren Buffett</footer>						
 			</blockquote>
 					
@@ -67,10 +67,10 @@
 		<div class="inputContainer mt-3">			
 			
 			<header>
-				<h2 class="font-weight-bold rounded">Logowanie</h2>
+				<h2 class="font-weight-bold rounded">Login</h2>
 			</header>
 		
-			<form action="zaloguj.php" method="post">			
+			<form action="doLogin.php" method="post">			
 								
 				<div class="input-group">
 					<div class="input-group-prepend ">
@@ -83,22 +83,22 @@
 					<div class="input-group-prepend">				
 						<span class="input-group-text  rounded-left icon"><i class="icon-lock"></i></span>
 					</div>
-					<input type="password" class="form-control  rounded-right" name="haslo" placeholder="Hasło" required>
+					<input type="password" class="form-control  rounded-right" name="password" placeholder="Password" required>
 				</div>
 				
 				<?php			
-					if(isset($_SESSION['blad']))echo '<div class="error rounded text-center" >'.$_SESSION['blad'].'</div>';	
-					unset($_SESSION['blad']);
+					if(isset($_SESSION['error']))echo '<div class="error rounded text-center" >'.$_SESSION['error'].'</div>';	
+					unset($_SESSION['error']);
 				?>
 				
-				<button  type="submit" class="btn login">"Zaloguj się"</button>
+				<button  type="submit" class="btn login">Log in</button>
 				
 			</form>	
 			<?php
-					if (isset($_SESSION['udanarejestracja']))
+					if (isset($_SESSION['successful_registration']))
 					{
-						echo '<div class="information rounded text-center">Dziękujemy za rejestrację w serwisie! Możesz już zalogować się na swoje konto!</div>';
-						unset($_SESSION['udanarejestracja']);
+						echo '<div class="information rounded text-center">Thank you for registering on the site! You can now log in to your account!</div>';
+						unset($_SESSION['successful_registration']);
 					}
 				?>
 			
@@ -109,7 +109,7 @@
 	<footer>
 	
 		<div class="info rounded">
-			Wszelkie prawa zastrzeżone &copy; 2022 Dziękuję za wizytę!
+			All rights reserved &copy; 2022 Thank you for visit!
 		</div>
 		
 	</footer>
